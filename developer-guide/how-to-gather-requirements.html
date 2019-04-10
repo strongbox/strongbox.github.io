@@ -1,0 +1,1586 @@
+
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+      
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.0.1">
+    
+    
+      
+        <title>How To Gather Requirements - Strongbox</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/application.982221ab.css">
+      
+        <link rel="stylesheet" href="../assets/stylesheets/application-palette.224b79ff.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#546e7a">
+      
+    
+    
+      <script src="../assets/javascripts/modernizr.1f0bcf2b.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../assets/fonts/material-icons.css">
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/style.css">
+    
+    
+      
+        
+<script>
+  window.ga = window.ga || function() {
+    (ga.q = ga.q || []).push(arguments)
+  }
+  ga.l = +new Date
+  /* Setup integration and send page view */
+  ga("create", "UA-134135156-1", "auto")
+  ga("set", "anonymizeIp", true)
+  ga("send", "pageview")
+  /* Register handler to log search on blur */
+  document.addEventListener("DOMContentLoaded", () => {
+    if (document.forms.search) {
+      var query = document.forms.search.query
+      query.addEventListener("blur", function() {
+        if (this.value) {
+          var path = document.location.pathname;
+          ga("send", "pageview", path + "?q=" + this.value)
+        }
+      })
+    }
+  })
+</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+      
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="blue-grey" data-md-color-accent="indigo">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448"
+    viewBox="0 0 416 448" id="__github">
+  <path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19-18.125
+        8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19 18.125-8.5
+        18.125 8.5 10.75 19 3.125 20.5zM320 304q0 10-3.125 20.5t-10.75
+        19-18.125 8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19
+        18.125-8.5 18.125 8.5 10.75 19 3.125 20.5zM360
+        304q0-30-17.25-51t-46.75-21q-10.25 0-48.75 5.25-17.75 2.75-39.25
+        2.75t-39.25-2.75q-38-5.25-48.75-5.25-29.5 0-46.75 21t-17.25 51q0 22 8
+        38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0
+        37.25-1.75t35-7.375 30.5-15 20.25-25.75 8-38.375zM416 260q0 51.75-15.25
+        82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5-41.75
+        1.125q-19.5 0-35.5-0.75t-36.875-3.125-38.125-7.5-34.25-12.875-30.25-20.25-21.5-28.75q-15.5-30.75-15.5-82.75
+        0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25
+        30.875q36.75-8.75 77.25-8.75 37 0 70 8 26.25-20.5
+        46.75-30.25t47.25-9.75q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34
+        99.5z" />
+</svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#how-to-gather-requirements-and-keep-issues-in-an-easy-for-handover-state" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="../index.html" title="Strongbox" class="md-header-nav__button md-logo">
+          
+            <img src=".." width="24" height="24">
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              Strongbox
+            </span>
+            <span class="md-header-nav__topic">
+              How To Gather Requirements
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+<a href="https://github.com/strongbox/strongbox/" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    strongbox/strongbox
+  </div>
+</a>
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+        
+
+  
+
+<nav class="md-tabs md-tabs--active" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  <li class="md-tabs__item">
+    
+      <a href="../index.html" title="Introduction" class="md-tabs__link">
+        Introduction
+      </a>
+    
+  </li>
+
+      
+        
+      
+        
+      
+        
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../user-guide/getting-started.html" title="User guide" class="md-tabs__link">
+          User guide
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="getting-started.html" title="Developer guide" class="md-tabs__link md-tabs__link--active">
+          Developer guide
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../knowledge-base/artifact-coordinates.html" title="Knowledge Base" class="md-tabs__link">
+          Knowledge Base
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../chat-redirect.html" title="Join chat" class="md-tabs__link">
+          Join chat
+        </a>
+      
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="../index.html" title="Strongbox" class="md-nav__button md-logo">
+      
+        <img src=".." width="48" height="48">
+      
+    </a>
+    Strongbox
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+<a href="https://github.com/strongbox/strongbox/" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    strongbox/strongbox
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../index.html" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../release-notes.html" title="Release notes" class="md-nav__link">
+      Release notes
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../contributing.html" title="Contributing" class="md-nav__link">
+      Contributing
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../license.html" title="License" class="md-nav__link">
+      License
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      User guide
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        User guide
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../user-guide/getting-started.html" title="Getting started" class="md-nav__link">
+      Getting started
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-2" type="checkbox" id="nav-5-2">
+    
+    <label class="md-nav__link" for="nav-5-2">
+      Configuration Files
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-2">
+        Configuration Files
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../user-guide/configuration-files/strongbox-yaml.html" title="The strongbox.yaml file" class="md-nav__link">
+      The strongbox.yaml file
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../user-guide/configuration-files/strongbox-authorization-yaml.html" title="The strongbox-authorization.yaml file" class="md-nav__link">
+      The strongbox-authorization.yaml file
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../user-guide/configuration-files/strongbox-cron-tasks-yaml.html" title="The strongbox-cron-tasks.yaml file" class="md-nav__link">
+      The strongbox-cron-tasks.yaml file
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../user-guide/configuration-files/strongbox-security-users-yaml.html" title="The strongbox-security-users.yaml file" class="md-nav__link">
+      The strongbox-security-users.yaml file
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../user-guide/application-properties.html" title="Application properties" class="md-nav__link">
+      Application properties
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../user-guide/directory-structure.html" title="Directory structure" class="md-nav__link">
+      Directory structure
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../user-guide/upgrading.html" title="Upgrading" class="md-nav__link">
+      Upgrading
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-6" type="checkbox" id="nav-5-6">
+    
+    <label class="md-nav__link" for="nav-5-6">
+      User Interface
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-6">
+        User Interface
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../user-guide/ui/browsing.html" title="Browsing" class="md-nav__link">
+      Browsing
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../user-guide/ui/global-settings.html" title="Global settings" class="md-nav__link">
+      Global settings
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../user-guide/ui/user-management.html" title="User management" class="md-nav__link">
+      User management
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../user-guide/ui/storage-management.html" title="Storage management" class="md-nav__link">
+      Storage management
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../user-guide/ui/system-information.html" title="System Information" class="md-nav__link">
+      System Information
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../user-guide/artifact-query-language.html" title="AQL (search)" class="md-nav__link">
+      AQL (search)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../user-guide/artifact-routing-rules.html" title="Artifact Routing Rules" class="md-nav__link">
+      Artifact Routing Rules
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../user-guide/rest-api.html" title="REST API" class="md-nav__link">
+      REST API
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6" checked>
+    
+    <label class="md-nav__link" for="nav-6">
+      Developer guide
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        Developer guide
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="getting-started.html" title="Getting started" class="md-nav__link">
+      Getting started
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-2" type="checkbox" id="nav-6-2">
+    
+    <label class="md-nav__link" for="nav-6-2">
+      Building
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-2">
+        Building
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="building-the-code.html" title="Building the code" class="md-nav__link">
+      Building the code
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="building-the-code-with-docker.html" title="Building the code (Docker)" class="md-nav__link">
+      Building the code (Docker)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="building-strongbox-against-strongbox.html" title="Building Strongbox against Strongbox" class="md-nav__link">
+      Building Strongbox against Strongbox
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-3" type="checkbox" id="nav-6-3">
+    
+    <label class="md-nav__link" for="nav-6-3">
+      IDE setup
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-3">
+        IDE setup
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="ide-setup/eclipse.html" title="Eclipse" class="md-nav__link">
+      Eclipse
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="project-structure.html" title="Project structure" class="md-nav__link">
+      Project structure
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-5" type="checkbox" id="nav-6-5">
+    
+    <label class="md-nav__link" for="nav-6-5">
+      Writing code
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-5">
+        Writing code
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="coding-convention.html" title="Coding convention" class="md-nav__link">
+      Coding convention
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="getting-started-with-persistence.html" title="Getting started with persistence" class="md-nav__link">
+      Getting started with persistence
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="how-to-implement-spring-controllers.html" title="Writing controllers" class="md-nav__link">
+      Writing controllers
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="using-the-event-api.html" title="Events API" class="md-nav__link">
+      Events API
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-5-5" type="checkbox" id="nav-6-5-5">
+    
+    <label class="md-nav__link" for="nav-6-5-5">
+      Layout providers
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-6-5-5">
+        Layout providers
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="layout-providers/how-to-implement-your-own-repository-format.html" title="Writing a layout provider" class="md-nav__link">
+      Writing a layout provider
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-5-5-2" type="checkbox" id="nav-6-5-5-2">
+    
+    <label class="md-nav__link" for="nav-6-5-5-2">
+      Implemented providers
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="4">
+      <label class="md-nav__title" for="nav-6-5-5-2">
+        Implemented providers
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="layout-providers/maven-2-layout-provider.html" title="Maven Layout Provider" class="md-nav__link">
+      Maven Layout Provider
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="layout-providers/npm-layout-provider.html" title="NPM Layout Provider" class="md-nav__link">
+      NPM Layout Provider
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="layout-providers/nuget-layout-provider.html" title="NuGet Layout Provider" class="md-nav__link">
+      NuGet Layout Provider
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="layout-providers/raw-layout-provider.html" title="Raw Layout Provider" class="md-nav__link">
+      Raw Layout Provider
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-5-6" type="checkbox" id="nav-6-5-6">
+    
+    <label class="md-nav__link" for="nav-6-5-6">
+      Metadata
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-6-5-6">
+        Metadata
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="metadata/maven-metadata.html" title="Maven Metadata" class="md-nav__link">
+      Maven Metadata
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="metadata/npm-metadata.html" title="NPM Metadata" class="md-nav__link">
+      NPM Metadata
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="logging.html" title="Logging" class="md-nav__link">
+      Logging
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="search-providers.html" title="Search Providers" class="md-nav__link">
+      Search Providers
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="maven-indexer.html" title="Maven Indexer" class="md-nav__link">
+      Maven Indexer
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="how-to-implement-a-custom-authenticator.html" title="Writing custom authenticator" class="md-nav__link">
+      Writing custom authenticator
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-6" type="checkbox" id="nav-6-6">
+    
+    <label class="md-nav__link" for="nav-6-6">
+      Writing tests
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-6">
+        Writing tests
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="writing-tests.html" title="Getting started" class="md-nav__link">
+      Getting started
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="junit-user-guide.html" title="JUnit" class="md-nav__link">
+      JUnit
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="writing-web-form-tests.html" title="Web Form Tests" class="md-nav__link">
+      Web Form Tests
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-7" type="checkbox" id="nav-6-7">
+    
+    <label class="md-nav__link" for="nav-6-7">
+      Using Git
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-7">
+        Using Git
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="git/rebase-vs-merge.html" title="Rebasing vs Merging" class="md-nav__link">
+      Rebasing vs Merging
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+    <a href="how-to-gather-requirements.html" title="How To Gather Requirements" class="md-nav__link md-nav__link--active">
+      How To Gather Requirements
+    </a>
+    
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+    
+    <label class="md-nav__link" for="nav-7">
+      Knowledge Base
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        Knowledge Base
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../knowledge-base/artifact-coordinates.html" title="Artifact Coordinates" class="md-nav__link">
+      Artifact Coordinates
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-2" type="checkbox" id="nav-7-2">
+    
+    <label class="md-nav__link" for="nav-7-2">
+      Artifact Coordinate Validators
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-2">
+        Artifact Coordinate Validators
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../knowledge-base/artifact-coordinate-validators/artifact-coordinate-validators.html" title="Generic" class="md-nav__link">
+      Generic
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../knowledge-base/artifact-coordinate-validators/artifact-coordinate-validators-maven.html" title="Maven" class="md-nav__link">
+      Maven
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../knowledge-base/layout-providers.html" title="Layout Providers" class="md-nav__link">
+      Layout Providers
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../knowledge-base/repositories.html" title="Repositories" class="md-nav__link">
+      Repositories
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../knowledge-base/storages.html" title="Storages" class="md-nav__link">
+      Storages
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8">
+    
+    <label class="md-nav__link" for="nav-8">
+      Join chat
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-8">
+        Join chat
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../chat-redirect.html" title="Join chat" class="md-nav__link">
+      Join chat
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+    
+                
+                  <a href="https://github.com/strongbox/strongbox-docs/edit/master/docs/developer-guide/how-to-gather-requirements.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                
+                
+                <h1 id="how-to-gather-requirements-and-keep-issues-in-an-easy-for-handover-state">How To Gather Requirements And Keep Issues In An Easy For Handover State<a class="headerlink" href="#how-to-gather-requirements-and-keep-issues-in-an-easy-for-handover-state" title="Permanent link">&para;</a></h1>
+<p>Gathering requirements is of key importance when you need to plan, organize and distribute work. When raising issues and tasks in an issue tracker, it's important to be able to describe in a clear and concise way what needs to be done, so that anyone in the team could pick up the work and have as much information and resources, as necessary in order to be able to work out the finer details independently.</p>
+<p>When the overall duration of the task is estimated to be long, it's important to have clarity on what the list of sub-tasks is and to keep the progress visible, so that others could join in and easily help push things forward without overlapping efforts, or the need for lengthy explanations on how they can help. This could be crucial, if the completion of the task is required in a significantly shorted time-frame. Also, as we all know, everything happens in life (people get, go on vacation, or quit) and without such clarity, it would take an additional effort to evaluate the progress of the task, should the original assignee be re-assigned, or not be able to complete the work.</p>
+<p>For smooth development we need to be able to have two things:</p>
+<ul>
+<li>
+<p>A stable <code>master</code> (building fine without failing tests)</p>
+</li>
+<li>
+<p>Continuity in case someone on the core team falls sick, has finished working on the project for the day, or next few days and has either broken the <code>master</code>, or been in the middle of an urgent investigation which someone else will need to continue in their absense</p>
+</li>
+</ul>
+<p>This is a short list of things to keep in mind when gathering requirements, so that they could be well defined and easy to handover:</p>
+<ul>
+<li>
+<p><strong><em>(Recommended)</em></strong> Make a rough outline of a the problem (use bullet points to force yourself to be brief, but at the same time try to provide a sufficiently clear explanation)</p>
+<ul>
+<li>As soon as you have gained an initial understanding of the overall task, try to outline the main parts of the work that needs to be done, so that you could later dive into the the finer details.</li>
+</ul>
+</li>
+<li>
+<p><strong><em>(Recommended)</em></strong> Expand on each bullet point with sub-points, until the amount of detail is sufficient, but stick to the point and don't add excessive details</p>
+<ul>
+<li>This will help improve the understanding of what needs to be done and provide more granularity.</li>
+</ul>
+</li>
+<li>
+<p><strong><em>(Recommended)</em></strong> Outline the points of contact (requested by, SME(s) on this topic, mailing lists, forums)</p>
+<ul>
+<li>
+<p>This will help you find more information, or get hints.</p>
+</li>
+<li>
+<p>Feel free to ask questions on Stackoverflow, there are many people out there who could help, or provide a different angle to view things from.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong><em>(Recommended)</em></strong> Gather a list of useful links</p>
+<ul>
+<li>This is extremely important for continuity and handovers, as it will help others get up to speed with what you already know.</li>
+</ul>
+</li>
+<li>
+<p><strong><em>(Recommended)</em></strong> Gather a list of documentation resources that will need to be updated, (if any)</p>
+<ul>
+<li>Our documentation needs to be continuously improved and we can't rely on others documenting things for us.</li>
+</ul>
+</li>
+<li>
+<p><strong><em>(Recommended)</em></strong> Link related tasks</p>
+<ul>
+<li>When you have related tasks, this helps keep track of what needs to be done as next steps in order to complete a certain feature and not lose track of the follow-up tasks.</li>
+</ul>
+</li>
+<li>
+<p><strong><em>(Recommended)</em></strong> Outline the testing strategy, (if any)</p>
+<ul>
+<li>This will help understand what needs to be checked in order to consider the fix, or feature ready for merging.</li>
+</ul>
+</li>
+<li>
+<p><strong><em>(Optional)</em></strong> Have a brief "definition of done"</p>
+<ul>
+<li>
+<p>Some tasks might not involve testing and this would help understand where to draw the line and consider the work finished.</p>
+</li>
+<li>
+<p>Sometimes a task needs more work after the testing phase is complete. For example, you might need to switch, or updated URL-s, trigger a build of another project, or something else along these lines. In such cases, this sort of section would be quite useful.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong><em>(Recommended)</em></strong> Use task lists to tick out things that have been done and what you're working on (by either adding a comment next to the task, or putting <code>(in progress)</code> next to it, so that there is clarity where the overall task stands and how it's progressing</p>
+<ul>
+<li>
+<p>Doing this allows everyone to have an understanding of what exactly is finished and where a given task stands.</p>
+</li>
+<li>
+<p>It helps identify parts of the overall task where others can join in and help speed up the progress.</p>
+</li>
+<li>
+<p>This also helps maintain a good morale, as there is a psycholofical aspect to it: if your task list consists of three tasks that take six weeks, it might seem that you're stuck, or not progressing, when, in fact you've actually done fifty tasks which nobody knows (or will ever know) about. If you had added those tasks to the check list, it would be apparent how much work you have really done and you will be able to show it clearly.</p>
+</li>
+<li>
+<p>It's up to you what you add to this check list. Try to add visible tasks, but don't be excessive and add tasks that would take extra small/trivial tasks that'll take five-ten minutes to do.</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong><em>(Recommended)</em></strong> When the requirements are gathered, identify the larger pieces of work and split them into new tasks, if necessary (repeat the requirements gathering process and apply it to them as necessary)</p>
+<ul>
+<li>
+<p>As work progresses on a given task, sometimes new requirements pop up that will increase the time required to complete. When it makes sense, extract the work into separate new tasks.</p>
+</li>
+<li>
+<p>Keeping the overall task as something easy to achieve, improves the morale, as it increases the sense of achievement.</p>
+</li>
+<li>
+<p>Lenghty tasks have the following undesired side-effects:</p>
+</li>
+<li>
+<p>Reviewing the code will take a while</p>
+</li>
+<li>
+<p>You might have to rebase several times and waste time resolving conflicts</p>
+</li>
+</ul>
+</li>
+<li>
+<p><strong><em>(Recommended)</em></strong> Continuously add useful commands and output (when working on the task)</p>
+<ul>
+<li>
+<p>This will help other people join in and help you, or continue your work, if necessary.</p>
+</li>
+<li>
+<p>It will also help you not waste time to figure out that three line script you knocked up yesterday that you used to check some data.</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>Here are some example tasks that follow these principles: <a href="https://github.com/strongbox/strongbox/pull/1056">#1056</a>, <a href="https://github.com/strongbox/strongbox/issues/1130">#1130</a>, <a href="https://github.com/strongbox/strongbox/issues/1165">#1165</a>.</p>
+                
+                  
+                
+              
+
+    
+        <small><br><i>Last updated 2019-04-04</i></small>
+    
+
+
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="git/rebase-vs-merge.html" title="Rebasing vs Merging" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Rebasing vs Merging
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../knowledge-base/artifact-coordinates.html" title="Artifact Coordinates" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Artifact Coordinates
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/application.b806dc00.js"></script>
+      
+      <script>app.initialize({version:"1.0.4",url:{base:".."}})</script>
+      
+        <script src="../assets/javascripts/medium-zoom.min.js"></script>
+      
+        <script src="../assets/javascripts/main.js"></script>
+      
+    
+  </body>
+</html>

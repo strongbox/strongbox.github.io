@@ -1,0 +1,1945 @@
+
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+      
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.0.1">
+    
+    
+      
+        <title>The strongbox.yaml file - Strongbox</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/application.982221ab.css">
+      
+        <link rel="stylesheet" href="../../assets/stylesheets/application-palette.224b79ff.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#546e7a">
+      
+    
+    
+      <script src="../../assets/javascripts/modernizr.1f0bcf2b.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/style.css">
+    
+    
+      
+        
+<script>
+  window.ga = window.ga || function() {
+    (ga.q = ga.q || []).push(arguments)
+  }
+  ga.l = +new Date
+  /* Setup integration and send page view */
+  ga("create", "UA-134135156-1", "auto")
+  ga("set", "anonymizeIp", true)
+  ga("send", "pageview")
+  /* Register handler to log search on blur */
+  document.addEventListener("DOMContentLoaded", () => {
+    if (document.forms.search) {
+      var query = document.forms.search.query
+      query.addEventListener("blur", function() {
+        if (this.value) {
+          var path = document.location.pathname;
+          ga("send", "pageview", path + "?q=" + this.value)
+        }
+      })
+    }
+  })
+</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+      
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="blue-grey" data-md-color-accent="indigo">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448"
+    viewBox="0 0 416 448" id="__github">
+  <path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19-18.125
+        8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19 18.125-8.5
+        18.125 8.5 10.75 19 3.125 20.5zM320 304q0 10-3.125 20.5t-10.75
+        19-18.125 8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19
+        18.125-8.5 18.125 8.5 10.75 19 3.125 20.5zM360
+        304q0-30-17.25-51t-46.75-21q-10.25 0-48.75 5.25-17.75 2.75-39.25
+        2.75t-39.25-2.75q-38-5.25-48.75-5.25-29.5 0-46.75 21t-17.25 51q0 22 8
+        38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0
+        37.25-1.75t35-7.375 30.5-15 20.25-25.75 8-38.375zM416 260q0 51.75-15.25
+        82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5-41.75
+        1.125q-19.5 0-35.5-0.75t-36.875-3.125-38.125-7.5-34.25-12.875-30.25-20.25-21.5-28.75q-15.5-30.75-15.5-82.75
+        0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25
+        30.875q36.75-8.75 77.25-8.75 37 0 70 8 26.25-20.5
+        46.75-30.25t47.25-9.75q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34
+        99.5z" />
+</svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#strongbox-configuration-yaml" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="../../index.html" title="Strongbox" class="md-header-nav__button md-logo">
+          
+            <img src="../.." width="24" height="24">
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              Strongbox
+            </span>
+            <span class="md-header-nav__topic">
+              The strongbox.yaml file
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+<a href="https://github.com/strongbox/strongbox/" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    strongbox/strongbox
+  </div>
+</a>
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+        
+
+  
+
+<nav class="md-tabs md-tabs--active" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  <li class="md-tabs__item">
+    
+      <a href="../../index.html" title="Introduction" class="md-tabs__link">
+        Introduction
+      </a>
+    
+  </li>
+
+      
+        
+      
+        
+      
+        
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../getting-started.html" title="User guide" class="md-tabs__link md-tabs__link--active">
+          User guide
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../developer-guide/getting-started.html" title="Developer guide" class="md-tabs__link">
+          Developer guide
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../knowledge-base/artifact-coordinates.html" title="Knowledge Base" class="md-tabs__link">
+          Knowledge Base
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../chat-redirect.html" title="Join chat" class="md-tabs__link">
+          Join chat
+        </a>
+      
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="../../index.html" title="Strongbox" class="md-nav__button md-logo">
+      
+        <img src="../.." width="48" height="48">
+      
+    </a>
+    Strongbox
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+<a href="https://github.com/strongbox/strongbox/" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    strongbox/strongbox
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../index.html" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../release-notes.html" title="Release notes" class="md-nav__link">
+      Release notes
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../contributing.html" title="Contributing" class="md-nav__link">
+      Contributing
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../license.html" title="License" class="md-nav__link">
+      License
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5" checked>
+    
+    <label class="md-nav__link" for="nav-5">
+      User guide
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        User guide
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../getting-started.html" title="Getting started" class="md-nav__link">
+      Getting started
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-2" type="checkbox" id="nav-5-2" checked>
+    
+    <label class="md-nav__link" for="nav-5-2">
+      Configuration Files
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-2">
+        Configuration Files
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        The strongbox.yaml file
+      </label>
+    
+    <a href="strongbox-yaml.html" title="The strongbox.yaml file" class="md-nav__link md-nav__link--active">
+      The strongbox.yaml file
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#the-configuration-file" title="The Configuration File" class="md-nav__link">
+    The Configuration File
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#information-for-developers" title="Information for Developers" class="md-nav__link">
+    Information for Developers
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#see-also" title="See Also" class="md-nav__link">
+    See Also
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="strongbox-authorization-yaml.html" title="The strongbox-authorization.yaml file" class="md-nav__link">
+      The strongbox-authorization.yaml file
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="strongbox-cron-tasks-yaml.html" title="The strongbox-cron-tasks.yaml file" class="md-nav__link">
+      The strongbox-cron-tasks.yaml file
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="strongbox-security-users-yaml.html" title="The strongbox-security-users.yaml file" class="md-nav__link">
+      The strongbox-security-users.yaml file
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../application-properties.html" title="Application properties" class="md-nav__link">
+      Application properties
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../directory-structure.html" title="Directory structure" class="md-nav__link">
+      Directory structure
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../upgrading.html" title="Upgrading" class="md-nav__link">
+      Upgrading
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-6" type="checkbox" id="nav-5-6">
+    
+    <label class="md-nav__link" for="nav-5-6">
+      User Interface
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-6">
+        User Interface
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../ui/browsing.html" title="Browsing" class="md-nav__link">
+      Browsing
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../ui/global-settings.html" title="Global settings" class="md-nav__link">
+      Global settings
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../ui/user-management.html" title="User management" class="md-nav__link">
+      User management
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../ui/storage-management.html" title="Storage management" class="md-nav__link">
+      Storage management
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../ui/system-information.html" title="System Information" class="md-nav__link">
+      System Information
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../artifact-query-language.html" title="AQL (search)" class="md-nav__link">
+      AQL (search)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../artifact-routing-rules.html" title="Artifact Routing Rules" class="md-nav__link">
+      Artifact Routing Rules
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../rest-api.html" title="REST API" class="md-nav__link">
+      REST API
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      Developer guide
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        Developer guide
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../developer-guide/getting-started.html" title="Getting started" class="md-nav__link">
+      Getting started
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-2" type="checkbox" id="nav-6-2">
+    
+    <label class="md-nav__link" for="nav-6-2">
+      Building
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-2">
+        Building
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../developer-guide/building-the-code.html" title="Building the code" class="md-nav__link">
+      Building the code
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../developer-guide/building-the-code-with-docker.html" title="Building the code (Docker)" class="md-nav__link">
+      Building the code (Docker)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../developer-guide/building-strongbox-against-strongbox.html" title="Building Strongbox against Strongbox" class="md-nav__link">
+      Building Strongbox against Strongbox
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-3" type="checkbox" id="nav-6-3">
+    
+    <label class="md-nav__link" for="nav-6-3">
+      IDE setup
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-3">
+        IDE setup
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../developer-guide/ide-setup/eclipse.html" title="Eclipse" class="md-nav__link">
+      Eclipse
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../developer-guide/project-structure.html" title="Project structure" class="md-nav__link">
+      Project structure
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-5" type="checkbox" id="nav-6-5">
+    
+    <label class="md-nav__link" for="nav-6-5">
+      Writing code
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-5">
+        Writing code
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../developer-guide/coding-convention.html" title="Coding convention" class="md-nav__link">
+      Coding convention
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../developer-guide/getting-started-with-persistence.html" title="Getting started with persistence" class="md-nav__link">
+      Getting started with persistence
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../developer-guide/how-to-implement-spring-controllers.html" title="Writing controllers" class="md-nav__link">
+      Writing controllers
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../developer-guide/using-the-event-api.html" title="Events API" class="md-nav__link">
+      Events API
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-5-5" type="checkbox" id="nav-6-5-5">
+    
+    <label class="md-nav__link" for="nav-6-5-5">
+      Layout providers
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-6-5-5">
+        Layout providers
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../developer-guide/layout-providers/how-to-implement-your-own-repository-format.html" title="Writing a layout provider" class="md-nav__link">
+      Writing a layout provider
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-5-5-2" type="checkbox" id="nav-6-5-5-2">
+    
+    <label class="md-nav__link" for="nav-6-5-5-2">
+      Implemented providers
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="4">
+      <label class="md-nav__title" for="nav-6-5-5-2">
+        Implemented providers
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../developer-guide/layout-providers/maven-2-layout-provider.html" title="Maven Layout Provider" class="md-nav__link">
+      Maven Layout Provider
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../developer-guide/layout-providers/npm-layout-provider.html" title="NPM Layout Provider" class="md-nav__link">
+      NPM Layout Provider
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../developer-guide/layout-providers/nuget-layout-provider.html" title="NuGet Layout Provider" class="md-nav__link">
+      NuGet Layout Provider
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../developer-guide/layout-providers/raw-layout-provider.html" title="Raw Layout Provider" class="md-nav__link">
+      Raw Layout Provider
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-5-6" type="checkbox" id="nav-6-5-6">
+    
+    <label class="md-nav__link" for="nav-6-5-6">
+      Metadata
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-6-5-6">
+        Metadata
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../developer-guide/metadata/maven-metadata.html" title="Maven Metadata" class="md-nav__link">
+      Maven Metadata
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../developer-guide/metadata/npm-metadata.html" title="NPM Metadata" class="md-nav__link">
+      NPM Metadata
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../developer-guide/logging.html" title="Logging" class="md-nav__link">
+      Logging
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../developer-guide/search-providers.html" title="Search Providers" class="md-nav__link">
+      Search Providers
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../developer-guide/maven-indexer.html" title="Maven Indexer" class="md-nav__link">
+      Maven Indexer
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../developer-guide/how-to-implement-a-custom-authenticator.html" title="Writing custom authenticator" class="md-nav__link">
+      Writing custom authenticator
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-6" type="checkbox" id="nav-6-6">
+    
+    <label class="md-nav__link" for="nav-6-6">
+      Writing tests
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-6">
+        Writing tests
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../developer-guide/writing-tests.html" title="Getting started" class="md-nav__link">
+      Getting started
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../developer-guide/junit-user-guide.html" title="JUnit" class="md-nav__link">
+      JUnit
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../developer-guide/writing-web-form-tests.html" title="Web Form Tests" class="md-nav__link">
+      Web Form Tests
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-7" type="checkbox" id="nav-6-7">
+    
+    <label class="md-nav__link" for="nav-6-7">
+      Using Git
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-7">
+        Using Git
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../developer-guide/git/rebase-vs-merge.html" title="Rebasing vs Merging" class="md-nav__link">
+      Rebasing vs Merging
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../developer-guide/how-to-gather-requirements.html" title="How To Gather Requirements" class="md-nav__link">
+      How To Gather Requirements
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+    
+    <label class="md-nav__link" for="nav-7">
+      Knowledge Base
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        Knowledge Base
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../knowledge-base/artifact-coordinates.html" title="Artifact Coordinates" class="md-nav__link">
+      Artifact Coordinates
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-2" type="checkbox" id="nav-7-2">
+    
+    <label class="md-nav__link" for="nav-7-2">
+      Artifact Coordinate Validators
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-2">
+        Artifact Coordinate Validators
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../knowledge-base/artifact-coordinate-validators/artifact-coordinate-validators.html" title="Generic" class="md-nav__link">
+      Generic
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../knowledge-base/artifact-coordinate-validators/artifact-coordinate-validators-maven.html" title="Maven" class="md-nav__link">
+      Maven
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../knowledge-base/layout-providers.html" title="Layout Providers" class="md-nav__link">
+      Layout Providers
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../knowledge-base/repositories.html" title="Repositories" class="md-nav__link">
+      Repositories
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../knowledge-base/storages.html" title="Storages" class="md-nav__link">
+      Storages
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8">
+    
+    <label class="md-nav__link" for="nav-8">
+      Join chat
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-8">
+        Join chat
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../chat-redirect.html" title="Join chat" class="md-nav__link">
+      Join chat
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#the-configuration-file" title="The Configuration File" class="md-nav__link">
+    The Configuration File
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#information-for-developers" title="Information for Developers" class="md-nav__link">
+    Information for Developers
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#see-also" title="See Also" class="md-nav__link">
+    See Also
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+    
+                
+                  <a href="https://github.com/strongbox/strongbox-docs/edit/master/docs/user-guide/configuration-files/strongbox-yaml.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                
+                
+                <h1 id="strongbox-configuration-yaml">Strongbox Configuration Yaml<a class="headerlink" href="#strongbox-configuration-yaml" title="Permanent link">&para;</a></h1>
+<p>This resource file describes the configuration of the server.</p>
+<p>The property controlling this file is <code>strongbox.config.file</code>. The default location for this resource is <code>etc/conf/strongbox.yaml</code>.</p>
+<p>The cases in which this file is required are:
+* During the server launch
+* For a configuration import from another server
+* For a configuration export of the server</p>
+<h2 id="the-configuration-file">The Configuration File<a class="headerlink" href="#the-configuration-file" title="Permanent link">&para;</a></h2>
+<p>The following is an example of a <code>strongbox.yaml</code> configuration file:</p>
+<div class="codehilite"><pre><span></span>configuration:
+  instanceName: strongbox
+  version: ${project.version}
+  revision: ${strongbox.revision}
+  baseUrl: http://localhost:48080/
+  port: 48080
+  sessionConfiguration:
+    timeoutSeconds: 3600
+  remoteRepositoriesConfiguration:
+    checkIntervalSeconds: 60
+    heartbeatThreadsNumber: 5
+    retryArtifactDownloadConfiguration:
+      timeoutSeconds: 60
+      maxNumberOfAttempts: 5
+      minAttemptsIntervalSeconds: 5
+  corsConfiguration:
+    allowedCredentials: true
+    maxAge: 600
+    allowedOrigins:
+      - &quot;*&quot;
+    allowedMethods:
+      - GET
+      - PUT
+      - POST
+      - DELETE
+      - OPTIONS
+    allowedHeaders:
+      - Accept
+      - Accepts
+      - Authorization
+      - Access-Control-Allow-Headers
+      - Access-Control-Request-Headers
+      - Access-Control-Request-Method
+      - DNT
+      - Keep-Alive
+      - User-Agent
+      - X-Requested-With
+      - If-Modified-Since
+      - Cache-Control
+      - Content-Type
+      - Content-Range,Range
+  storages:
+    storage0:
+      id: storage0
+      repositories:
+        releases:
+          id: releases
+          policy: release
+          dataStore: file-system
+          layout: Maven 2
+          type: hosted
+          allowsForceDeletion: true
+          checksumHeadersEnabled: true
+          repositoryConfiguration:
+            type: Maven 2
+            indexingEnabled: true
+        snapshots:
+          id: snapshots
+          policy: snapshot
+          dataStore: file-system
+          layout: Maven 2
+          type: hosted
+          secured: true
+          checksumHeadersEnabled: true
+          repositoryConfiguration:
+            type: Maven 2
+            indexingEnabled: true
+    storage-common-proxies:
+      id: storage-common-proxies
+      repositories:
+        maven-central:
+          id: maven-central
+          policy: release
+          dataStore: file-system
+          layout: Maven 2
+          type: proxy
+          remoteRepository:
+            url: https://repo.maven.apache.org/maven2/
+            downloadRemoteIndexes: true
+            autoBlocking: true
+            checksumValidation: true
+          repositoryConfiguration:
+            type: Maven 2
+            indexingEnabled: true
+        carlspring:
+          id: carlspring
+          policy: mixed
+          dataStore: file-system
+          layout: Maven 2
+          type: proxy
+          remoteRepository:
+            url: https://repo.carlspring.org/content/groups/carlspring
+            downloadRemoteIndexes: true
+            autoBlocking: true
+            checksumValidation: true
+        apache-snapshots:
+          id: apache-snapshots
+          policy: snapshot
+          dataStore: file-system
+          layout: Maven 2
+          type: proxy
+          remoteRepository:
+            url: https://repository.apache.org/snapshots/
+            downloadRemoteIndexes: true
+            autoBlocking: true
+            checksumValidation: true
+        jboss-public-releases:
+          id: jboss-public-releases
+          policy: release
+          dataStore: file-system
+          layout: Maven 2
+          type: proxy
+          remoteRepository:
+            url: http://repository.jboss.org/nexus/content/groups/public-jboss/
+            downloadRemoteIndexes: true
+            autoBlocking: true
+            checksumValidation: true
+        maven-oracle:
+          id: maven-oracle
+          policy: release
+          dataStore: file-system
+          layout: Maven 2
+          type: proxy
+          remoteRepository:
+            url: https://maven.oracle.com
+            downloadRemoteIndexes: true
+            autoBlocking: true
+            checksumValidation: true
+            allowsDirectoryBrowsing: false
+        group-common-proxies:
+          id: group-common-proxies
+          policy: release
+          dataStore: file-system
+          layout: Maven 2
+          type: group
+          secured: true
+          groupRepositories:
+            - carlspring
+            - maven-central
+            - apache-snapshots
+            - jboss-public-releases
+        nuget.org:
+          id: nuget.org
+          policy: release
+          dataStore: file-system
+          layout: NuGet
+          type: proxy
+          remoteRepository:
+            url: https://www.nuget.org/api/v2
+          repositoryConfiguration:
+            type: NuGet
+            remoteFeedPageSize: 1000
+    storage-springsource-proxies:
+      id: storage-springsource-proxies
+      repositories:
+        springsource-snapshots:
+          id: springsource-snapshots
+          policy: snapshot
+          dataStore: file-system
+          layout: Maven 2
+          type: proxy
+          remoteRepository:
+            url: http://repo.spring.io/snapshot
+            downloadRemoteIndexes: true
+            autoBlocking: true
+            checksumValidation: true
+        springsource-releases:
+          id: springsource-releases
+          policy: release
+          dataStore: file-system
+          layout: Maven 2
+          type: proxy
+          remoteRepository:
+            url: http://repo.spring.io/libs-release
+            downloadRemoteIndexes: true
+            autoBlocking: true
+            checksumValidation: true
+        springsource-milestones:
+          id: springsource-milestones
+          policy: release
+          dataStore: file-system
+          layout: Maven 2
+          type: proxy
+          remoteRepository:
+            url: http://repo.spring.io/milestone
+            downloadRemoteIndexes: true
+            autoBlocking: true
+            checksumValidation: true
+        springsource-proxies:
+          id: springsource-proxies
+          policy: mixed
+          dataStore: file-system
+          layout: Maven 2
+          type: group
+          secured: true
+          groupRepositories:
+            - springsource-snapshots
+            - springsource-releases
+            - springsource-milestones
+    storage-ivy-proxies:
+      id: storage-ivy-proxies
+      repositories:
+        typesafe-releases:
+          id: typesafe-releases
+          policy: release
+          dataStore: file-system
+          layout: Maven 2
+          type: proxy
+          remoteRepository:
+            url: https://repo.typesafe.com/typesafe/releases
+            downloadRemoteIndexes: true
+            autoBlocking: true
+            checksumValidation: true
+        typesafe-ivy-releases:
+          id: typesafe-ivy-releases
+          policy: release
+          dataStore: file-system
+          layout: Maven 2
+          type: proxy
+          remoteRepository:
+            url: https://repo.typesafe.com/typesafe/ivy-releases
+            downloadRemoteIndexes: true
+            autoBlocking: true
+            checksumValidation: true
+        group-ivy-proxies:
+          id: group-ivy-proxies
+          policy: release
+          dataStore: file-system
+          layout: Maven 2
+          type: group
+          secured: true
+          groupRepositories:
+            - typesafe-releases
+            - typesafe-ivy-releases
+    storage-sbt-proxies:
+      id: storage-sbt-proxies
+      repositories:
+        sbt-plugin-releases:
+          id: sbt-plugin-releases
+          policy: release
+          dataStore: file-system
+          layout: Maven 2
+          type: proxy
+          remoteRepository:
+            url: https://repo.scala-sbt.org/scalasbt/sbt-plugin-releases
+            downloadRemoteIndexes: true
+            autoBlocking: true
+            checksumValidation: true
+        group-sbt-proxies:
+          id: group-sbt-proxies
+          policy: release
+          dataStore: file-system
+          layout: Maven 2
+          type: group
+          secured: true
+          groupRepositories:
+            - sbt-plugin-releases
+            - storage-ivy-proxies:group-ivy-proxies
+    storage-third-party:
+      id: storage-third-party
+      repositories:
+        third-party:
+          id: third-party
+          policy: release
+          dataStore: file-system
+          layout: Maven 2
+          type: hosted
+          allowsForceDeletion: true
+          checksumHeadersEnabled: true
+        nuget-third-party:
+          id: nuget-third-party
+          policy: release
+          dataStore: file-system
+          layout: NuGet
+          type: hosted
+          allowsForceDeletion: true
+          checksumHeadersEnabled: true
+    storage-npm:
+      id: storage-npm
+      repositories:
+        npm-releases:
+          id: npm-releases
+          policy: release
+          dataStore: file-system
+          layout: npm
+          type: hosted
+          allowsForceDeletion: true
+          checksumHeadersEnabled: true
+        npmjs:
+          id: npmjs
+          policy: release
+          dataStore: file-system
+          layout: npm
+          type: proxy
+          remoteRepository:
+            url: https://registry.npmjs.org/
+            customConfiguration:
+              type: npm
+              lastChangeId: 0
+              replicateUrl: https://replicate.npmjs.com/
+    storage-nuget:
+      id: storage-nuget
+      repositories:
+        nuget-releases:
+          id: nuget-releases
+          policy: release
+          dataStore: file-system
+          layout: NuGet
+          type: hosted
+          allowsForceDeletion: true
+          checksumHeadersEnabled: true
+    storage-raw:
+      id: storage-raw
+      repositories:
+        raw-releases:
+          id: raw-releases
+          policy: release
+          dataStore: file-system
+          layout: Raw
+          type: hosted
+          allowsForceDeletion: true
+          checksumHeadersEnabled: true
+    public:
+      id: public
+      repositories:
+        maven-group:
+          id: maven-group
+          policy: mixed
+          dataStore: file-system
+          layout: Maven 2
+          type: group
+          secured: true
+          groupRepositories:
+            - storage0:releases
+            - storage0:snapshots
+            - storage-common-proxies:group-common-proxies
+            - storage-springsource-proxies:springsource-proxies
+            - storage-ivy-proxies:group-ivy-proxies
+            - storage-sbt-proxies:group-sbt-proxies
+            - storage-third-party:third-party
+        nuget-group:
+          id: nuget-group
+          policy: mixed
+          dataStore: file-system
+          layout: NuGet
+          type: group
+          secured: true
+          groupRepositories:
+            - storage-common-proxies:nuget.org
+            - storage-third-party:nuget-third-party
+        npm-group:
+          id: npm-group
+          policy: mixed
+          dataStore: file-system
+          layout: npm
+          type: group
+          secured: true
+          groupRepositories:
+            - storage-npm:npmjs
+  routingRules:
+    rules:
+      - uuid: 0f84a9a7-b2ce-47ed-8a01-085e235a1946
+        storageId: storage-common-proxies
+        repositoryId: group-common-proxies
+        pattern: &quot;.*(com|org)/carlspring.*&quot;
+        type: deny
+        repositories:
+          - storageId: storage-common-proxies
+            repositoryId: jboss-public-releases
+</pre></div>
+
+
+<h2 id="information-for-developers">Information for Developers<a class="headerlink" href="#information-for-developers" title="Permanent link">&para;</a></h2>
+<p>The following classes are related to various aspects of the configuration:</p>
+<table>
+<thead>
+<tr>
+<th align="left">Class Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><a href="https://github.com/strongbox/strongbox/blob/master/strongbox-storage/strongbox-storage-core/src/main/java/org/carlspring/strongbox/configuration/MutableConfiguration.java"><code>org.carlspring.strongbox.configuration.MutableConfiguration</code></a></td>
+<td>Represents a configuration in a deserialized form.</td>
+</tr>
+<tr>
+<td align="left"><a href="https://github.com/strongbox/strongbox/blob/master/strongbox-storage/strongbox-storage-api/src/main/java/org/carlspring/strongbox/configuration/ConfigurationFileManager.java"><code>org.carlspring.strongbox.configuration.ConfigurationFileManager</code></a></td>
+<td>Class to serialize / deserialize the configuration.</td>
+</tr>
+</tbody>
+</table>
+<p>The <a href="https://github.com/strongbox/strongbox/blob/master/strongbox-resources/strongbox-storage-api-resources/src/main/resources/etc/conf/strongbox.yaml">strongbox.yaml</a>, which is packaged in the distribution, is located under the <a href="https://github.com/strongbox/strongbox/blob/master/strongbox-resources/strongbox-storage-api-resources/">strongbox-storage-api-resources</a>'s <code>src/main/resources/etc/conf</code> directory.</p>
+<h2 id="see-also">See Also<a class="headerlink" href="#see-also" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../artifact-routing-rules.html">Artifact Routing Rules</a></li>
+</ul>
+                
+                  
+                
+              
+
+    
+        <small><br><i>Last updated 2019-04-07</i></small>
+    
+
+
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../getting-started.html" title="Getting started" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Getting started
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="strongbox-authorization-yaml.html" title="The strongbox-authorization.yaml file" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                The strongbox-authorization.yaml file
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/application.b806dc00.js"></script>
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+        <script src="../../assets/javascripts/medium-zoom.min.js"></script>
+      
+        <script src="../../assets/javascripts/main.js"></script>
+      
+    
+  </body>
+</html>

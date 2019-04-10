@@ -1,0 +1,1788 @@
+
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+      
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.0.1">
+    
+    
+      
+        <title>Building the code (Docker) - Strongbox</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/application.982221ab.css">
+      
+        <link rel="stylesheet" href="../assets/stylesheets/application-palette.224b79ff.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#546e7a">
+      
+    
+    
+      <script src="../assets/javascripts/modernizr.1f0bcf2b.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../assets/fonts/material-icons.css">
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/style.css">
+    
+    
+      
+        
+<script>
+  window.ga = window.ga || function() {
+    (ga.q = ga.q || []).push(arguments)
+  }
+  ga.l = +new Date
+  /* Setup integration and send page view */
+  ga("create", "UA-134135156-1", "auto")
+  ga("set", "anonymizeIp", true)
+  ga("send", "pageview")
+  /* Register handler to log search on blur */
+  document.addEventListener("DOMContentLoaded", () => {
+    if (document.forms.search) {
+      var query = document.forms.search.query
+      query.addEventListener("blur", function() {
+        if (this.value) {
+          var path = document.location.pathname;
+          ga("send", "pageview", path + "?q=" + this.value)
+        }
+      })
+    }
+  })
+</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+      
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="blue-grey" data-md-color-accent="indigo">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448"
+    viewBox="0 0 416 448" id="__github">
+  <path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19-18.125
+        8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19 18.125-8.5
+        18.125 8.5 10.75 19 3.125 20.5zM320 304q0 10-3.125 20.5t-10.75
+        19-18.125 8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19
+        18.125-8.5 18.125 8.5 10.75 19 3.125 20.5zM360
+        304q0-30-17.25-51t-46.75-21q-10.25 0-48.75 5.25-17.75 2.75-39.25
+        2.75t-39.25-2.75q-38-5.25-48.75-5.25-29.5 0-46.75 21t-17.25 51q0 22 8
+        38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0
+        37.25-1.75t35-7.375 30.5-15 20.25-25.75 8-38.375zM416 260q0 51.75-15.25
+        82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5-41.75
+        1.125q-19.5 0-35.5-0.75t-36.875-3.125-38.125-7.5-34.25-12.875-30.25-20.25-21.5-28.75q-15.5-30.75-15.5-82.75
+        0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25
+        30.875q36.75-8.75 77.25-8.75 37 0 70 8 26.25-20.5
+        46.75-30.25t47.25-9.75q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34
+        99.5z" />
+</svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#building-the-code-with-docker" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="../index.html" title="Strongbox" class="md-header-nav__button md-logo">
+          
+            <img src=".." width="24" height="24">
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              Strongbox
+            </span>
+            <span class="md-header-nav__topic">
+              Building the code (Docker)
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+<a href="https://github.com/strongbox/strongbox/" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    strongbox/strongbox
+  </div>
+</a>
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+        
+
+  
+
+<nav class="md-tabs md-tabs--active" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  <li class="md-tabs__item">
+    
+      <a href="../index.html" title="Introduction" class="md-tabs__link">
+        Introduction
+      </a>
+    
+  </li>
+
+      
+        
+      
+        
+      
+        
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../user-guide/getting-started.html" title="User guide" class="md-tabs__link">
+          User guide
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="getting-started.html" title="Developer guide" class="md-tabs__link md-tabs__link--active">
+          Developer guide
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../knowledge-base/artifact-coordinates.html" title="Knowledge Base" class="md-tabs__link">
+          Knowledge Base
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../chat-redirect.html" title="Join chat" class="md-tabs__link">
+          Join chat
+        </a>
+      
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="../index.html" title="Strongbox" class="md-nav__button md-logo">
+      
+        <img src=".." width="48" height="48">
+      
+    </a>
+    Strongbox
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+<a href="https://github.com/strongbox/strongbox/" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    strongbox/strongbox
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../index.html" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../release-notes.html" title="Release notes" class="md-nav__link">
+      Release notes
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../contributing.html" title="Contributing" class="md-nav__link">
+      Contributing
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../license.html" title="License" class="md-nav__link">
+      License
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      User guide
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        User guide
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../user-guide/getting-started.html" title="Getting started" class="md-nav__link">
+      Getting started
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-2" type="checkbox" id="nav-5-2">
+    
+    <label class="md-nav__link" for="nav-5-2">
+      Configuration Files
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-2">
+        Configuration Files
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../user-guide/configuration-files/strongbox-yaml.html" title="The strongbox.yaml file" class="md-nav__link">
+      The strongbox.yaml file
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../user-guide/configuration-files/strongbox-authorization-yaml.html" title="The strongbox-authorization.yaml file" class="md-nav__link">
+      The strongbox-authorization.yaml file
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../user-guide/configuration-files/strongbox-cron-tasks-yaml.html" title="The strongbox-cron-tasks.yaml file" class="md-nav__link">
+      The strongbox-cron-tasks.yaml file
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../user-guide/configuration-files/strongbox-security-users-yaml.html" title="The strongbox-security-users.yaml file" class="md-nav__link">
+      The strongbox-security-users.yaml file
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../user-guide/application-properties.html" title="Application properties" class="md-nav__link">
+      Application properties
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../user-guide/directory-structure.html" title="Directory structure" class="md-nav__link">
+      Directory structure
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../user-guide/upgrading.html" title="Upgrading" class="md-nav__link">
+      Upgrading
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-6" type="checkbox" id="nav-5-6">
+    
+    <label class="md-nav__link" for="nav-5-6">
+      User Interface
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-6">
+        User Interface
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../user-guide/ui/browsing.html" title="Browsing" class="md-nav__link">
+      Browsing
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../user-guide/ui/global-settings.html" title="Global settings" class="md-nav__link">
+      Global settings
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../user-guide/ui/user-management.html" title="User management" class="md-nav__link">
+      User management
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../user-guide/ui/storage-management.html" title="Storage management" class="md-nav__link">
+      Storage management
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../user-guide/ui/system-information.html" title="System Information" class="md-nav__link">
+      System Information
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../user-guide/artifact-query-language.html" title="AQL (search)" class="md-nav__link">
+      AQL (search)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../user-guide/artifact-routing-rules.html" title="Artifact Routing Rules" class="md-nav__link">
+      Artifact Routing Rules
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../user-guide/rest-api.html" title="REST API" class="md-nav__link">
+      REST API
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6" checked>
+    
+    <label class="md-nav__link" for="nav-6">
+      Developer guide
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        Developer guide
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="getting-started.html" title="Getting started" class="md-nav__link">
+      Getting started
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-2" type="checkbox" id="nav-6-2" checked>
+    
+    <label class="md-nav__link" for="nav-6-2">
+      Building
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-2">
+        Building
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="building-the-code.html" title="Building the code" class="md-nav__link">
+      Building the code
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Building the code (Docker)
+      </label>
+    
+    <a href="building-the-code-with-docker.html" title="Building the code (Docker)" class="md-nav__link md-nav__link--active">
+      Building the code (Docker)
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" title="Introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#docker-installation" title="Docker installation" class="md-nav__link">
+    Docker installation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#available-images" title="Available images" class="md-nav__link">
+    Available images
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#possible-permission-issues-linux" title="Possible permission issues (Linux)" class="md-nav__link">
+    Possible permission issues (Linux)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#run-strongbox" title="Run strongbox" class="md-nav__link">
+    Run strongbox
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#building-and-testing" title="Building and testing" class="md-nav__link">
+    Building and testing
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#making-life-easier" title="Making life easier" class="md-nav__link">
+    Making life easier
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#setting-up-bashrc" title="Setting up ~/.bashrc" class="md-nav__link">
+    Setting up ~/.bashrc
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-commands" title="Example commands" class="md-nav__link">
+    Example commands
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="building-strongbox-against-strongbox.html" title="Building Strongbox against Strongbox" class="md-nav__link">
+      Building Strongbox against Strongbox
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-3" type="checkbox" id="nav-6-3">
+    
+    <label class="md-nav__link" for="nav-6-3">
+      IDE setup
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-3">
+        IDE setup
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="ide-setup/eclipse.html" title="Eclipse" class="md-nav__link">
+      Eclipse
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="project-structure.html" title="Project structure" class="md-nav__link">
+      Project structure
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-5" type="checkbox" id="nav-6-5">
+    
+    <label class="md-nav__link" for="nav-6-5">
+      Writing code
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-5">
+        Writing code
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="coding-convention.html" title="Coding convention" class="md-nav__link">
+      Coding convention
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="getting-started-with-persistence.html" title="Getting started with persistence" class="md-nav__link">
+      Getting started with persistence
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="how-to-implement-spring-controllers.html" title="Writing controllers" class="md-nav__link">
+      Writing controllers
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="using-the-event-api.html" title="Events API" class="md-nav__link">
+      Events API
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-5-5" type="checkbox" id="nav-6-5-5">
+    
+    <label class="md-nav__link" for="nav-6-5-5">
+      Layout providers
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-6-5-5">
+        Layout providers
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="layout-providers/how-to-implement-your-own-repository-format.html" title="Writing a layout provider" class="md-nav__link">
+      Writing a layout provider
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-5-5-2" type="checkbox" id="nav-6-5-5-2">
+    
+    <label class="md-nav__link" for="nav-6-5-5-2">
+      Implemented providers
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="4">
+      <label class="md-nav__title" for="nav-6-5-5-2">
+        Implemented providers
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="layout-providers/maven-2-layout-provider.html" title="Maven Layout Provider" class="md-nav__link">
+      Maven Layout Provider
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="layout-providers/npm-layout-provider.html" title="NPM Layout Provider" class="md-nav__link">
+      NPM Layout Provider
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="layout-providers/nuget-layout-provider.html" title="NuGet Layout Provider" class="md-nav__link">
+      NuGet Layout Provider
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="layout-providers/raw-layout-provider.html" title="Raw Layout Provider" class="md-nav__link">
+      Raw Layout Provider
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-5-6" type="checkbox" id="nav-6-5-6">
+    
+    <label class="md-nav__link" for="nav-6-5-6">
+      Metadata
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-6-5-6">
+        Metadata
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="metadata/maven-metadata.html" title="Maven Metadata" class="md-nav__link">
+      Maven Metadata
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="metadata/npm-metadata.html" title="NPM Metadata" class="md-nav__link">
+      NPM Metadata
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="logging.html" title="Logging" class="md-nav__link">
+      Logging
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="search-providers.html" title="Search Providers" class="md-nav__link">
+      Search Providers
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="maven-indexer.html" title="Maven Indexer" class="md-nav__link">
+      Maven Indexer
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="how-to-implement-a-custom-authenticator.html" title="Writing custom authenticator" class="md-nav__link">
+      Writing custom authenticator
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-6" type="checkbox" id="nav-6-6">
+    
+    <label class="md-nav__link" for="nav-6-6">
+      Writing tests
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-6">
+        Writing tests
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="writing-tests.html" title="Getting started" class="md-nav__link">
+      Getting started
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="junit-user-guide.html" title="JUnit" class="md-nav__link">
+      JUnit
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="writing-web-form-tests.html" title="Web Form Tests" class="md-nav__link">
+      Web Form Tests
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-7" type="checkbox" id="nav-6-7">
+    
+    <label class="md-nav__link" for="nav-6-7">
+      Using Git
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-7">
+        Using Git
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="git/rebase-vs-merge.html" title="Rebasing vs Merging" class="md-nav__link">
+      Rebasing vs Merging
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="how-to-gather-requirements.html" title="How To Gather Requirements" class="md-nav__link">
+      How To Gather Requirements
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+    
+    <label class="md-nav__link" for="nav-7">
+      Knowledge Base
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        Knowledge Base
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../knowledge-base/artifact-coordinates.html" title="Artifact Coordinates" class="md-nav__link">
+      Artifact Coordinates
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-2" type="checkbox" id="nav-7-2">
+    
+    <label class="md-nav__link" for="nav-7-2">
+      Artifact Coordinate Validators
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-2">
+        Artifact Coordinate Validators
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../knowledge-base/artifact-coordinate-validators/artifact-coordinate-validators.html" title="Generic" class="md-nav__link">
+      Generic
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../knowledge-base/artifact-coordinate-validators/artifact-coordinate-validators-maven.html" title="Maven" class="md-nav__link">
+      Maven
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../knowledge-base/layout-providers.html" title="Layout Providers" class="md-nav__link">
+      Layout Providers
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../knowledge-base/repositories.html" title="Repositories" class="md-nav__link">
+      Repositories
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../knowledge-base/storages.html" title="Storages" class="md-nav__link">
+      Storages
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8">
+    
+    <label class="md-nav__link" for="nav-8">
+      Join chat
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-8">
+        Join chat
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../chat-redirect.html" title="Join chat" class="md-nav__link">
+      Join chat
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" title="Introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#docker-installation" title="Docker installation" class="md-nav__link">
+    Docker installation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#available-images" title="Available images" class="md-nav__link">
+    Available images
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#possible-permission-issues-linux" title="Possible permission issues (Linux)" class="md-nav__link">
+    Possible permission issues (Linux)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#run-strongbox" title="Run strongbox" class="md-nav__link">
+    Run strongbox
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#building-and-testing" title="Building and testing" class="md-nav__link">
+    Building and testing
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#making-life-easier" title="Making life easier" class="md-nav__link">
+    Making life easier
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#setting-up-bashrc" title="Setting up ~/.bashrc" class="md-nav__link">
+    Setting up ~/.bashrc
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-commands" title="Example commands" class="md-nav__link">
+    Example commands
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+    
+                
+                  <a href="https://github.com/strongbox/strongbox-docs/edit/master/docs/developer-guide/building-the-code-with-docker.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                
+                
+                <h1 id="building-the-code-with-docker">Building the code with Docker<a class="headerlink" href="#building-the-code-with-docker" title="Permanent link">&para;</a></h1>
+<h2 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h2>
+<p>Docker is awesome and we are using it to build and test almost everything. 
+It has proven to be quite fast and convenient way to easily reproduce issues.
+We encourage you to have a decent version of Docker installed on your machine 
+so that you can debug or reproduce issues easier.</p>
+<p>You should note that we are mostly using Linux so this guide is more focused on how to do things on Linux distributions.
+However, things under Windows shouldn't be that different.</p>
+<h2 id="docker-installation">Docker installation<a class="headerlink" href="#docker-installation" title="Permanent link">&para;</a></h2>
+<p>Depending on your OS and distribution you can install different versions of Docker CE (Community Edition).
+In most cases your distribution will have it's own package of Docker which works fine. </p>
+<p>Please head to the docker <a href="https://docs.docker.com/install/">installation manual</a> pages to check how to install it on your machine:</p>
+<p>Also, don't forget to install <a href="https://docs.docker.com/compose/install/">Docker Compose</a> on your machine 
+because we have some <code>docker-compose.yml</code> files in place to make it easier for you to start Strongbox.</p>
+<h2 id="available-images">Available images<a class="headerlink" href="#available-images" title="Permanent link">&para;</a></h2>
+<p>We have created docker images for the most used distributions (Debian, Centos, OpenSUSE, Ubuntu) and we 
+test for a lot of different scenarios and tools. Our images are published in the Docker hub
+and can be found at <a href="https://hub.docker.com/r/strongboxci/">strongboxci</a>. At the time of writing this, we have the 
+following distribution images:</p>
+<ul>
+<li><a href="https://hub.docker.com/r/strongboxci/alpine/tags">strongboxci/alpine</a></li>
+<li><a href="https://hub.docker.com/r/strongboxci/centos/tags">strongboxci/centos</a></li>
+<li><a href="https://hub.docker.com/r/strongboxci/debian/tags">strongboxci/debian</a></li>
+<li><a href="https://hub.docker.com/r/strongboxci/opensuse/tags">strongboxci/opensuse</a></li>
+<li><a href="https://hub.docker.com/r/strongboxci/ubuntu/tags">strongboxci/ubuntu</a></li>
+</ul>
+<p>Most of the tests we run in our CI are using <a href="https://hub.docker.com/r/strongboxci/alpine/tags">strongboxci/alpine</a>. Please note that almost all of our images come 
+with <code>maven</code> pre-installed and configured with our <code>settings.xml</code> file. You don't need to do anything other than
+just start the container and build your code.</p>
+<h2 id="possible-permission-issues-linux">Possible permission issues (Linux)<a class="headerlink" href="#possible-permission-issues-linux" title="Permanent link">&para;</a></h2>
+<p>It is important to mention that our docker images are running under the user <code>jenkins</code> which has <code>user_id=1000</code> and 
+<code>group_id=1000</code>. This is usually the very first user on many distributions and in general should "work".  </p>
+<p>Please check your <code>user/group id</code> by executing <code>id</code>. If you see something like the output below - you shouldn't have problems:</p>
+<div class="codehilite"><pre><span></span>uid=1000(your-username) gid=1000(your-username) groups=1000(your-username)
+</pre></div>
+
+<p>If you see another <code>uid/gid</code> you will likely hit a permission issue. Unfortunately <a href="https://github.com/docker/compose/issues/3328">docker/compose#3328</a>, 
+<a href="https://github.com/docker/compose/issues/4700#issuecomment-416714975">docker/compose#4700</a> and <a href="https://github.com/docker/cli/issues/1318">docker/cli#1318</a> are preventing <code>docker-compose</code> from being able to 
+automatically fix the group id. There are two workarounds which you can apply for things to work as expected:</p>
+<ol>
+<li>
+<p>Instead of using <code>docker-compose</code>, you can use plain <code>docker</code> and pass <code>--group-add `id -g`</code> to the arguments. 
+   This will add your local group id in the docker container and you will be able to work as usual, however it will 
+   require typing the <code>docker run</code> command every time. Example command:<br />
+   <div class="codehilite"><pre><span></span>docker run -it --rm --group-add `id -g` -v /path/to/strongbox-project:/workspace strongboxci/alpine:jdk8-mvn-3.5
+</pre></div></p>
+</li>
+<li>
+<p>You can create a user with <code>uid=1000</code> and <code>gid=1000</code> and then fix the permissions of the folders:</p>
+<ul>
+<li>Create the user/group
+ <div class="codehilite"><pre><span></span> groupadd -g 1000 jenkins
+ useradd -u 1000 -g 1000 -s /bin/bash -m jenkins
+</pre></div></li>
+<li>Fix the permissions
+ <div class="codehilite"><pre><span></span>chown -R `id -u`.1001 /path/to/strongbox-project ~/.m2/repository
+chmod -R 775 /path/to/strongbox-project ~/.m2/repository
+</pre></div></li>
+<li>You can now proceed with running <code>docker-compose up</code> as usual and it should work.</li>
+</ul>
+</li>
+</ol>
+<h2 id="run-strongbox">Run strongbox<a class="headerlink" href="#run-strongbox" title="Permanent link">&para;</a></h2>
+<p>You just want to start a Strongbox instance from sources? We've got you covered:</p>
+<div class="codehilite"><pre><span></span>git clone https://github.com/strongbox/strongbox.git
+cd strongbox
+docker-compose up
+</pre></div>
+
+<p>Once the build has completed, Strongbox will start and you will be able to access it at <a href="http://localhost:48080/">http://localhost:48080/</a></p>
+<h2 id="building-and-testing">Building and testing<a class="headerlink" href="#building-and-testing" title="Permanent link">&para;</a></h2>
+<p>To build your code inside a container with our images you need to have cloned the repository you need
+and then start a docker container with the image you need. This is an example of how to build Strongbox
+from sources inside a container using <a href="https://hub.docker.com/r/strongboxci/alpine/tags">strongboxci/alpine:jdk8-mvn-3.5</a>: </p>
+<div class="codehilite"><pre><span></span>$ git clone https://github.com/strongbox/strongbox.git
+$ cd strongbox
+$ docker pull strongboxci/alpine:jdk8-mvn-3.5
+$ docker run -it --rm \
+             -v $(pwd):/home/jenkins/workspace \
+             -w /home/jenkins/workspace \
+             strongboxci/alpine:jdk8-mvn-3.5
+
+Apache Maven 3.3.9 (bb52d8502b132ec0a5a3f4c09453c07478323dc5; 2015-11-10T16:41:47+00:00)
+Maven home: /java/mvn-3.3.9
+Java version: 1.8.0_161, vendor: Oracle Corporation
+Java home: /java/jdk-1.8u161-b12/jre
+Default locale: en, platform encoding: UTF-8
+OS name: &quot;linux&quot;, version: &quot;4.13.0-37-generic&quot;, arch: &quot;amd64&quot;, family: &quot;unix&quot;
+
+bash-4.3$ 
+</pre></div>
+
+<p>What the <code>docker run</code> command just did was to create a disposable container (<code>--rm</code>) in which you can execute any commands.
+By passing the <code>-w</code> flag we have set the current working directory to be the workspace (default is <code>/home/jenkins</code>).</p>
+<p>We can now proceed with building the code: </p>
+<div class="codehilite"><pre><span></span>mvn clean install
+</pre></div>
+
+<p>This might take a while, but in the end you should have a successful build.</p>
+<div class="admonition tip">
+<p class="admonition-title">Mount maven repository cache</p>
+<p>It is also possible to mount your local <code>~/.m2/repository</code> directory into the container.<br />
+Just pass <code>-v ~/.m2/repository:/home/jenkins/.m2/repository</code> into the arguments and you're good to go. </p>
+</div>
+<h2 id="making-life-easier">Making life easier<a class="headerlink" href="#making-life-easier" title="Permanent link">&para;</a></h2>
+<p>If you have already checked out our <a href="https://hub.docker.com/r/strongboxci/alpine/tags">strongboxci/alpine</a> repository you would have noticed the amount of 
+different images we have. Trying to remember all of them and the way you need to setup the container is tedious and 
+unnecessary. We have created a <a href="https://strongbox.github.io/assets/resources/docker/bashrc-strongbox">.bashrc</a> with commands you can execute to easily 
+get a container up and running</p>
+<p>Our <code>.bashrc</code> has two types of commands which:</p>
+<ol>
+<li>Start a container by mounting the current working directory as <code>workspace</code> (i.e <code>dockerMvn35</code>, <code>dockerGradle45</code>, etc)</li>
+<li>Start a container and automatically clone a project from github and use that as the <code>workspace</code>. (i.e. <code>dockerMvn35Checkout</code>, <code>dockerGradle45Checkout</code>, etc) </li>
+</ol>
+<p>If you don't remember arguments the command needs you can always execute <code>dockerMvn35 --help</code> and it will print them to you as well as an example.</p>
+<h3 id="setting-up-bashrc">Setting up <code>~/.bashrc</code><a class="headerlink" href="#setting-up-bashrc" title="Permanent link">&para;</a></h3>
+<p>If you are interested in using the commands from our <code>.bashrc</code>:</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3
+4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span>curl -o ~/.bashrc-strongbox \
+     -L https://strongbox.github.io/assets/resources/docker/bashrc-strongbox
+chmod 750 ~/.bashrc-strongbox
+echo &quot;\$HOME/.bashrc-strongbox&quot; &gt;&gt; ~/.bashrc
+</pre></div>
+</td></tr></table>
+
+<p>You can now either open up a new terminal or execute <code>source ~/.bashrc</code><br />
+Have fun building things in docker <img alt="😄" class="emojione" src="https://cdn.jsdelivr.net/emojione/assets/svg/1f604.svg" title=":smile:" /></p>
+<h3 id="example-commands">Example commands<a class="headerlink" href="#example-commands" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p>Checkout <code>strongbox/strongbox.git</code> and run <code>mvn clean install</code>
+    <div class="codehilite"><pre><span></span>dockerMvn35Checkout
+</pre></div></p>
+</li>
+<li>
+<p>Checkout <code>strongbox/strongbox.git</code> and run <code>mvn clean install -DskipTests</code>
+    <div class="codehilite"><pre><span></span>dockerMvn35Checkout strongbox master/branch/PR-1234 &quot;mvn clean install&quot;
+</pre></div></p>
+</li>
+<li>
+<p>Use current working directory to build project
+    <div class="codehilite"><pre><span></span>cd /some/path
+dockerMvn35
+</pre></div></p>
+</li>
+<li>
+<p>Checkout <code>strongbox/strongbox-web-integration-tests.git</code> and build using Gradle
+    <div class="codehilite"><pre><span></span>dockerGradle45Checkout strongbox-web-integration-tests master &quot;cd gradle; mvn clean install&quot;
+</pre></div></p>
+</li>
+</ul>
+                
+                  
+                
+              
+
+    
+        <small><br><i>Last updated 2019-04-01</i></small>
+    
+
+
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="building-the-code.html" title="Building the code" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Building the code
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="building-strongbox-against-strongbox.html" title="Building Strongbox against Strongbox" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Building Strongbox against Strongbox
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/application.b806dc00.js"></script>
+      
+      <script>app.initialize({version:"1.0.4",url:{base:".."}})</script>
+      
+        <script src="../assets/javascripts/medium-zoom.min.js"></script>
+      
+        <script src="../assets/javascripts/main.js"></script>
+      
+    
+  </body>
+</html>

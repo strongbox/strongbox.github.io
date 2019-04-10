@@ -1,0 +1,1816 @@
+
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+      
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.0.1">
+    
+    
+      
+        <title>Maven Metadata - Strongbox</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/application.982221ab.css">
+      
+        <link rel="stylesheet" href="../../assets/stylesheets/application-palette.224b79ff.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#546e7a">
+      
+    
+    
+      <script src="../../assets/javascripts/modernizr.1f0bcf2b.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/style.css">
+    
+    
+      
+        
+<script>
+  window.ga = window.ga || function() {
+    (ga.q = ga.q || []).push(arguments)
+  }
+  ga.l = +new Date
+  /* Setup integration and send page view */
+  ga("create", "UA-134135156-1", "auto")
+  ga("set", "anonymizeIp", true)
+  ga("send", "pageview")
+  /* Register handler to log search on blur */
+  document.addEventListener("DOMContentLoaded", () => {
+    if (document.forms.search) {
+      var query = document.forms.search.query
+      query.addEventListener("blur", function() {
+        if (this.value) {
+          var path = document.location.pathname;
+          ga("send", "pageview", path + "?q=" + this.value)
+        }
+      })
+    }
+  })
+</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+      
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="blue-grey" data-md-color-accent="indigo">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448"
+    viewBox="0 0 416 448" id="__github">
+  <path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19-18.125
+        8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19 18.125-8.5
+        18.125 8.5 10.75 19 3.125 20.5zM320 304q0 10-3.125 20.5t-10.75
+        19-18.125 8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19
+        18.125-8.5 18.125 8.5 10.75 19 3.125 20.5zM360
+        304q0-30-17.25-51t-46.75-21q-10.25 0-48.75 5.25-17.75 2.75-39.25
+        2.75t-39.25-2.75q-38-5.25-48.75-5.25-29.5 0-46.75 21t-17.25 51q0 22 8
+        38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0
+        37.25-1.75t35-7.375 30.5-15 20.25-25.75 8-38.375zM416 260q0 51.75-15.25
+        82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5-41.75
+        1.125q-19.5 0-35.5-0.75t-36.875-3.125-38.125-7.5-34.25-12.875-30.25-20.25-21.5-28.75q-15.5-30.75-15.5-82.75
+        0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25
+        30.875q36.75-8.75 77.25-8.75 37 0 70 8 26.25-20.5
+        46.75-30.25t47.25-9.75q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34
+        99.5z" />
+</svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#maven-metadata" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="../../index.html" title="Strongbox" class="md-header-nav__button md-logo">
+          
+            <img src="../.." width="24" height="24">
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              Strongbox
+            </span>
+            <span class="md-header-nav__topic">
+              Maven Metadata
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+<a href="https://github.com/strongbox/strongbox/" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    strongbox/strongbox
+  </div>
+</a>
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+        
+
+  
+
+<nav class="md-tabs md-tabs--active" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  <li class="md-tabs__item">
+    
+      <a href="../../index.html" title="Introduction" class="md-tabs__link">
+        Introduction
+      </a>
+    
+  </li>
+
+      
+        
+      
+        
+      
+        
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../user-guide/getting-started.html" title="User guide" class="md-tabs__link">
+          User guide
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../getting-started.html" title="Developer guide" class="md-tabs__link md-tabs__link--active">
+          Developer guide
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../knowledge-base/artifact-coordinates.html" title="Knowledge Base" class="md-tabs__link">
+          Knowledge Base
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../chat-redirect.html" title="Join chat" class="md-tabs__link">
+          Join chat
+        </a>
+      
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="../../index.html" title="Strongbox" class="md-nav__button md-logo">
+      
+        <img src="../.." width="48" height="48">
+      
+    </a>
+    Strongbox
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+<a href="https://github.com/strongbox/strongbox/" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    strongbox/strongbox
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../index.html" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../release-notes.html" title="Release notes" class="md-nav__link">
+      Release notes
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../contributing.html" title="Contributing" class="md-nav__link">
+      Contributing
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../license.html" title="License" class="md-nav__link">
+      License
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      User guide
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        User guide
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../user-guide/getting-started.html" title="Getting started" class="md-nav__link">
+      Getting started
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-2" type="checkbox" id="nav-5-2">
+    
+    <label class="md-nav__link" for="nav-5-2">
+      Configuration Files
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-2">
+        Configuration Files
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../user-guide/configuration-files/strongbox-yaml.html" title="The strongbox.yaml file" class="md-nav__link">
+      The strongbox.yaml file
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../user-guide/configuration-files/strongbox-authorization-yaml.html" title="The strongbox-authorization.yaml file" class="md-nav__link">
+      The strongbox-authorization.yaml file
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../user-guide/configuration-files/strongbox-cron-tasks-yaml.html" title="The strongbox-cron-tasks.yaml file" class="md-nav__link">
+      The strongbox-cron-tasks.yaml file
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../user-guide/configuration-files/strongbox-security-users-yaml.html" title="The strongbox-security-users.yaml file" class="md-nav__link">
+      The strongbox-security-users.yaml file
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../user-guide/application-properties.html" title="Application properties" class="md-nav__link">
+      Application properties
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../user-guide/directory-structure.html" title="Directory structure" class="md-nav__link">
+      Directory structure
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../user-guide/upgrading.html" title="Upgrading" class="md-nav__link">
+      Upgrading
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-5-6" type="checkbox" id="nav-5-6">
+    
+    <label class="md-nav__link" for="nav-5-6">
+      User Interface
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-6">
+        User Interface
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../user-guide/ui/browsing.html" title="Browsing" class="md-nav__link">
+      Browsing
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../user-guide/ui/global-settings.html" title="Global settings" class="md-nav__link">
+      Global settings
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../user-guide/ui/user-management.html" title="User management" class="md-nav__link">
+      User management
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../user-guide/ui/storage-management.html" title="Storage management" class="md-nav__link">
+      Storage management
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../user-guide/ui/system-information.html" title="System Information" class="md-nav__link">
+      System Information
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../user-guide/artifact-query-language.html" title="AQL (search)" class="md-nav__link">
+      AQL (search)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../user-guide/artifact-routing-rules.html" title="Artifact Routing Rules" class="md-nav__link">
+      Artifact Routing Rules
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../user-guide/rest-api.html" title="REST API" class="md-nav__link">
+      REST API
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6" checked>
+    
+    <label class="md-nav__link" for="nav-6">
+      Developer guide
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        Developer guide
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../getting-started.html" title="Getting started" class="md-nav__link">
+      Getting started
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-2" type="checkbox" id="nav-6-2">
+    
+    <label class="md-nav__link" for="nav-6-2">
+      Building
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-2">
+        Building
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../building-the-code.html" title="Building the code" class="md-nav__link">
+      Building the code
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../building-the-code-with-docker.html" title="Building the code (Docker)" class="md-nav__link">
+      Building the code (Docker)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../building-strongbox-against-strongbox.html" title="Building Strongbox against Strongbox" class="md-nav__link">
+      Building Strongbox against Strongbox
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-3" type="checkbox" id="nav-6-3">
+    
+    <label class="md-nav__link" for="nav-6-3">
+      IDE setup
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-3">
+        IDE setup
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../ide-setup/eclipse.html" title="Eclipse" class="md-nav__link">
+      Eclipse
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../project-structure.html" title="Project structure" class="md-nav__link">
+      Project structure
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-5" type="checkbox" id="nav-6-5" checked>
+    
+    <label class="md-nav__link" for="nav-6-5">
+      Writing code
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-5">
+        Writing code
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../coding-convention.html" title="Coding convention" class="md-nav__link">
+      Coding convention
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../getting-started-with-persistence.html" title="Getting started with persistence" class="md-nav__link">
+      Getting started with persistence
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../how-to-implement-spring-controllers.html" title="Writing controllers" class="md-nav__link">
+      Writing controllers
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../using-the-event-api.html" title="Events API" class="md-nav__link">
+      Events API
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-5-5" type="checkbox" id="nav-6-5-5">
+    
+    <label class="md-nav__link" for="nav-6-5-5">
+      Layout providers
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-6-5-5">
+        Layout providers
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../layout-providers/how-to-implement-your-own-repository-format.html" title="Writing a layout provider" class="md-nav__link">
+      Writing a layout provider
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-5-5-2" type="checkbox" id="nav-6-5-5-2">
+    
+    <label class="md-nav__link" for="nav-6-5-5-2">
+      Implemented providers
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="4">
+      <label class="md-nav__title" for="nav-6-5-5-2">
+        Implemented providers
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../layout-providers/maven-2-layout-provider.html" title="Maven Layout Provider" class="md-nav__link">
+      Maven Layout Provider
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../layout-providers/npm-layout-provider.html" title="NPM Layout Provider" class="md-nav__link">
+      NPM Layout Provider
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../layout-providers/nuget-layout-provider.html" title="NuGet Layout Provider" class="md-nav__link">
+      NuGet Layout Provider
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../layout-providers/raw-layout-provider.html" title="Raw Layout Provider" class="md-nav__link">
+      Raw Layout Provider
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-5-6" type="checkbox" id="nav-6-5-6" checked>
+    
+    <label class="md-nav__link" for="nav-6-5-6">
+      Metadata
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="3">
+      <label class="md-nav__title" for="nav-6-5-6">
+        Metadata
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Maven Metadata
+      </label>
+    
+    <a href="maven-metadata.html" title="Maven Metadata" class="md-nav__link md-nav__link--active">
+      Maven Metadata
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-stored-in-the-maven-metadata" title="What is stored in the Maven metadata?" class="md-nav__link">
+    What is stored in the Maven metadata?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-types-of-metadata-are-there-and-where-are-they-stored" title="What types of metadata are there and where are they stored?" class="md-nav__link">
+    What types of metadata are there and where are they stored?
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#additional-cases" title="Additional cases" class="md-nav__link">
+    Additional cases
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-the-latest-field-used-for" title="What is the latest field used for?" class="md-nav__link">
+    What is the latest field used for?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-the-release-field-used-for" title="What is the release field used for?" class="md-nav__link">
+    What is the release field used for?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whats-the-difference-between-maven-metadataxml-and-maven-metadata-xyzxml" title="What's the difference between maven-metadata.xml and maven-metadata-xyz.xml?" class="md-nav__link">
+    What's the difference between maven-metadata.xml and maven-metadata-xyz.xml?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-produces-the-maven-metadataxml-files-and-who-manages-it" title="What produces the maven-metadata.xml files and who manages it?" class="md-nav__link">
+    What produces the maven-metadata.xml files and who manages it?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-are-the-official-resources-on-maven-metadata" title="What are the official resources on Maven metadata?" class="md-nav__link">
+    What are the official resources on Maven metadata?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#see-also" title="See Also" class="md-nav__link">
+    See Also
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="npm-metadata.html" title="NPM Metadata" class="md-nav__link">
+      NPM Metadata
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../logging.html" title="Logging" class="md-nav__link">
+      Logging
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../search-providers.html" title="Search Providers" class="md-nav__link">
+      Search Providers
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../maven-indexer.html" title="Maven Indexer" class="md-nav__link">
+      Maven Indexer
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../how-to-implement-a-custom-authenticator.html" title="Writing custom authenticator" class="md-nav__link">
+      Writing custom authenticator
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-6" type="checkbox" id="nav-6-6">
+    
+    <label class="md-nav__link" for="nav-6-6">
+      Writing tests
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-6">
+        Writing tests
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../writing-tests.html" title="Getting started" class="md-nav__link">
+      Getting started
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../junit-user-guide.html" title="JUnit" class="md-nav__link">
+      JUnit
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../writing-web-form-tests.html" title="Web Form Tests" class="md-nav__link">
+      Web Form Tests
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-6-7" type="checkbox" id="nav-6-7">
+    
+    <label class="md-nav__link" for="nav-6-7">
+      Using Git
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-7">
+        Using Git
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../git/rebase-vs-merge.html" title="Rebasing vs Merging" class="md-nav__link">
+      Rebasing vs Merging
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../how-to-gather-requirements.html" title="How To Gather Requirements" class="md-nav__link">
+      How To Gather Requirements
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+    
+    <label class="md-nav__link" for="nav-7">
+      Knowledge Base
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        Knowledge Base
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../knowledge-base/artifact-coordinates.html" title="Artifact Coordinates" class="md-nav__link">
+      Artifact Coordinates
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-7-2" type="checkbox" id="nav-7-2">
+    
+    <label class="md-nav__link" for="nav-7-2">
+      Artifact Coordinate Validators
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-2">
+        Artifact Coordinate Validators
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../knowledge-base/artifact-coordinate-validators/artifact-coordinate-validators.html" title="Generic" class="md-nav__link">
+      Generic
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../knowledge-base/artifact-coordinate-validators/artifact-coordinate-validators-maven.html" title="Maven" class="md-nav__link">
+      Maven
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../knowledge-base/layout-providers.html" title="Layout Providers" class="md-nav__link">
+      Layout Providers
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../knowledge-base/repositories.html" title="Repositories" class="md-nav__link">
+      Repositories
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../knowledge-base/storages.html" title="Storages" class="md-nav__link">
+      Storages
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8">
+    
+    <label class="md-nav__link" for="nav-8">
+      Join chat
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-8">
+        Join chat
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../chat-redirect.html" title="Join chat" class="md-nav__link">
+      Join chat
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-stored-in-the-maven-metadata" title="What is stored in the Maven metadata?" class="md-nav__link">
+    What is stored in the Maven metadata?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-types-of-metadata-are-there-and-where-are-they-stored" title="What types of metadata are there and where are they stored?" class="md-nav__link">
+    What types of metadata are there and where are they stored?
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#additional-cases" title="Additional cases" class="md-nav__link">
+    Additional cases
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-the-latest-field-used-for" title="What is the latest field used for?" class="md-nav__link">
+    What is the latest field used for?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-the-release-field-used-for" title="What is the release field used for?" class="md-nav__link">
+    What is the release field used for?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whats-the-difference-between-maven-metadataxml-and-maven-metadata-xyzxml" title="What's the difference between maven-metadata.xml and maven-metadata-xyz.xml?" class="md-nav__link">
+    What's the difference between maven-metadata.xml and maven-metadata-xyz.xml?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-produces-the-maven-metadataxml-files-and-who-manages-it" title="What produces the maven-metadata.xml files and who manages it?" class="md-nav__link">
+    What produces the maven-metadata.xml files and who manages it?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-are-the-official-resources-on-maven-metadata" title="What are the official resources on Maven metadata?" class="md-nav__link">
+    What are the official resources on Maven metadata?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#see-also" title="See Also" class="md-nav__link">
+    See Also
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+    
+                
+                  <a href="https://github.com/strongbox/strongbox-docs/edit/master/docs/developer-guide/metadata/maven-metadata.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                
+                
+                <h1 id="maven-metadata">Maven Metadata<a class="headerlink" href="#maven-metadata" title="Permanent link">&para;</a></h1>
+<h2 id="what-is-stored-in-the-maven-metadata">What is stored in the Maven metadata?<a class="headerlink" href="#what-is-stored-in-the-maven-metadata" title="Permanent link">&para;</a></h2>
+<p>The <code>maven-metadata.xml</code> file is a place where Maven stores basic information about artifacts. 
+It can contain useful data such as, for example:</p>
+<ul>
+<li>Which timestamped artifact file represents the current <code>SNAPSHOT</code> artifact</li>
+<li>What the latest deployed version of an artifact is</li>
+<li>What the most recent released version of an artifact is</li>
+<li>What plugins can be found under a <code>groupId</code></li>
+<li>What other artifacts (apart from the main one) have been deployed to the repository (along with their extensions)</li>
+</ul>
+<h2 id="what-types-of-metadata-are-there-and-where-are-they-stored">What types of metadata are there and where are they stored?<a class="headerlink" href="#what-types-of-metadata-are-there-and-where-are-they-stored" title="Permanent link">&para;</a></h2>
+<ul>
+<li>
+<p><code>artifactId</code> level <code>maven-metadata.xml</code> (located under, for example: <code>org/carlspring/strongbox/metadata-example/maven-metadata.xml</code>). 
+  This is used for storing the top-level versions of artifacts. For example, if an artifact has versions <code>1.0</code>, <code>1.1</code>, <code>1.2</code>, 
+  this <code>maven-metadata.xml</code> will only contain version information about them. </p>
+<details class="info"><summary>Example maven-metadata.xml</summary><div class="codehilite"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="nt">&lt;metadata&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.carlspring.strongbox<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>metadata-example<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;versioning&gt;</span>
+        <span class="nt">&lt;latest&gt;</span>1.2<span class="nt">&lt;/latest&gt;</span>
+        <span class="nt">&lt;release&gt;</span>1.2<span class="nt">&lt;/release&gt;</span>
+        <span class="nt">&lt;versions&gt;</span>
+            <span class="nt">&lt;version&gt;</span>1.0<span class="nt">&lt;/version&gt;</span>
+            <span class="nt">&lt;version&gt;</span>1.1<span class="nt">&lt;/version&gt;</span>
+            <span class="nt">&lt;version&gt;</span>1.2<span class="nt">&lt;/version&gt;</span>
+        <span class="nt">&lt;/versions&gt;</span>
+        <span class="nt">&lt;lastUpdated&gt;</span>20150509185437<span class="nt">&lt;/lastUpdated&gt;</span>
+    <span class="nt">&lt;/versioning&gt;</span>
+ <span class="nt">&lt;/metadata&gt;</span>
+</pre></div>
+
+</details>
+</li>
+<li>
+<p>Artifact <code>version</code>-level <code>maven-metadata.xml</code> (located under, for example: <code>org/carlspring/strongbox/strongbox-metadata/2.0-SNAPSHOT/maven-metadata.xml</code>). 
+  This is used only for timestamped <code>SNAPSHOT</code> versioned artifacts. The purpose of this file is to contain a list of the 
+  existing timestamped artifacts, while at the same time specifying which one of them is the latest deployed one that 
+  should be used as the actual <code>SNAPSHOT</code> artifact to be resolved by Maven. The following is a brief example which 
+  illustrates the case where two timestamped <code>SNAPSHOT</code> artifacts have been deployed. Each deployment of an artifact 
+  increments the <code>&lt;buildNumber/&gt;</code> and updates the <code>&lt;timestamp/&gt;</code> fields.</p>
+<details class="info"><summary>Example maven-metadata.xml</summary><div class="codehilite"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="nt">&lt;metadata&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.carlspring.strongbox<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>strongbox-metadata<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>2.0-SNAPSHOT<span class="nt">&lt;/version&gt;</span>
+    <span class="nt">&lt;versioning&gt;</span>
+        <span class="nt">&lt;snapshot&gt;</span>
+            <span class="nt">&lt;timestamp&gt;</span>20150508.221712<span class="nt">&lt;/timestamp&gt;</span>
+            <span class="nt">&lt;buildNumber&gt;</span>2<span class="nt">&lt;/buildNumber&gt;</span>
+        <span class="nt">&lt;/snapshot&gt;</span>
+        <span class="nt">&lt;lastUpdated&gt;</span>20150508221310<span class="nt">&lt;/lastUpdated&gt;</span>
+        <span class="nt">&lt;snapshotVersions&gt;</span>
+            <span class="nt">&lt;snapshotVersion&gt;</span>
+                <span class="nt">&lt;classifier&gt;</span>javadoc<span class="nt">&lt;/classifier&gt;</span>
+                <span class="nt">&lt;extension&gt;</span>jar<span class="nt">&lt;/extension&gt;</span>
+                <span class="nt">&lt;value&gt;</span>2.0-20150508.220658-1<span class="nt">&lt;/value&gt;</span>
+                <span class="nt">&lt;updated&gt;</span>20150508220658<span class="nt">&lt;/updated&gt;</span>
+            <span class="nt">&lt;/snapshotVersion&gt;</span>
+            <span class="nt">&lt;snapshotVersion&gt;</span>
+                <span class="nt">&lt;extension&gt;</span>jar<span class="nt">&lt;/extension&gt;</span>
+                <span class="nt">&lt;value&gt;</span>2.0-20150508.220658-1<span class="nt">&lt;/value&gt;</span>
+                <span class="nt">&lt;updated&gt;</span>20150508220658<span class="nt">&lt;/updated&gt;</span>
+            <span class="nt">&lt;/snapshotVersion&gt;</span>
+            <span class="nt">&lt;snapshotVersion&gt;</span>
+                <span class="nt">&lt;extension&gt;</span>pom<span class="nt">&lt;/extension&gt;</span>
+                <span class="nt">&lt;value&gt;</span>2.0-20150508.220658-1<span class="nt">&lt;/value&gt;</span>
+                <span class="nt">&lt;updated&gt;</span>20150508220658<span class="nt">&lt;/updated&gt;</span>
+            <span class="nt">&lt;/snapshotVersion&gt;</span>
+            <span class="nt">&lt;snapshotVersion&gt;</span>
+                <span class="nt">&lt;classifier&gt;</span>javadoc<span class="nt">&lt;/classifier&gt;</span>
+                <span class="nt">&lt;extension&gt;</span>jar<span class="nt">&lt;/extension&gt;</span>
+                <span class="nt">&lt;value&gt;</span>2.0-20150508.221205-2<span class="nt">&lt;/value&gt;</span>
+                <span class="nt">&lt;updated&gt;</span>20150508221205<span class="nt">&lt;/updated&gt;</span>
+            <span class="nt">&lt;/snapshotVersion&gt;</span>
+            <span class="nt">&lt;snapshotVersion&gt;</span>
+                <span class="nt">&lt;extension&gt;</span>jar<span class="nt">&lt;/extension&gt;</span>
+                <span class="nt">&lt;value&gt;</span>2.0-20150508.221205-2<span class="nt">&lt;/value&gt;</span>
+                <span class="nt">&lt;updated&gt;</span>20150508221205<span class="nt">&lt;/updated&gt;</span>
+            <span class="nt">&lt;/snapshotVersion&gt;</span>
+            <span class="nt">&lt;snapshotVersion&gt;</span>
+                <span class="nt">&lt;extension&gt;</span>pom<span class="nt">&lt;/extension&gt;</span>
+                <span class="nt">&lt;value&gt;</span>2.0-20150508.221205-2<span class="nt">&lt;/value&gt;</span>
+                <span class="nt">&lt;updated&gt;</span>20150508221205<span class="nt">&lt;/updated&gt;</span>
+            <span class="nt">&lt;/snapshotVersion&gt;</span>
+        <span class="nt">&lt;/snapshotVersions&gt;</span>
+    <span class="nt">&lt;/versioning&gt;</span>
+<span class="nt">&lt;/metadata&gt;</span>
+</pre></div>
+
+</details>
+</li>
+<li>
+<p><code>groupId</code>-level plugin information for plugins (located under, for example: <code>org/carlspring/maven/maven-metadata.xml</code>). 
+   This is a top-level <code>maven-metadata.xml</code> file containing a list of the available plugins under this <code>groupId</code>. 
+   This type of <code>maven-metadata.xml</code> file contains only <code>&lt;plugins/&gt;</code> and provides no version information.</p>
+<details class="info"><summary>Example maven-metadata.xml</summary><div class="codehilite"><pre><span></span><span class="nt">&lt;metadata&gt;</span>
+    <span class="nt">&lt;plugins&gt;</span>
+        <span class="nt">&lt;plugin&gt;</span>
+            <span class="nt">&lt;name&gt;</span>Maven Derby Plugin<span class="nt">&lt;/name&gt;</span>
+            <span class="nt">&lt;prefix&gt;</span>derby<span class="nt">&lt;/prefix&gt;</span>
+            <span class="nt">&lt;artifactId&gt;</span>derby-maven-plugin<span class="nt">&lt;/artifactId&gt;</span>
+        <span class="nt">&lt;/plugin&gt;</span>
+        <span class="nt">&lt;plugin&gt;</span>
+            <span class="nt">&lt;name&gt;</span>LittleProxy Maven Plugin<span class="nt">&lt;/name&gt;</span>
+            <span class="nt">&lt;prefix&gt;</span>little-proxy<span class="nt">&lt;/prefix&gt;</span>
+            <span class="nt">&lt;artifactId&gt;</span>little-proxy-maven-plugin<span class="nt">&lt;/artifactId&gt;</span>
+        <span class="nt">&lt;/plugin&gt;</span>
+        <span class="nt">&lt;plugin&gt;</span>
+            <span class="nt">&lt;name&gt;</span>Maven Artifact Relocation Plugin<span class="nt">&lt;/name&gt;</span>
+            <span class="nt">&lt;prefix&gt;</span>relocation<span class="nt">&lt;/prefix&gt;</span>
+            <span class="nt">&lt;artifactId&gt;</span>relocation-maven-plugin<span class="nt">&lt;/artifactId&gt;</span>
+        <span class="nt">&lt;/plugin&gt;</span>
+    <span class="nt">&lt;/plugins&gt;</span>
+<span class="nt">&lt;/metadata&gt;</span>
+</pre></div>
+
+</details>
+</li>
+</ul>
+<h3 id="additional-cases">Additional cases<a class="headerlink" href="#additional-cases" title="Permanent link">&para;</a></h3>
+<p>When generating metadata, the following <code>maven-metadata.xml</code> files need to be produced for each of these cases:</p>
+<ul>
+<li>For artifacts with a released version (for example, <code>1.2.3</code>, <code>1.2.4</code>, etc), under the path to the artifact's 
+  root directory (for example, <code>org/carlspring/strongbox/metadata</code>), there needs to be a <code>maven-metadata.xml</code> containing 
+  the list of released versions.</li>
+<li>For artifacts with a <code>SNAPSHOT</code> version (for example, <code>1.2.3-SNAPSHOT</code>, <code>1.2.4-SNAPSHOT</code>, etc), under the path to 
+  the artifact's root directory (for example, <code>org/carlspring/strongbox/metadata</code>), there will need to be a <code>maven-metadata.xml</code> 
+  containing the list of <code>SNAPSHOT</code> versions. In addition to that, in each of the version directories, 
+  a separate <code>maven-metadata.xml</code> needs to exist, which, (as explained above), will contain a mapping 
+  of which timestamped artifacts have been deployed and which one of them represents the latest <code>SNAPSHOT</code>.</li>
+<li>For Maven plugins, under the plugin's <code>groupId</code> path there needs to be a <code>maven-metadata.xml</code> which lists 
+  all the plugins under this <code>groupId</code>. In addition, depending on whether this is a release or <code>SNAPSHOT</code> version, 
+  the same rules for artifacts apply, as explained above.</li>
+</ul>
+<h2 id="what-is-the-latest-field-used-for">What is the <code>latest</code> field used for?<a class="headerlink" href="#what-is-the-latest-field-used-for" title="Permanent link">&para;</a></h2>
+<p>The <code>&lt;latest/&gt;</code> field is used to point to the most-recently deployed (release, or <code>SNAPSHOT</code>) artifact. Please note, 
+that this is not always necessarily the highest available version. For example, if you have several active branches 
+under version control from which you're deploying versions of the artifact (for example <code>1.2</code> and <code>2.0</code> branches from 
+which you respectively release artifacts with versions <code>1.2.1</code>, <code>1.2.2</code>, etc. and <code>2.0.1</code>, <code>2.0.2</code>), you may have the 
+case where an artifact from the <code>1.2</code> branch been deployed while at the same time there is also a <code>2.0.3</code> version as well. 
+Depending on the repository type, the <code>&lt;latest/&gt;</code> field may also be pointing to <code>SNAPSHOT</code> artifacts as well.</p>
+<h2 id="what-is-the-release-field-used-for">What is the <code>release</code> field used for?<a class="headerlink" href="#what-is-the-release-field-used-for" title="Permanent link">&para;</a></h2>
+<p>The <code>&lt;release/&gt;</code> field is used to point to the most-recently deployed release artifact. Please note, that this is not 
+always necessarily the highest available version. For example, if you have several active branches under version control 
+from which you're releasing and deploying versions of the artifact (for example <code>1.2</code> and <code>2.0</code> branches from which you 
+respectively release artifacts with versions <code>1.2.1</code>, <code>1.2.2</code>, etc. and, respectively, <code>2.0.1</code>, <code>2.0.2</code>), you may have 
+the case where an artifact from the <code>1.2</code> branch has been deployed while at the same time 
+there is also a <code>2.0.3</code> version as well.</p>
+<h2 id="whats-the-difference-between-maven-metadataxml-and-maven-metadata-xyzxml">What's the difference between <code>maven-metadata.xml</code> and <code>maven-metadata-xyz.xml</code>?<a class="headerlink" href="#whats-the-difference-between-maven-metadataxml-and-maven-metadata-xyzxml" title="Permanent link">&para;</a></h2>
+<ul>
+<li>In remote repositories, the metadata generated by Maven (and/or managed by the respective artifact repository manager) 
+  is stored in a <code>maven-metadata.xml</code> file.</li>
+<li>In local repositories, Maven stores the collected metadata from the remote server into a <code>maven-metadata-${repositoryServerId}.xml</code> 
+  file where <code>${repositoryServerId}</code> is the server id stored in your Maven <a href="https://maven.apache.org/settings.html#Servers"><code>settings.xml</code></a> 
+  (for example <code>&lt;server&gt;&lt;id&gt;development-snapshots&lt;/id&gt;&lt;/server&gt;</code>).</li>
+</ul>
+<h2 id="what-produces-the-maven-metadataxml-files-and-who-manages-it">What produces the <code>maven-metadata.xml</code> files and who manages it?<a class="headerlink" href="#what-produces-the-maven-metadataxml-files-and-who-manages-it" title="Permanent link">&para;</a></h2>
+<p>When you deploy an artifact to a remote repository, Maven will check if there is an existing <code>maven-metadata.xml</code> 
+(of the respectively required type(s)) on the remote host. If the file(s) exist, Maven will use that data, merge the 
+necessary changes into a new copy and then overwrite the data on the remote. If there is no existing <code>maven-metadata.xml</code> 
+in the remote repository, Maven will generate a new one and deploy it.</p>
+<p>Sometimes the data in the repository can become corrupt and this is when the repository manager needs to be told 
+to rebuild it (or, alternatively, a scheduled task on the repository manager can take care of this to pre-emptively fix it). </p>
+<h2 id="what-are-the-official-resources-on-maven-metadata">What are the official resources on Maven metadata?<a class="headerlink" href="#what-are-the-official-resources-on-maven-metadata" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="http://maven.apache.org/ref/3.3.9/maven-repository-metadata/index.html">Maven Metadata: Introduction</a></li>
+<li><a href="http://maven.apache.org/ref/3.3.9/maven-repository-metadata/repository-metadata.html">Maven Metadata: Reference</a></li>
+<li><a href="http://maven.apache.org/ref/3.3.9/maven-repository-metadata/apidocs/index.html">Maven Metadata: Javadocs</a></li>
+<li><a href="https://cwiki.apache.org/confluence/display/MAVEN/Maven+3.x+Compatibility+Notes">Maven 3.x Compatibility Notes</a> 
+  (contains various useful comments on behavioral changes in Maven 3.x, compared to 2.x).</li>
+</ul>
+<h2 id="see-also">See Also<a class="headerlink" href="#see-also" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="http://stackoverflow.com/a/40206597/774183">How does Maven plugin prefix resolution work? Why is it resolving “findbugs” but not “jetty”?</a></li>
+<li><a href="http://stackoverflow.com/questions/tagged/maven-metadata">StackOverflow: [maven-metadata]</a></li>
+</ul>
+                
+                  
+                
+              
+
+    
+        <small><br><i>Last updated 2019-02-13</i></small>
+    
+
+
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../layout-providers/raw-layout-provider.html" title="Raw Layout Provider" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Raw Layout Provider
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="npm-metadata.html" title="NPM Metadata" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                NPM Metadata
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/application.b806dc00.js"></script>
+      
+      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
+      
+        <script src="../../assets/javascripts/medium-zoom.min.js"></script>
+      
+        <script src="../../assets/javascripts/main.js"></script>
+      
+    
+  </body>
+</html>
