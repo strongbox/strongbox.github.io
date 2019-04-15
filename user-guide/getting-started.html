@@ -1563,10 +1563,18 @@ c:\java\strongbox&gt; bin\strongbox.bat start
 
 sudo su
 sysadminctl -addUser strongbox
-mkdir -p /opt/{strongbox,strongbox-vault}
-chown -R strongbox:staff /opt/{strongbox,strongbox-vault}
-chmod -R 770 /opt/{strongbox,strongbox-vault}
+
+mkdir -p /opt/strongbox
+mkdir -p /opt/strongbox-vault
+
+chown -R strongbox:staff /opt/strongbox
+chown -R strongbox:staff /opt/strongbox-vault
+
+chmod -R 770 /opt/strongbox
+chmod -R 770 /opt/strongbox-vault
+
 su strongbox
+
 tar -zxf /path/to/strongbox-distribution*.tar.gz \
     -C /opt/strongbox \ 
     --strip-components=2
