@@ -1,0 +1,2487 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.1.4">
+    
+    
+      
+        <title>Getting started - Strongbox</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.358818c7.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.f0267088.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/style.css">
+    
+    
+      
+        
+<script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-134135156-1","auto"),ga("set","anonymizeIp",!0),ga("send","pageview"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}),document.addEventListener("DOMContentSwitch",function(){ga("send","pageview",document.location.pathname)})</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+      
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="blue-grey" data-md-color-accent="indigo">
+      
+  
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#writing-tests" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+  
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="../index.html" title="Strongbox" class="md-header-nav__button md-logo" aria-label="Strongbox">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            Strongbox
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              Getting started
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header-nav__source">
+        
+<a href="https://github.com/strongbox/strongbox/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    strongbox/strongbox
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+
+  
+
+<nav class="md-tabs md-tabs--active" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  <li class="md-tabs__item">
+    
+      <a href="../index.html" class="md-tabs__link">
+        Introduction
+      </a>
+    
+  </li>
+
+      
+        
+      
+        
+      
+        
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../user-guide/getting-started.html" class="md-tabs__link">
+          User guide
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="index.html" class="md-tabs__link md-tabs__link--active">
+          Developer guide
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../knowledge-base/artifact-coordinates.html" class="md-tabs__link">
+          Knowledge Base
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../hackfests/index.html" class="md-tabs__link">
+          Hackfests
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../chat-redirect.html" class="md-tabs__link">
+          Join chat
+        </a>
+      
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../index.html" title="Strongbox" class="md-nav__button md-logo" aria-label="Strongbox">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Strongbox
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/strongbox/strongbox/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    strongbox/strongbox
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../index.html" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../release-notes.html" class="md-nav__link">
+      Release notes
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../contributing.html" class="md-nav__link">
+      Contributing
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../license.html" class="md-nav__link">
+      License
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      User guide
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="User guide" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        <span class="md-nav__icon md-icon"></span>
+        User guide
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../user-guide/getting-started.html" class="md-nav__link">
+      Getting started
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-2" type="checkbox" id="nav-5-2">
+    
+    <label class="md-nav__link" for="nav-5-2">
+      Configuration Files
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Configuration Files" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-2">
+        <span class="md-nav__icon md-icon"></span>
+        Configuration Files
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../user-guide/configuration-files/strongbox-yaml.html" class="md-nav__link">
+      The strongbox.yaml file
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../user-guide/configuration-files/strongbox-authorization-yaml.html" class="md-nav__link">
+      The strongbox-authorization.yaml file
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../user-guide/configuration-files/strongbox-cron-tasks-yaml.html" class="md-nav__link">
+      The strongbox-cron-tasks.yaml file
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../user-guide/configuration-files/strongbox-security-users-yaml.html" class="md-nav__link">
+      The strongbox-security-users.yaml file
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../user-guide/application-properties.html" class="md-nav__link">
+      Application properties
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../user-guide/directory-structure.html" class="md-nav__link">
+      Directory structure
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../user-guide/upgrading.html" class="md-nav__link">
+      Upgrading
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-6" type="checkbox" id="nav-5-6">
+    
+    <label class="md-nav__link" for="nav-5-6">
+      User Interface
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="User Interface" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-6">
+        <span class="md-nav__icon md-icon"></span>
+        User Interface
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../user-guide/ui/browsing.html" class="md-nav__link">
+      Browsing
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../user-guide/ui/global-settings.html" class="md-nav__link">
+      Global settings
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../user-guide/ui/user-management.html" class="md-nav__link">
+      User management
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../user-guide/ui/storage-management.html" class="md-nav__link">
+      Storage management
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../user-guide/ui/system-information.html" class="md-nav__link">
+      System Information
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../user-guide/ui/default-url-users.html" class="md-nav__link">
+      Default URL and Credentials
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../user-guide/artifact-query-language.html" class="md-nav__link">
+      AQL (search)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../user-guide/artifact-routing-rules.html" class="md-nav__link">
+      Artifact Routing Rules
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../user-guide/rest-api.html" class="md-nav__link">
+      REST API
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-10" type="checkbox" id="nav-5-10">
+    
+    <label class="md-nav__link" for="nav-5-10">
+      Tool Integration
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Tool Integration" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-10">
+        <span class="md-nav__icon md-icon"></span>
+        Tool Integration
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../user-guide/tool-integration/ant-ivy-example.html" class="md-nav__link">
+      Ant + Ivy Example
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../user-guide/tool-integration/gradle-example.html" class="md-nav__link">
+      Gradle Example
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../user-guide/tool-integration/maven-example.html" class="md-nav__link">
+      Maven Example
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../user-guide/tool-integration/npm-example.html" class="md-nav__link">
+      NPM Example
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../user-guide/tool-integration/nuget-chocolatey-example.html" class="md-nav__link">
+      Nuget + Chocolatey Example
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../user-guide/tool-integration/nuget-mono-example.html" class="md-nav__link">
+      Nuget + Mono Example
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../user-guide/tool-integration/nuget-visual-studio-example.html" class="md-nav__link">
+      Nuget + Visual Studio Example
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../user-guide/tool-integration/pypi-example.html" class="md-nav__link">
+      PyPi Example
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../user-guide/tool-integration/sbt-example.html" class="md-nav__link">
+      SBT Example
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../user-guide/tool-integration/yarn-example.html" class="md-nav__link">
+      Yarn Example
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6" checked>
+    
+    <label class="md-nav__link" for="nav-6">
+      Developer guide
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Developer guide" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        <span class="md-nav__icon md-icon"></span>
+        Developer guide
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="index.html" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="getting-started.html" class="md-nav__link">
+      Getting started
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6-3" type="checkbox" id="nav-6-3">
+    
+    <label class="md-nav__link" for="nav-6-3">
+      Building
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Building" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-3">
+        <span class="md-nav__icon md-icon"></span>
+        Building
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="building-the-code.html" class="md-nav__link">
+      Building the code
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="building-the-code-with-docker.html" class="md-nav__link">
+      Building the code (Docker)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="building-strongbox-using-strongbox-instance.html" class="md-nav__link">
+      Building Strongbox using a Strongbox instance
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6-4" type="checkbox" id="nav-6-4">
+    
+    <label class="md-nav__link" for="nav-6-4">
+      IDE setup
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="IDE setup" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-4">
+        <span class="md-nav__icon md-icon"></span>
+        IDE setup
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="ide-setup/eclipse.html" class="md-nav__link">
+      Eclipse
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="project-structure.html" class="md-nav__link">
+      Project structure
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6-6" type="checkbox" id="nav-6-6">
+    
+    <label class="md-nav__link" for="nav-6-6">
+      Writing code
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Writing code" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-6">
+        <span class="md-nav__icon md-icon"></span>
+        Writing code
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="coding-convention.html" class="md-nav__link">
+      Coding convention
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="getting-started-with-persistence.html" class="md-nav__link">
+      Getting started with persistence
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="how-to-implement-spring-controllers.html" class="md-nav__link">
+      Writing controllers
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="using-the-event-api.html" class="md-nav__link">
+      Events API
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6-6-5" type="checkbox" id="nav-6-6-5">
+    
+    <label class="md-nav__link" for="nav-6-6-5">
+      Layout providers
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Layout providers" data-md-level="3">
+      <label class="md-nav__title" for="nav-6-6-5">
+        <span class="md-nav__icon md-icon"></span>
+        Layout providers
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="layout-providers/how-to-implement-your-own-repository-format.html" class="md-nav__link">
+      Writing a layout provider
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6-6-5-2" type="checkbox" id="nav-6-6-5-2">
+    
+    <label class="md-nav__link" for="nav-6-6-5-2">
+      Implemented providers
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Implemented providers" data-md-level="4">
+      <label class="md-nav__title" for="nav-6-6-5-2">
+        <span class="md-nav__icon md-icon"></span>
+        Implemented providers
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="layout-providers/maven-2-layout-provider.html" class="md-nav__link">
+      Maven Layout Provider
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="layout-providers/npm-layout-provider.html" class="md-nav__link">
+      NPM Layout Provider
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="layout-providers/nuget-layout-provider.html" class="md-nav__link">
+      NuGet Layout Provider
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="layout-providers/raw-layout-provider.html" class="md-nav__link">
+      Raw Layout Provider
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6-6-6" type="checkbox" id="nav-6-6-6">
+    
+    <label class="md-nav__link" for="nav-6-6-6">
+      Metadata
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Metadata" data-md-level="3">
+      <label class="md-nav__title" for="nav-6-6-6">
+        <span class="md-nav__icon md-icon"></span>
+        Metadata
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="metadata/maven-metadata.html" class="md-nav__link">
+      Maven Metadata
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="metadata/npm-metadata.html" class="md-nav__link">
+      NPM Metadata
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="add-logging.html" class="md-nav__link">
+      Logging
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="search-providers.html" class="md-nav__link">
+      Search Providers
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="maven-indexer.html" class="md-nav__link">
+      Maven Indexer
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="how-to-implement-a-custom-authenticator.html" class="md-nav__link">
+      Writing custom authenticator
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="how-to-inspect-a-hazelcast-cache.html" class="md-nav__link">
+      Inspecting Hazelcast
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="upgrading-dependencies-and-plugins.html" class="md-nav__link">
+      Upgrading Dependencies And Plugins
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6-8" type="checkbox" id="nav-6-8">
+    
+    <label class="md-nav__link" for="nav-6-8">
+      Using Git
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Using Git" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-8">
+        <span class="md-nav__icon md-icon"></span>
+        Using Git
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="git/rebase-vs-merge.html" class="md-nav__link">
+      Rebasing vs Merging
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6-9" type="checkbox" id="nav-6-9" checked>
+    
+    <label class="md-nav__link" for="nav-6-9">
+      Writing tests
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Writing tests" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-9">
+        <span class="md-nav__icon md-icon"></span>
+        Writing tests
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Getting started
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
+    <a href="writing-tests.html" class="md-nav__link md-nav__link--active">
+      Getting started
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#basic-rules" class="md-nav__link">
+    Basic Rules
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#test-resources" class="md-nav__link">
+    Test Resources
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#test-repositories" class="md-nav__link">
+    Test Repositories
+  </a>
+  
+    <nav class="md-nav" aria-label="Test Repositories">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#proxy-repositories" class="md-nav__link">
+    Proxy Repositories
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#group-repositories" class="md-nav__link">
+    Group Repositories
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#test-artifacts" class="md-nav__link">
+    Test Artifacts
+  </a>
+  
+    <nav class="md-nav" aria-label="Test Artifacts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#deploy-test-artifacts-into-test-repository" class="md-nav__link">
+    Deploy Test Artifacts Into Test Repository
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#layout-specific-test-artifacts" class="md-nav__link">
+    Layout specific Test Artifacts
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#life-hacks-to-make-artifacts-testing-easier" class="md-nav__link">
+    Life Hacks To Make Artifacts Testing Easier
+  </a>
+  
+    <nav class="md-nav" aria-label="Life Hacks To Make Artifacts Testing Easier">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#shortcut-annotations" class="md-nav__link">
+    Shortcut Annotations
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nulllayoutprovider" class="md-nav__link">
+    NullLayoutProvider
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adding-artifacts-to-the-maven-index" class="md-nav__link">
+    Adding Artifacts To The Maven Index
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#integration-tests" class="md-nav__link">
+    Integration Tests
+  </a>
+  
+    <nav class="md-nav" aria-label="Integration Tests">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#naming-integration-tests" class="md-nav__link">
+    Naming Integration Tests
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#executing-integration-tests" class="md-nav__link">
+    Executing Integration Tests
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#web-form-tests" class="md-nav__link">
+    Web Form Tests
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testing-rest-calls" class="md-nav__link">
+    Testing REST calls
+  </a>
+  
+    <nav class="md-nav" aria-label="Testing REST calls">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-to-write-your-own-integration-test" class="md-nav__link">
+    How To Write Your Own Integration Test
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-to-use-rest-assured" class="md-nav__link">
+    How To Use rest-assured
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#where-it-differs-from-stock-version-of-rest-assured" class="md-nav__link">
+    Where It Differs From Stock Version Of rest-assured
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#do-i-need-to-extend-restassuredartifactclient-or-write-my-own-methods-in-unit-tests" class="md-nav__link">
+    Do I Need To Extend RestAssuredArtifactClient, Or Write My Own Methods In Unit Tests?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    References
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#spring-test-tips" class="md-nav__link">
+    Spring Test tips
+  </a>
+  
+    <nav class="md-nav" aria-label="Spring Test tips">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#spring-test-context-caching" class="md-nav__link">
+    Spring Test Context caching
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#postconstruct-and-predestroy-pitfalls" class="md-nav__link">
+    @PostConstruct and @PreDestroy Pitfalls
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-do-the-tests-run-in-jenkins" class="md-nav__link">
+    How Do The Tests Run In Jenkins?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#see-also" class="md-nav__link">
+    See Also
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="junit-user-guide.html" class="md-nav__link">
+      JUnit
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="assertj-user-guide.html" class="md-nav__link">
+      AssertJ
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="writing-web-form-tests.html" class="md-nav__link">
+      Web Form Tests
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="writing-web-integration-tests.html" class="md-nav__link">
+      Web Integration Tests
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="how-to-gather-requirements.html" class="md-nav__link">
+      How To Gather Requirements
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+    
+    <label class="md-nav__link" for="nav-7">
+      Knowledge Base
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Knowledge Base" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        <span class="md-nav__icon md-icon"></span>
+        Knowledge Base
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../knowledge-base/artifact-coordinates.html" class="md-nav__link">
+      Artifact Coordinates
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7-2" type="checkbox" id="nav-7-2">
+    
+    <label class="md-nav__link" for="nav-7-2">
+      Artifact Coordinate Validators
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Artifact Coordinate Validators" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-2">
+        <span class="md-nav__icon md-icon"></span>
+        Artifact Coordinate Validators
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../knowledge-base/artifact-coordinate-validators/artifact-coordinate-validators.html" class="md-nav__link">
+      Generic
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../knowledge-base/artifact-coordinate-validators/artifact-coordinate-validators-maven.html" class="md-nav__link">
+      Maven
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../knowledge-base/layout-providers.html" class="md-nav__link">
+      Layout Providers
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../knowledge-base/repositories.html" class="md-nav__link">
+      Repositories
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../knowledge-base/storages.html" class="md-nav__link">
+      Storages
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8">
+    
+    <label class="md-nav__link" for="nav-8">
+      Hackfests
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Hackfests" data-md-level="1">
+      <label class="md-nav__title" for="nav-8">
+        <span class="md-nav__icon md-icon"></span>
+        Hackfests
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../hackfests/index.html" class="md-nav__link">
+      Hackfest Guidelines
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-8-2" type="checkbox" id="nav-8-2">
+    
+    <label class="md-nav__link" for="nav-8-2">
+      Grace Hopper Celebration
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Grace Hopper Celebration" data-md-level="2">
+      <label class="md-nav__title" for="nav-8-2">
+        <span class="md-nav__icon md-icon"></span>
+        Grace Hopper Celebration
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../hackfests/grace-hopper-celebration/index.html" class="md-nav__link">
+      About Grace Hopper Celebration
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../hackfests/grace-hopper-celebration/ghc-osd-2020.html" class="md-nav__link">
+      Grace Hopper Opensource Day (2020)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../hackfests/hacktoberfest/index.html" class="md-nav__link">
+      Hacktoberfest
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-9" type="checkbox" id="nav-9">
+    
+    <label class="md-nav__link" for="nav-9">
+      Join chat
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Join chat" data-md-level="1">
+      <label class="md-nav__title" for="nav-9">
+        <span class="md-nav__icon md-icon"></span>
+        Join chat
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../chat-redirect.html" class="md-nav__link">
+      Join chat
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#basic-rules" class="md-nav__link">
+    Basic Rules
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#test-resources" class="md-nav__link">
+    Test Resources
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#test-repositories" class="md-nav__link">
+    Test Repositories
+  </a>
+  
+    <nav class="md-nav" aria-label="Test Repositories">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#proxy-repositories" class="md-nav__link">
+    Proxy Repositories
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#group-repositories" class="md-nav__link">
+    Group Repositories
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#test-artifacts" class="md-nav__link">
+    Test Artifacts
+  </a>
+  
+    <nav class="md-nav" aria-label="Test Artifacts">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#deploy-test-artifacts-into-test-repository" class="md-nav__link">
+    Deploy Test Artifacts Into Test Repository
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#layout-specific-test-artifacts" class="md-nav__link">
+    Layout specific Test Artifacts
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#life-hacks-to-make-artifacts-testing-easier" class="md-nav__link">
+    Life Hacks To Make Artifacts Testing Easier
+  </a>
+  
+    <nav class="md-nav" aria-label="Life Hacks To Make Artifacts Testing Easier">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#shortcut-annotations" class="md-nav__link">
+    Shortcut Annotations
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nulllayoutprovider" class="md-nav__link">
+    NullLayoutProvider
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#adding-artifacts-to-the-maven-index" class="md-nav__link">
+    Adding Artifacts To The Maven Index
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#integration-tests" class="md-nav__link">
+    Integration Tests
+  </a>
+  
+    <nav class="md-nav" aria-label="Integration Tests">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#naming-integration-tests" class="md-nav__link">
+    Naming Integration Tests
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#executing-integration-tests" class="md-nav__link">
+    Executing Integration Tests
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#web-form-tests" class="md-nav__link">
+    Web Form Tests
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testing-rest-calls" class="md-nav__link">
+    Testing REST calls
+  </a>
+  
+    <nav class="md-nav" aria-label="Testing REST calls">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#how-to-write-your-own-integration-test" class="md-nav__link">
+    How To Write Your Own Integration Test
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-to-use-rest-assured" class="md-nav__link">
+    How To Use rest-assured
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#where-it-differs-from-stock-version-of-rest-assured" class="md-nav__link">
+    Where It Differs From Stock Version Of rest-assured
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#do-i-need-to-extend-restassuredartifactclient-or-write-my-own-methods-in-unit-tests" class="md-nav__link">
+    Do I Need To Extend RestAssuredArtifactClient, Or Write My Own Methods In Unit Tests?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    References
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#spring-test-tips" class="md-nav__link">
+    Spring Test tips
+  </a>
+  
+    <nav class="md-nav" aria-label="Spring Test tips">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#spring-test-context-caching" class="md-nav__link">
+    Spring Test Context caching
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#postconstruct-and-predestroy-pitfalls" class="md-nav__link">
+    @PostConstruct and @PreDestroy Pitfalls
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-do-the-tests-run-in-jenkins" class="md-nav__link">
+    How Do The Tests Run In Jenkins?
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#see-also" class="md-nav__link">
+    See Also
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+    
+                
+                  <a href="https://github.com/strongbox/strongbox-docs/edit/master/docs/developer-guide/writing-tests.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="writing-tests">Writing tests<a class="headerlink" href="#writing-tests" title="Permanent link">&para;</a></h1>
+<h2 id="basic-rules">Basic Rules<a class="headerlink" href="#basic-rules" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Use <a href="junit-user-guide.html">JUnit 5</a> as testing framework (both unit and integration tests).</li>
+<li>For assertions, please use the <a href="assertj-user-guide.html">AssertJ</a> library. The only module allowed to use <code>hamcrest</code> for assertions is the <code>strongbox-web-core</code>, because the actual implementation of <code>MockMvc</code> allows only <code>hamcrest</code> in their API - see <a href="https://github.com/spring-projects/spring-framework/issues/21178">issue</a>.</li>
+<li>All code must be accompanied with sufficiently thorough test cases which validate the functionality.</li>
+<li>If tests are failing, they are a top priority.</li>
+<li>Pull requests will not be merged, if there are failing tests.</li>
+<li>Pull requests will not be merged, if they mark tests as <code>@Disabled</code>, without prior explanation of the cause and approval from the reviewer/team.</li>
+<li>If you need to create a repository for your test and it needs to use the <a href="layout-providers/maven-2-layout-provider.html">Maven 2 Layout Provider</a>, please make sure you're only enabling indexing, if really necessary, as this can be quite expensive in terms of resources.</li>
+<li>All tests <strong>MUST be idempotent</strong>, which means that we should be able to execute them multiple times from the console or an IDE and the outcome should not depend on how many times the test has been executed.</li>
+<li>Use <a href="https://github.com/rest-assured/rest-assured/wiki/GettingStarted#spring-mock-mvc">rest-assured</a> for testing REST API. Don't try to re-invent the wheel and inherit all rest-assured initialization stuff from <code>RestAssuredBaseTest</code>. Mark your test as <code>@IntegrationTest</code> and take a look at the existing examples (sub-classes of <code>RestAssuredBaseTest</code>). If you would like to have some initialization method with <code>@BeforeEach</code> annotation, please make sure that you also invoke <code>super.init()</code> as a first line in such methods.</li>
+<li>Don't use the REST API calls for testing your service class methods, test them directly using RestAssured.</li>
+<li>Tests that need to execute operations against a repository, should create the repository on the fly in order to guarantee test resource isolation.</li>
+<li>The naming convention for such repositories is as follows: given a class name of <code>MavenMetadataForReleasesTest</code>, the respective repository should be called <code>mmfrt-releases</code>.</li>
+</ul>
+<h2 id="test-resources">Test Resources<a class="headerlink" href="#test-resources" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Test cases should be self-sufficient and not rely on data, or resources produced by other tests, or the outcome of other tests in any other way.</li>
+<li>Every test case should generate all the resources it requires in each of its respective test methods.</li>
+<li>Do not name test resources with common dummy names such as <code>foo.txt</code>, <code>bar.zip</code>, <code>blah.jar</code> and etc, as this might cause resource collisions and issues, in case someone else decided to use such a name (if you spot any such resources, please raise an issue/pull, as this is bad practice).</li>
+</ul>
+<h2 id="test-repositories">Test Repositories<a class="headerlink" href="#test-repositories" title="Permanent link">&para;</a></h2>
+<p>As mentoned above every test should have isolated and self-sufficient resources. This requirement can be achieved using the <code>@TestRepository</code> annotation. This annotation provides an isolated test repository which can be used as a sandbox for your test method.</p>
+<p>Usage Example:</p>
+<div class="highlight"><pre><span></span><code>@ExtendWith(RepositoryManagementTestExecutionListener.class)
+@Test
+public void testWithRepository(@TestRepository(storageId = &quot;storage0&quot;,
+                                               repositoryId = &quot;repo1&quot;,
+                                               layout = MavenArtifactCoordinates.LAYOUT_NAME) 
+                               Repository repository)
+{
+    System.out.println(repository.getId());
+}
+</code></pre></div>
+<p>The test repository is injected as a test method parameter with the help of <code>RepositoryManagementTestExecutionListener</code>. The important feature here is the synchronization between the concurrent test executions, so even if there will be other repositories with the same name within other tests, then it will be synchronized by the repository ID and they will not affect each other.</p>
+<p>The other feature is that the test repository will be removed and cleaned up after test execution, just like it was created before the test execution from scratch.</p>
+<p>Below, you can find the main configuration parameters that are avaliable:</p>
+<ul>
+<li>with <code>storageId</code> and <code>repositoryId</code> you can specifiy the storage and repository ID to use</li>
+<li>with <code>layout</code> you can set the layout format to use (ex. <code>MavenArtifactCoordinates.LAYOUT_NAME</code>, <code>NpmArtifactCoordinates.LAYOUT_NAME</code>, <code>NugetArtifactCoordinates.LAYOUT_NAME</code> etc.)</li>
+<li>with <code>setup</code> parameter you can customize the test repository initialization with <code>RepositorySetup</code> strategy, (for example, there is <code>MavenIndexedRepositorySetup</code> for indexed maven repositories).</li>
+<li>for debugging purposes, there is a <code>cleanup</code> flag (<code>true</code> by default), with which you can disable the test repository clean up by setting it to <code>false</code></li>
+</ul>
+<p>By default, <code>TestRepository</code> provides <a href="https://strongbox.github.io/knowledge-base/repositories.html#hosted">Hosted</a> repository, other repository types are also available (check below).</p>
+<h3 id="proxy-repositories">Proxy Repositories<a class="headerlink" href="#proxy-repositories" title="Permanent link">&para;</a></h3>
+<p><a href="https://strongbox.github.io/knowledge-base/repositories.html#proxy">Proxy</a> repository support provided with <code>@TestRepository.Remote</code> annotation.
+Example:</p>
+<div class="highlight"><pre><span></span><code>@ExtendWith(RepositoryManagementTestExecutionListener.class)
+@Test
+public void testWithProxyRepository(@TestRepository.Remote(url = &quot;http://repo1.maven.org/maven2/&quot;)
+                                    @MavenRepository(repositoryId = &quot;repo1&quot;) 
+                                    Repository repository)
+{
+    System.out.println(repository.getId());
+}
+</code></pre></div>
+<h3 id="group-repositories">Group Repositories<a class="headerlink" href="#group-repositories" title="Permanent link">&para;</a></h3>
+<p><a href="https://strongbox.github.io/knowledge-base/repositories.html#group">Group</a> repository support provided with <code>@TestRepository.Group</code> annotation.
+Example:</p>
+<div class="highlight"><pre><span></span><code>@ExtendWith(RepositoryManagementTestExecutionListener.class)
+@Test
+public void testWithGroupRepository(@MavenRepository(repositoryId = &quot;group-member-repo1&quot;) 
+                                    Repository repository1,
+                                    @MavenRepository(repositoryId = &quot;group-member-repo2&quot;) 
+                                    Repository repository2,
+                                    @MavenRepository(repositoryId = &quot;group-member-repo3&quot;) 
+                                    Repository repository3,
+                                    @Group({&quot;group-member-repo1&quot;, &quot;group-member-repo2&quot;, &quot;group-member-repo3&quot;})
+                                    @MavenRepository(repositoryId = &quot;repo1&quot;) 
+                                    Repository groupRepository)
+{
+    System.out.println(groupRepository.getId());
+}
+</code></pre></div>
+<p><a href="https://strongbox.github.io/user-guide/artifact-routing-rules.html">Routing Rules</a> configuration also avaliable with <code>@TestRepository.Group.Rule</code> annotation.</p>
+<h2 id="test-artifacts">Test Artifacts<a class="headerlink" href="#test-artifacts" title="Permanent link">&para;</a></h2>
+<p>There is a generic <a href="https://github.com/strongbox/strongbox/blob/master/strongbox-storage/strongbox-storage-api/src/test/java/org/carlspring/strongbox/artifact/generator/ArtifactGenerator.java">ArtifactGenerator</a> interface which provides various methods for generating test artifacts.</p>
+<p>You can use this interface implementation standalone like below:</p>
+<div class="highlight"><pre><span></span><code>ArtifactGenerator mavenArtifactGenerator = new MavenArtifactGenerator(Paths.get(&quot;.&quot;));
+mavenArtifactGenerator.generateArtifact(&quot;org.carlspring.test:test-artifact&quot;, &quot;1.2.4&quot;, 1024):
+</code></pre></div>
+<p>The above example will generate <code>test-artifact-1.2.4.jar</code>, <code>test-artifact-1.2.4.jar.md5</code> , <code>test-artifact-1.2.4.jar.sha1</code> and <code>test-artifact-1.2.4.pom</code> files.</p>
+<p>The other way to generate artifacts within your test method is by using the <code>@TestArtifact</code> annotation.</p>
+<p>Example:</p>
+<div class="highlight"><pre><span></span><code>@ExtendWith(ArtifactManagementTestExecutionListener.class)
+@Test
+public void testWithArtifact(@TestArtifact(resource = &quot;org/carlspring/strongbox/test/test-artifact/1.0/test-artifact-1.0.jar&quot;,
+                                           generator = MavenArtifactGenerator.class)
+                             Path artifact1,
+                             @TestArtifact(id = &quot;org.carlspring.strongbox.test:another-test-artifact&quot;,
+                                           versions = &quot;1.1&quot;,
+                                           generator = MavenArtifactGenerator.class)
+                             Path artifact2)
+{
+...
+}
+</code></pre></div>
+<p>This will also genrate a <code>jar</code>, checksums and <code>pom</code> and inject the <code>java.nio.file.Path</code> instance, pointing to the <code>jar</code> artifact, as test method parameter. Having the artifact <code>Path</code> you can easily get the <code>md5</code> like this:</p>
+<div class="highlight"><pre><span></span><code>Path artifact1Md5 = artifact1.resolveSbilling(artifact1.getFileName() + &quot;.md5&quot;);
+</code></pre></div>
+<p>Test artifacts are also synchronized between concurrent test executions, the same way as the test repository.</p>
+<p>Note that the examples above will just generate test artifacts without deploing to any repository. The generated files will be placed in a temporary folder for the related test method.</p>
+<h3 id="deploy-test-artifacts-into-test-repository">Deploy Test Artifacts Into Test Repository<a class="headerlink" href="#deploy-test-artifacts-into-test-repository" title="Permanent link">&para;</a></h3>
+<p>It's also possible to inject deployed artifacts:</p>
+<div class="highlight"><pre><span></span><code>@ExtendWith({ RepositoryManagementTestExecutionListener.class,
+              ArtifactManagementTestExecutionListener.class })
+@Test
+public void testArtifact(@MavenRepository(repositoryId = &quot;r1&quot;)
+                         Repository r1,
+                         @MavenArtifact(repositoryId = &quot;r1&quot;,
+                                        id = &quot;org.carlspring.strongbox.test:another-test-artifact&quot;,
+                                        versions = {&quot;1.1&quot;, &quot;1.2&quot;})
+                         List&lt;Path&gt; repositoryArtifacs)
+{
+...
+}
+</code></pre></div>
+<p>With the <code>repositoryId</code> attribute the test artifacts <code>repositoryArtifacts</code> will be deployed into test repository <code>r1</code>, along with other generated files (checksums, poms etc). The above example also shows the case when multiple artifact versions are generated, so the <code>List</code> contains ordered artifact versions:</p>
+<div class="highlight"><pre><span></span><code>Path v1_1Artifact = repositoryArtifacs.get(0);
+Path v1_2Artifact = repositoryArtifacs.get(1);
+</code></pre></div>
+<h3 id="layout-specific-test-artifacts">Layout specific Test Artifacts<a class="headerlink" href="#layout-specific-test-artifacts" title="Permanent link">&para;</a></h3>
+<p>It is possible to customize the test artifact generation with <code>ArtifactGeneratorStrategy</code>. For example, there's a <code>MavenArtifactGeneratorStrategy</code> implementation and a <code>@MavenTestArtifact</code> annotation which allow to generate Maven-specific artifacts which have things like classifiers and plugins.</p>
+<h3 id="life-hacks-to-make-artifacts-testing-easier">Life Hacks To Make Artifacts Testing Easier<a class="headerlink" href="#life-hacks-to-make-artifacts-testing-easier" title="Permanent link">&para;</a></h3>
+<p>Below you can find some tips to help you write some nice tests.</p>
+<h4 id="shortcut-annotations">Shortcut Annotations<a class="headerlink" href="#shortcut-annotations" title="Permanent link">&para;</a></h4>
+<p>You can use shortcut annotations defined directly within your test class with the <code>@AliasFor</code> annotation:</p>
+<div class="highlight"><pre><span></span><code>public class NiceArtifactAndRepositoryTest 
+{
+
+    @Test
+    @ExtendWith({ RepositoryManagementTestExecutionListener.class, ArtifactManagementTestExecutionListener.class })
+    public void testOne(@MavenRepository(repositoryId = REPOSITORY_SNAPSHOTS, policy = RepositoryPolicyEnum.SNAPSHOT) Repository repository,
+                        @MavenSnapshotArtifactsWithClassifiers(id = &quot;org.carlspring.strongbox.test:snapshot-artifact&quot;) Path snapshotArtifacts)
+    {
+    ...
+    }
+
+    @Test
+    @ExtendWith({ RepositoryManagementTestExecutionListener.class, ArtifactManagementTestExecutionListener.class })
+    public void testTwo(@MavenRepository(repositoryId = REPOSITORY_SNAPSHOTS, policy = RepositoryPolicyEnum.SNAPSHOT) Repository repository,
+                        @MavenSnapshotArtifactsWithClassifiers(id = &quot;org.carlspring.strongbox.test:another-snapshot-artifact&quot;) Path snapshotArtifacts)
+    {
+    ...
+    }
+
+
+    @Target({ ElementType.PARAMETER, ElementType.ANNOTATION_TYPE })
+    @Retention(RetentionPolicy.RUNTIME)
+    @Documented
+    @MavenTestArtifact(repositoryId = REPOSITORY_SNAPSHOTS, classifiers = { &quot;javadoc&quot;,
+                                                                            &quot;sources&quot;,
+                                                                            &quot;source-release&quot; })
+    private static @interface MavenSnapshotArtifactsWithClassifiers
+    {
+
+        @AliasFor(annotation = MavenTestArtifact.class)
+        String id();
+
+        @AliasFor(annotation = MavenTestArtifact.class)
+        String[] versions() default {&quot;2.0-20180328.195810-1&quot;, &quot;2.0-20180328.195810-2&quot;, &quot;2.0-20180328.195810-3&quot;};
+
+    }
+
+
+} 
+</code></pre></div>
+<p>Above example shows how to reduce boilerplate code with predefined <code>@MavenSnapshotArtifactsWithClassifiers</code> annotation, so test methods can reuse it to define test artifacts with common configuration parameters.</p>
+<h4 id="nulllayoutprovider"><code>NullLayoutProvider</code><a class="headerlink" href="#nulllayoutprovider" title="Permanent link">&para;</a></h4>
+<p>It is possible to use <code>NullLayoutProvider</code> to write generic tests in modules where other specific layouts are not avaliable.</p>
+<h3 id="adding-artifacts-to-the-maven-index">Adding Artifacts To The Maven Index<a class="headerlink" href="#adding-artifacts-to-the-maven-index" title="Permanent link">&para;</a></h3>
+<p>For test cases where you need to generate artifacts and add them to the index, please have a look at the <a href="https://github.com/strongbox/strongbox/blob/master/strongbox-storage/strongbox-storage-layout-providers/strongbox-storage-maven-layout/strongbox-storage-maven-layout-provider/src/test/java/org/carlspring/strongbox/testing/TestCaseWithMavenArtifactGenerationAndIndexing.java">TestCaseWithMavenArtifactGenerationAndIndexing</a> class.</p>
+<h2 id="integration-tests">Integration Tests<a class="headerlink" href="#integration-tests" title="Permanent link">&para;</a></h2>
+<p>Some of the tests don't need to be running all the time during development. We've marked these as integration tests in order to make the build times much more reasonable.</p>
+<p>These tests are executed using the <code>maven-failsafe-plugin</code>. The default configurations for the <code>maven-surefire-plugin</code> and <code>maven-failsafe-plugin</code> are located in the <a href="https://github.com/strongbox/strongbox-parent/blob/master/pom.xml"><code>strongbox/strongbox-parent/pom.xml</code></a> file.</p>
+<p>All these tests are executed in our Jenkins instance for all branches and pull requests.</p>
+<h3 id="naming-integration-tests">Naming Integration Tests<a class="headerlink" href="#naming-integration-tests" title="Permanent link">&para;</a></h3>
+<p>The integration tests in the project should end with a <code>*TestIT</code> name suffix.</p>
+<h3 id="executing-integration-tests">Executing Integration Tests<a class="headerlink" href="#executing-integration-tests" title="Permanent link">&para;</a></h3>
+<p>The integration tests can be invoked, by triggering the Maven profile that executes them by passing in <code>-Dintegration.tests</code> property.</p>
+<h2 id="web-form-tests">Web Form Tests<a class="headerlink" href="#web-form-tests" title="Permanent link">&para;</a></h2>
+<p>The web forms model classes inside the <a href="https://github.com/strongbox/strongbox/tree/master/strongbox-web-forms">strongbox-web-forms</a> module are validated inside its corresponding form. 
+It is needed to test them in order to ensure that every validation is correct. Please check the guide on <a href="writing-web-form-tests.html">Writing Web Form Tests</a>.</p>
+<h2 id="testing-rest-calls">Testing REST calls<a class="headerlink" href="#testing-rest-calls" title="Permanent link">&para;</a></h2>
+<h3 id="how-to-write-your-own-integration-test">How To Write Your Own Integration Test<a class="headerlink" href="#how-to-write-your-own-integration-test" title="Permanent link">&para;</a></h3>
+<p>Here is sequence of actions for anyone who would like to write it's own REST API test.</p>
+<ul>
+<li>
+<p>Extend <code>RestAssuredBaseTest</code> class</p>
+</li>
+<li>
+<p>Put <code>@IntegrationTest</code> and <code>@ExtendWith(SpringExtension.class)</code> on top of your class</p>
+</li>
+<li>
+<p>Review existing examples (subclasses of <code>RestAssuredBaseTest</code>)</p>
+</li>
+</ul>
+<h3 id="how-to-use-rest-assured">How To Use rest-assured<a class="headerlink" href="#how-to-use-rest-assured" title="Permanent link">&para;</a></h3>
+<p>Here is the simplest example that will send HTTP GET request to the <code>/greeting</code> endpoint:</p>
+<div class="highlight"><pre><span></span><code>given().when()
+       .get(&quot;/greeting&quot;)
+       .then()
+       .statusCode(200);
+</code></pre></div>
+<p><strong>Note:</strong> You should have <code>import static com.jayway.restassured.module.mockmvc.RestAssuredMockMvc.*;</code> in your test.</p>
+<h3 id="where-it-differs-from-stock-version-of-rest-assured">Where It Differs From Stock Version Of rest-assured<a class="headerlink" href="#where-it-differs-from-stock-version-of-rest-assured" title="Permanent link">&para;</a></h3>
+<p>Instead of <code>given()</code> please use <code>givenLocal()</code> of <code>RestAssuredBaseTest</code>.</p>
+<h3 id="do-i-need-to-extend-restassuredartifactclient-or-write-my-own-methods-in-unit-tests">Do I Need To Extend <code>RestAssuredArtifactClient</code>, Or Write My Own Methods In Unit Tests?<a class="headerlink" href="#do-i-need-to-extend-restassuredartifactclient-or-write-my-own-methods-in-unit-tests" title="Permanent link">&para;</a></h3>
+<p>Basically, <strong><em>no</em></strong>. The only reason to extend that class is when you would like to reuse something between several unit tests (to avoid code duplication).</p>
+<h3 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h3>
+<p>Please review this excellent article. It contains a lot of cool examples: <a href="https://blog.jayway.com/2014/01/14/unit-testing-spring-mvc-controllers-with-rest-assured/">unit-testing-spring-mvc-controllers-with-rest-assured</a></p>
+<p>If you still have any questions please review original <a href="https://github.com/rest-assured/rest-assured/wiki/usage">usage wiki page by rest-assured</a>.</p>
+<h2 id="spring-test-tips">Spring Test tips<a class="headerlink" href="#spring-test-tips" title="Permanent link">&para;</a></h2>
+<h3 id="spring-test-context-caching">Spring Test Context caching<a class="headerlink" href="#spring-test-context-caching" title="Permanent link">&para;</a></h3>
+<p>Spring provides a support for Test Context caching (see <a href="https://docs.spring.io/spring/docs/current/spring-framework-reference/html/integration-testing.html#testcontext-ctx-management-caching">here</a>). Using single Test Context per maven module is preferable. Expand, adjust existing test context rather than create new one.</p>
+<h3 id="postconstruct-and-predestroy-pitfalls"><code>@PostConstruct</code> and <code>@PreDestroy</code> Pitfalls<a class="headerlink" href="#postconstruct-and-predestroy-pitfalls" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>@PostConstruct</code> method on any application component configured in the <code>ApplicationContext</code> is getting called while Spring actually creates new Test Context</li>
+<li><code>@PostConstruct</code> within an actual test class will be executed before any <code>@BeforeEach</code> method of the underlying test</li>
+<li><code>@PreDestroy</code> method on any application component configured in the <code>ApplicationContext</code> is getting called when <em>all</em> tests are finished (because of the Spring Test Context caching feature), when JVM exits</li>
+<li><code>@PreDestroy</code> within an actual test class will <em>never</em> be executed</li>
+</ul>
+<h2 id="how-do-the-tests-run-in-jenkins">How Do The Tests Run In Jenkins?<a class="headerlink" href="#how-do-the-tests-run-in-jenkins" title="Permanent link">&para;</a></h2>
+<p>For details on how the build and tests are executed in Jenkins, you can check the project's <a href="https://github.com/strongbox/strongbox/blob/master/Jenkinsfile">Jenkinsfile</a> file. Also, all Strongbox sub-projects that are running in Jenkins will have such a file, so it could be used as a reference of how things are built and tested.</p>
+<h2 id="see-also">See Also<a class="headerlink" href="#see-also" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://docs.spring.io/spring/docs/current/spring-framework-reference/html/integration-testing.html#integration-testing-annotations-standard">Spring: Integration Testing Reference</a></li>
+</ul>
+                
+                  
+                    
+
+<hr>
+<div class="md-source-date">
+  <small>
+    
+      Last update: 2020-12-07
+    
+  </small>
+</div>
+                  
+                
+              
+
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="git/rebase-vs-merge.html" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Rebasing vs Merging
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="junit-user-guide.html" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                JUnit
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/vendor.7e0ee788.min.js"></script>
+      <script src="../assets/javascripts/bundle.b3a72adc.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+      <script>
+        app = initialize({
+          base: "..",
+          features: ['navigation.tabs'],
+          search: Object.assign({
+            worker: "../assets/javascripts/worker/search.4ac00218.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+        <script src="../assets/javascripts/medium-zoom.min.js"></script>
+      
+        <script src="../assets/javascripts/main.js"></script>
+      
+    
+  </body>
+</html>

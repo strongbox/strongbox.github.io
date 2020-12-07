@@ -1,0 +1,2343 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.1.4">
+    
+    
+      
+        <title>JUnit - Strongbox</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.358818c7.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.f0267088.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/style.css">
+    
+    
+      
+        
+<script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-134135156-1","auto"),ga("set","anonymizeIp",!0),ga("send","pageview"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}),document.addEventListener("DOMContentSwitch",function(){ga("send","pageview",document.location.pathname)})</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+      
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="blue-grey" data-md-color-accent="indigo">
+      
+  
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#junit-user-guide" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+  
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="../index.html" title="Strongbox" class="md-header-nav__button md-logo" aria-label="Strongbox">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            Strongbox
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              JUnit
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header-nav__source">
+        
+<a href="https://github.com/strongbox/strongbox/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    strongbox/strongbox
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+
+  
+
+<nav class="md-tabs md-tabs--active" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  <li class="md-tabs__item">
+    
+      <a href="../index.html" class="md-tabs__link">
+        Introduction
+      </a>
+    
+  </li>
+
+      
+        
+      
+        
+      
+        
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../user-guide/getting-started.html" class="md-tabs__link">
+          User guide
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="index.html" class="md-tabs__link md-tabs__link--active">
+          Developer guide
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../knowledge-base/artifact-coordinates.html" class="md-tabs__link">
+          Knowledge Base
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../hackfests/index.html" class="md-tabs__link">
+          Hackfests
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../chat-redirect.html" class="md-tabs__link">
+          Join chat
+        </a>
+      
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../index.html" title="Strongbox" class="md-nav__button md-logo" aria-label="Strongbox">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Strongbox
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/strongbox/strongbox/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    strongbox/strongbox
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../index.html" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../release-notes.html" class="md-nav__link">
+      Release notes
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../contributing.html" class="md-nav__link">
+      Contributing
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../license.html" class="md-nav__link">
+      License
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5">
+    
+    <label class="md-nav__link" for="nav-5">
+      User guide
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="User guide" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        <span class="md-nav__icon md-icon"></span>
+        User guide
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../user-guide/getting-started.html" class="md-nav__link">
+      Getting started
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-2" type="checkbox" id="nav-5-2">
+    
+    <label class="md-nav__link" for="nav-5-2">
+      Configuration Files
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Configuration Files" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-2">
+        <span class="md-nav__icon md-icon"></span>
+        Configuration Files
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../user-guide/configuration-files/strongbox-yaml.html" class="md-nav__link">
+      The strongbox.yaml file
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../user-guide/configuration-files/strongbox-authorization-yaml.html" class="md-nav__link">
+      The strongbox-authorization.yaml file
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../user-guide/configuration-files/strongbox-cron-tasks-yaml.html" class="md-nav__link">
+      The strongbox-cron-tasks.yaml file
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../user-guide/configuration-files/strongbox-security-users-yaml.html" class="md-nav__link">
+      The strongbox-security-users.yaml file
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../user-guide/application-properties.html" class="md-nav__link">
+      Application properties
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../user-guide/directory-structure.html" class="md-nav__link">
+      Directory structure
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../user-guide/upgrading.html" class="md-nav__link">
+      Upgrading
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-6" type="checkbox" id="nav-5-6">
+    
+    <label class="md-nav__link" for="nav-5-6">
+      User Interface
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="User Interface" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-6">
+        <span class="md-nav__icon md-icon"></span>
+        User Interface
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../user-guide/ui/browsing.html" class="md-nav__link">
+      Browsing
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../user-guide/ui/global-settings.html" class="md-nav__link">
+      Global settings
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../user-guide/ui/user-management.html" class="md-nav__link">
+      User management
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../user-guide/ui/storage-management.html" class="md-nav__link">
+      Storage management
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../user-guide/ui/system-information.html" class="md-nav__link">
+      System Information
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../user-guide/ui/default-url-users.html" class="md-nav__link">
+      Default URL and Credentials
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../user-guide/artifact-query-language.html" class="md-nav__link">
+      AQL (search)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../user-guide/artifact-routing-rules.html" class="md-nav__link">
+      Artifact Routing Rules
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../user-guide/rest-api.html" class="md-nav__link">
+      REST API
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-10" type="checkbox" id="nav-5-10">
+    
+    <label class="md-nav__link" for="nav-5-10">
+      Tool Integration
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Tool Integration" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-10">
+        <span class="md-nav__icon md-icon"></span>
+        Tool Integration
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../user-guide/tool-integration/ant-ivy-example.html" class="md-nav__link">
+      Ant + Ivy Example
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../user-guide/tool-integration/gradle-example.html" class="md-nav__link">
+      Gradle Example
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../user-guide/tool-integration/maven-example.html" class="md-nav__link">
+      Maven Example
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../user-guide/tool-integration/npm-example.html" class="md-nav__link">
+      NPM Example
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../user-guide/tool-integration/nuget-chocolatey-example.html" class="md-nav__link">
+      Nuget + Chocolatey Example
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../user-guide/tool-integration/nuget-mono-example.html" class="md-nav__link">
+      Nuget + Mono Example
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../user-guide/tool-integration/nuget-visual-studio-example.html" class="md-nav__link">
+      Nuget + Visual Studio Example
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../user-guide/tool-integration/pypi-example.html" class="md-nav__link">
+      PyPi Example
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../user-guide/tool-integration/sbt-example.html" class="md-nav__link">
+      SBT Example
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../user-guide/tool-integration/yarn-example.html" class="md-nav__link">
+      Yarn Example
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6" checked>
+    
+    <label class="md-nav__link" for="nav-6">
+      Developer guide
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Developer guide" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        <span class="md-nav__icon md-icon"></span>
+        Developer guide
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="index.html" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="getting-started.html" class="md-nav__link">
+      Getting started
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6-3" type="checkbox" id="nav-6-3">
+    
+    <label class="md-nav__link" for="nav-6-3">
+      Building
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Building" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-3">
+        <span class="md-nav__icon md-icon"></span>
+        Building
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="building-the-code.html" class="md-nav__link">
+      Building the code
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="building-the-code-with-docker.html" class="md-nav__link">
+      Building the code (Docker)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="building-strongbox-using-strongbox-instance.html" class="md-nav__link">
+      Building Strongbox using a Strongbox instance
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6-4" type="checkbox" id="nav-6-4">
+    
+    <label class="md-nav__link" for="nav-6-4">
+      IDE setup
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="IDE setup" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-4">
+        <span class="md-nav__icon md-icon"></span>
+        IDE setup
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="ide-setup/eclipse.html" class="md-nav__link">
+      Eclipse
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="project-structure.html" class="md-nav__link">
+      Project structure
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6-6" type="checkbox" id="nav-6-6">
+    
+    <label class="md-nav__link" for="nav-6-6">
+      Writing code
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Writing code" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-6">
+        <span class="md-nav__icon md-icon"></span>
+        Writing code
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="coding-convention.html" class="md-nav__link">
+      Coding convention
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="getting-started-with-persistence.html" class="md-nav__link">
+      Getting started with persistence
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="how-to-implement-spring-controllers.html" class="md-nav__link">
+      Writing controllers
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="using-the-event-api.html" class="md-nav__link">
+      Events API
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6-6-5" type="checkbox" id="nav-6-6-5">
+    
+    <label class="md-nav__link" for="nav-6-6-5">
+      Layout providers
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Layout providers" data-md-level="3">
+      <label class="md-nav__title" for="nav-6-6-5">
+        <span class="md-nav__icon md-icon"></span>
+        Layout providers
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="layout-providers/how-to-implement-your-own-repository-format.html" class="md-nav__link">
+      Writing a layout provider
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6-6-5-2" type="checkbox" id="nav-6-6-5-2">
+    
+    <label class="md-nav__link" for="nav-6-6-5-2">
+      Implemented providers
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Implemented providers" data-md-level="4">
+      <label class="md-nav__title" for="nav-6-6-5-2">
+        <span class="md-nav__icon md-icon"></span>
+        Implemented providers
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="layout-providers/maven-2-layout-provider.html" class="md-nav__link">
+      Maven Layout Provider
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="layout-providers/npm-layout-provider.html" class="md-nav__link">
+      NPM Layout Provider
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="layout-providers/nuget-layout-provider.html" class="md-nav__link">
+      NuGet Layout Provider
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="layout-providers/raw-layout-provider.html" class="md-nav__link">
+      Raw Layout Provider
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6-6-6" type="checkbox" id="nav-6-6-6">
+    
+    <label class="md-nav__link" for="nav-6-6-6">
+      Metadata
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Metadata" data-md-level="3">
+      <label class="md-nav__title" for="nav-6-6-6">
+        <span class="md-nav__icon md-icon"></span>
+        Metadata
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="metadata/maven-metadata.html" class="md-nav__link">
+      Maven Metadata
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="metadata/npm-metadata.html" class="md-nav__link">
+      NPM Metadata
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="add-logging.html" class="md-nav__link">
+      Logging
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="search-providers.html" class="md-nav__link">
+      Search Providers
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="maven-indexer.html" class="md-nav__link">
+      Maven Indexer
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="how-to-implement-a-custom-authenticator.html" class="md-nav__link">
+      Writing custom authenticator
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="how-to-inspect-a-hazelcast-cache.html" class="md-nav__link">
+      Inspecting Hazelcast
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="upgrading-dependencies-and-plugins.html" class="md-nav__link">
+      Upgrading Dependencies And Plugins
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6-8" type="checkbox" id="nav-6-8">
+    
+    <label class="md-nav__link" for="nav-6-8">
+      Using Git
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Using Git" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-8">
+        <span class="md-nav__icon md-icon"></span>
+        Using Git
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="git/rebase-vs-merge.html" class="md-nav__link">
+      Rebasing vs Merging
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6-9" type="checkbox" id="nav-6-9" checked>
+    
+    <label class="md-nav__link" for="nav-6-9">
+      Writing tests
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Writing tests" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-9">
+        <span class="md-nav__icon md-icon"></span>
+        Writing tests
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="writing-tests.html" class="md-nav__link">
+      Getting started
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        JUnit
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
+    <a href="junit-user-guide.html" class="md-nav__link md-nav__link--active">
+      JUnit
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#intro" class="md-nav__link">
+    Intro
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#architecture" class="md-nav__link">
+    Architecture
+  </a>
+  
+    <nav class="md-nav" aria-label="Architecture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#junit-platform" class="md-nav__link">
+    JUnit Platform
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#junit-jupiter" class="md-nav__link">
+    JUnit Jupiter
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#junit-vintage" class="md-nav__link">
+    JUnit Vintage
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#supported-java-versions" class="md-nav__link">
+    Supported Java Versions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#strongbox-base-classes" class="md-nav__link">
+    Strongbox base classes
+  </a>
+  
+    <nav class="md-nav" aria-label="Strongbox base classes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#integration-tests" class="md-nav__link">
+    Integration tests
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#layout-providers-tests" class="md-nav__link">
+    Layout providers tests
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#annotations" class="md-nav__link">
+    Annotations
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#assertions" class="md-nav__link">
+    Assertions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tagging-and-filtering" class="md-nav__link">
+    Tagging and Filtering
+  </a>
+  
+    <nav class="md-nav" aria-label="Tagging and Filtering">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-test-plans" class="md-nav__link">
+    Create test plans
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parameterized-tests" class="md-nav__link">
+    Parameterized Tests
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#repeated-tests" class="md-nav__link">
+    Repeated Tests
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dynamic-tests" class="md-nav__link">
+    Dynamic Tests
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#temp-directories" class="md-nav__link">
+    Temp directories
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="assertj-user-guide.html" class="md-nav__link">
+      AssertJ
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="writing-web-form-tests.html" class="md-nav__link">
+      Web Form Tests
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="writing-web-integration-tests.html" class="md-nav__link">
+      Web Integration Tests
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="how-to-gather-requirements.html" class="md-nav__link">
+      How To Gather Requirements
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+    
+    <label class="md-nav__link" for="nav-7">
+      Knowledge Base
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Knowledge Base" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        <span class="md-nav__icon md-icon"></span>
+        Knowledge Base
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../knowledge-base/artifact-coordinates.html" class="md-nav__link">
+      Artifact Coordinates
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7-2" type="checkbox" id="nav-7-2">
+    
+    <label class="md-nav__link" for="nav-7-2">
+      Artifact Coordinate Validators
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Artifact Coordinate Validators" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-2">
+        <span class="md-nav__icon md-icon"></span>
+        Artifact Coordinate Validators
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../knowledge-base/artifact-coordinate-validators/artifact-coordinate-validators.html" class="md-nav__link">
+      Generic
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../knowledge-base/artifact-coordinate-validators/artifact-coordinate-validators-maven.html" class="md-nav__link">
+      Maven
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../knowledge-base/layout-providers.html" class="md-nav__link">
+      Layout Providers
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../knowledge-base/repositories.html" class="md-nav__link">
+      Repositories
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../knowledge-base/storages.html" class="md-nav__link">
+      Storages
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8">
+    
+    <label class="md-nav__link" for="nav-8">
+      Hackfests
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Hackfests" data-md-level="1">
+      <label class="md-nav__title" for="nav-8">
+        <span class="md-nav__icon md-icon"></span>
+        Hackfests
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../hackfests/index.html" class="md-nav__link">
+      Hackfest Guidelines
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-8-2" type="checkbox" id="nav-8-2">
+    
+    <label class="md-nav__link" for="nav-8-2">
+      Grace Hopper Celebration
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Grace Hopper Celebration" data-md-level="2">
+      <label class="md-nav__title" for="nav-8-2">
+        <span class="md-nav__icon md-icon"></span>
+        Grace Hopper Celebration
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../hackfests/grace-hopper-celebration/index.html" class="md-nav__link">
+      About Grace Hopper Celebration
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../hackfests/grace-hopper-celebration/ghc-osd-2020.html" class="md-nav__link">
+      Grace Hopper Opensource Day (2020)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../hackfests/hacktoberfest/index.html" class="md-nav__link">
+      Hacktoberfest
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-9" type="checkbox" id="nav-9">
+    
+    <label class="md-nav__link" for="nav-9">
+      Join chat
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Join chat" data-md-level="1">
+      <label class="md-nav__title" for="nav-9">
+        <span class="md-nav__icon md-icon"></span>
+        Join chat
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../chat-redirect.html" class="md-nav__link">
+      Join chat
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#intro" class="md-nav__link">
+    Intro
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#architecture" class="md-nav__link">
+    Architecture
+  </a>
+  
+    <nav class="md-nav" aria-label="Architecture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#junit-platform" class="md-nav__link">
+    JUnit Platform
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#junit-jupiter" class="md-nav__link">
+    JUnit Jupiter
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#junit-vintage" class="md-nav__link">
+    JUnit Vintage
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#supported-java-versions" class="md-nav__link">
+    Supported Java Versions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#strongbox-base-classes" class="md-nav__link">
+    Strongbox base classes
+  </a>
+  
+    <nav class="md-nav" aria-label="Strongbox base classes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#integration-tests" class="md-nav__link">
+    Integration tests
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#layout-providers-tests" class="md-nav__link">
+    Layout providers tests
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#annotations" class="md-nav__link">
+    Annotations
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#assertions" class="md-nav__link">
+    Assertions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tagging-and-filtering" class="md-nav__link">
+    Tagging and Filtering
+  </a>
+  
+    <nav class="md-nav" aria-label="Tagging and Filtering">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-test-plans" class="md-nav__link">
+    Create test plans
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#parameterized-tests" class="md-nav__link">
+    Parameterized Tests
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#repeated-tests" class="md-nav__link">
+    Repeated Tests
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dynamic-tests" class="md-nav__link">
+    Dynamic Tests
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#temp-directories" class="md-nav__link">
+    Temp directories
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+    
+                
+                  <a href="https://github.com/strongbox/strongbox-docs/edit/master/docs/developer-guide/junit-user-guide.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="junit-user-guide">JUnit User Guide<a class="headerlink" href="#junit-user-guide" title="Permanent link">&para;</a></h1>
+<h2 id="intro">Intro<a class="headerlink" href="#intro" title="Permanent link">&para;</a></h2>
+<p>JUnit is one of the most popular unit-testing frameworks in the Java ecosystem. JUnit 5, which is the next generation 
+of JUnit, promises to be a programmer-friendly testing framework for Java 8. More info on the <a href="https://junit.org/junit5/docs/current/user-guide/">official user guide</a>.</p>
+<h2 id="architecture">Architecture<a class="headerlink" href="#architecture" title="Permanent link">&para;</a></h2>
+<p>There are 3 separated modules:</p>
+<p>JUnit 5 = JUnit Platform + JUnit Jupiter + JUnit Vintage</p>
+<h3 id="junit-platform">JUnit Platform<a class="headerlink" href="#junit-platform" title="Permanent link">&para;</a></h3>
+<p>Foundation for launching testing frameworks on the JVM. Defines the TestEngine API for developing a testing framework 
+that runs on the platform.</p>
+<h3 id="junit-jupiter">JUnit Jupiter<a class="headerlink" href="#junit-jupiter" title="Permanent link">&para;</a></h3>
+<p>Includes new programming model and extension model for writing tests and extensions in JUnit 5 such as new assertions, 
+new annotations, Java 8 Lambda Expressions, etc.</p>
+<h3 id="junit-vintage">JUnit Vintage<a class="headerlink" href="#junit-vintage" title="Permanent link">&para;</a></h3>
+<p>Supports running JUnit 3 and JUnit 4 based tests on the JUnit 5 platform.</p>
+<h2 id="supported-java-versions">Supported Java Versions<a class="headerlink" href="#supported-java-versions" title="Permanent link">&para;</a></h2>
+<p>JUnit 5 requires Java 8 (or higher) at runtime. However, you can still test code that has been compiled with previous 
+versions of the JDK.</p>
+<h2 id="strongbox-base-classes">Strongbox base classes<a class="headerlink" href="#strongbox-base-classes" title="Permanent link">&para;</a></h2>
+<p>This project uses multiple base classes depending on the funcionality to test.</p>
+<h3 id="integration-tests">Integration tests<a class="headerlink" href="#integration-tests" title="Permanent link">&para;</a></h3>
+<p><code>@IntegrationTest</code> is a helper meta annotation for all rest-assured based tests. Specifies tests that require web server 
+and remote HTTP protocol.</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@Target</span><span class="p">(</span><span class="n">ElementType</span><span class="p">.</span><span class="na">TYPE</span><span class="p">)</span>
+<span class="nd">@Retention</span><span class="p">(</span><span class="n">RetentionPolicy</span><span class="p">.</span><span class="na">RUNTIME</span><span class="p">)</span>
+<span class="nd">@SpringBootTest</span><span class="p">(</span><span class="n">classes</span> <span class="o">=</span> <span class="p">{</span> <span class="n">StrongboxSpringBootApplication</span><span class="p">.</span><span class="na">class</span><span class="p">,</span>
+                            <span class="n">MockedRemoteRepositoriesHeartbeatConfig</span><span class="p">.</span><span class="na">class</span><span class="p">,</span>
+                            <span class="n">IntegrationTest</span><span class="p">.</span><span class="na">TestConfig</span><span class="p">.</span><span class="na">class</span><span class="p">,</span>
+                            <span class="n">RestAssuredConfig</span><span class="p">.</span><span class="na">class</span><span class="p">})</span>
+<span class="nd">@WebAppConfiguration</span><span class="p">(</span><span class="s">&quot;classpath:&quot;</span><span class="p">)</span>
+<span class="nd">@WithUserDetails</span><span class="p">(</span><span class="n">value</span> <span class="o">=</span> <span class="s">&quot;admin&quot;</span><span class="p">)</span>
+<span class="nd">@ActiveProfiles</span><span class="p">(</span><span class="n">profiles</span> <span class="o">=</span> <span class="s">&quot;test&quot;</span><span class="p">)</span>
+<span class="nd">@TestExecutionListeners</span><span class="p">(</span><span class="n">listeners</span> <span class="o">=</span> <span class="p">{</span> <span class="n">RestAssuredTestExecutionListener</span><span class="p">.</span><span class="na">class</span><span class="p">,</span>
+                                      <span class="n">CacheManagerTestExecutionListener</span><span class="p">.</span><span class="na">class</span> <span class="p">},</span> 
+                        <span class="n">mergeMode</span> <span class="o">=</span> <span class="n">TestExecutionListeners</span><span class="p">.</span><span class="na">MergeMode</span><span class="p">.</span><span class="na">MERGE_WITH_DEFAULTS</span><span class="p">)</span>
+<span class="kd">public</span> <span class="nd">@interface</span> <span class="n">IntegrationTest</span>
+<span class="p">{</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>An example using this annotation would be:</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@IntegrationTest</span>
+<span class="nd">@ExtendWith</span><span class="p">(</span><span class="n">SpringExtension</span><span class="p">.</span><span class="na">class</span><span class="p">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">PingControllerTest</span>
+        <span class="kd">extends</span> <span class="n">MavenRestAssuredBaseTest</span>
+<span class="p">{</span>
+
+    <span class="nd">@Override</span>
+    <span class="nd">@BeforeEach</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">init</span><span class="p">()</span>
+            <span class="kd">throws</span> <span class="n">Exception</span>
+    <span class="p">{</span>
+        <span class="kd">super</span><span class="p">.</span><span class="na">init</span><span class="p">();</span>
+        <span class="n">setContextBaseUrl</span><span class="p">(</span><span class="n">getContextBaseUrl</span><span class="p">()</span> <span class="o">+</span> <span class="s">&quot;/api/ping&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">testShouldReturnPongText</span><span class="p">()</span>
+    <span class="p">{</span>
+
+        <span class="n">given</span><span class="p">().</span><span class="na">header</span><span class="p">(</span><span class="n">HttpHeaders</span><span class="p">.</span><span class="na">ACCEPT</span><span class="p">,</span> <span class="n">MediaType</span><span class="p">.</span><span class="na">TEXT_PLAIN_VALUE</span><span class="p">)</span>
+               <span class="p">.</span><span class="na">when</span><span class="p">()</span>
+               <span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">getContextBaseUrl</span><span class="p">())</span>
+               <span class="p">.</span><span class="na">peek</span><span class="p">()</span>
+               <span class="p">.</span><span class="na">then</span><span class="p">()</span>
+               <span class="p">.</span><span class="na">statusCode</span><span class="p">(</span><span class="n">HttpStatus</span><span class="p">.</span><span class="na">OK</span><span class="p">.</span><span class="na">value</span><span class="p">())</span>
+               <span class="p">.</span><span class="na">body</span><span class="p">(</span><span class="n">equalTo</span><span class="p">(</span><span class="s">&quot;pong&quot;</span><span class="p">));</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="layout-providers-tests">Layout providers tests<a class="headerlink" href="#layout-providers-tests" title="Permanent link">&para;</a></h3>
+<p>We also can test and validate REST services depending on the layout provider. A few base classes with useful methods 
+can be extended, for example:</p>
+<ul>
+<li><code>MavenRestAssuredBaseTest</code> for Maven-based tests.</li>
+<li><code>NpmRestAssuredBaseTest</code> for npm-based tests.</li>
+<li><code>NugetRestAssuredBaseTest</code> for NuGet-based tests.</li>
+</ul>
+<h2 id="annotations">Annotations<a class="headerlink" href="#annotations" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th align="left">Annotation</th>
+<th>Feature description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left"><code>@Test</code></td>
+<td>Declares a test method</td>
+</tr>
+<tr>
+<td align="left"><code>@BeforeAll</code></td>
+<td>Denotes that the annotated method will be executed before all test methods in the current class</td>
+</tr>
+<tr>
+<td align="left"><code>@AfterAll</code></td>
+<td>Denotes that the annotated method will be executed after all test methods in the current class</td>
+</tr>
+<tr>
+<td align="left"><code>@BeforeEach</code></td>
+<td>Denotes that the annotated method will be executed before each test method</td>
+</tr>
+<tr>
+<td align="left"><code>@AfterEach</code></td>
+<td>Denotes that the annotated method will be executed after each test method</td>
+</tr>
+<tr>
+<td align="left"><code>@Disable</code></td>
+<td>Disable a test method or a test class</td>
+</tr>
+<tr>
+<td align="left"><code>@TestFactory</code></td>
+<td>Denotes a method is a test factory for dynamic tests</td>
+</tr>
+<tr>
+<td align="left"><code>@Nested</code></td>
+<td>Denotes that the annotated class is a nested, non-static test class</td>
+</tr>
+<tr>
+<td align="left"><code>@Tag</code></td>
+<td>Declare tags for filtering tests</td>
+</tr>
+<tr>
+<td align="left"><code>@ExtendWith</code></td>
+<td>Register custom extensions</td>
+</tr>
+<tr>
+<td align="left"><code>@RepeatedTest</code> &nbsp;</td>
+<td>Repeated Tests</td>
+</tr>
+</tbody>
+</table>
+<h2 id="assertions">Assertions<a class="headerlink" href="#assertions" title="Permanent link">&para;</a></h2>
+<p>We decided to use AssertJ assertions instead of JUnit 5 assertions.</p>
+<p>For more details, please check the <a href="assertj-user-guide.html">AssertJ user guide</a> article.</p>
+<h2 id="tagging-and-filtering">Tagging and Filtering<a class="headerlink" href="#tagging-and-filtering" title="Permanent link">&para;</a></h2>
+<p>Use <code>@Tag</code> annotation for tagging and filtering:</p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">BrowseControllerTest</span>
+        <span class="kd">extends</span> <span class="n">MavenRestAssuredBaseTest</span>
+<span class="p">{</span>
+    <span class="nd">@Test</span>
+    <span class="nd">@Tag</span><span class="p">(</span><span class="s">&quot;development&quot;</span><span class="p">)</span>
+    <span class="nd">@Tag</span><span class="p">(</span><span class="s">&quot;production&quot;</span><span class="p">)</span>
+    <span class="kt">void</span> <span class="nf">testGetStorages</span><span class="p">(</span><span class="n">TestInfo</span> <span class="n">testInfo</span><span class="p">)</span> <span class="p">{</span> <span class="c1">//run in all environments</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">TrashControllerTest</span>
+        <span class="kd">extends</span> <span class="n">MavenRestAssuredBaseTest</span>
+<span class="p">{</span>
+    <span class="nd">@Test</span>
+    <span class="nd">@Tag</span><span class="p">(</span><span class="s">&quot;development&quot;</span><span class="p">)</span>
+    <span class="kt">void</span> <span class="nf">testForceDeleteArtifactAllowed</span><span class="p">(</span><span class="n">TestInfo</span> <span class="n">testInfo</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="create-test-plans">Create test plans<a class="headerlink" href="#create-test-plans" title="Permanent link">&para;</a></h3>
+<p>You can use <code>@IncludeTags</code> annotations in your test plan to filter tests or include tests.
+<div class="highlight"><pre><span></span><code><span class="nd">@IntegrationTest</span>
+<span class="nd">@ExtendWith</span><span class="p">(</span><span class="n">SpringExtension</span><span class="p">.</span><span class="na">class</span><span class="p">)</span>
+<span class="nd">@SelectPackages</span><span class="p">(</span><span class="s">&quot;org.carlspring.strongbox.controllers&quot;</span><span class="p">)</span>
+<span class="nd">@IncludeTags</span><span class="p">(</span><span class="s">&quot;production&quot;</span><span class="p">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ProductionControllerTest</span>
+        <span class="kd">extends</span> <span class="n">MavenRestAssuredBaseTest</span>
+<span class="p">{</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<h2 id="parameterized-tests">Parameterized Tests<a class="headerlink" href="#parameterized-tests" title="Permanent link">&para;</a></h2>
+<p>JUnit 5 supports parameterized tests by default. This feature allows us to run a test multiple times with different arguments.</p>
+<p>For example, let’s see the following test:
+<div class="highlight"><pre><span></span><code><span class="nd">@ParameterizedTest</span>
+<span class="nd">@ValueSource</span><span class="p">(</span><span class="n">strings</span> <span class="o">=</span> <span class="p">{</span> <span class="s">&quot;plain&quot;</span><span class="p">,</span>
+                         <span class="s">&quot;SSL&quot;</span><span class="p">,</span>
+                         <span class="s">&quot;tls&quot;</span> <span class="p">})</span>
+<span class="kt">void</span> <span class="nf">testSmtpConfigurationFormValid</span><span class="p">(</span><span class="n">String</span> <span class="n">connection</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="c1">// given</span>
+    <span class="n">SmtpConfigurationForm</span> <span class="n">smtpConfigurationForm</span> <span class="o">=</span> <span class="k">new</span> <span class="n">SmtpConfigurationForm</span><span class="p">();</span>
+    <span class="n">smtpConfigurationForm</span><span class="p">.</span><span class="na">setHost</span><span class="p">(</span><span class="s">&quot;localhost&quot;</span><span class="p">);</span>
+    <span class="n">smtpConfigurationForm</span><span class="p">.</span><span class="na">setPort</span><span class="p">(</span><span class="mi">25</span><span class="p">);</span>
+    <span class="n">smtpConfigurationForm</span><span class="p">.</span><span class="na">setConnection</span><span class="p">(</span><span class="n">connection</span><span class="p">);</span>
+
+    <span class="c1">// when</span>
+    <span class="n">Set</span><span class="o">&lt;</span><span class="n">ConstraintViolation</span><span class="o">&lt;</span><span class="n">SmtpConfigurationForm</span><span class="o">&gt;&gt;</span> <span class="n">violations</span> <span class="o">=</span> <span class="n">validator</span><span class="p">.</span><span class="na">validate</span><span class="p">(</span><span class="n">smtpConfigurationForm</span><span class="p">);</span>
+
+    <span class="c1">// then</span>
+    <span class="n">assertTrue</span><span class="p">(</span><span class="n">violations</span><span class="p">.</span><span class="na">isEmpty</span><span class="p">(),</span> <span class="s">&quot;Violations are not empty!&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></p>
+<p>The <code>@ParameterizedTest</code> and <code>@ValueSource</code> annotations make the test can run with each value provided by the 
+<code>@ValueSource</code> annotation. For instance, the console launcher will print output similar to the following:</p>
+<div class="highlight"><pre><span></span><code>testSmtpConfigurationFormValid(String) ✔
+├─ [1] plain ✔
+└─ [2] SSL ✔
+└─ [3] tls ✔
+</code></pre></div>
+<p>Besides the <code>@ValueSource</code>, JUnit 5 provides many kinds of sources can be used with Parameterized Tests such as:</p>
+<ul>
+<li><code>@CsvFileSource</code>: lets us use CSV files from the classpath. Each line from a CSV file results in one invocation of the parameterized test.</li>
+<li><code>@MethodSource</code>: allows us to refer to one or multiple methods of the test class. Each method must return a Stream, an Iterable, an Iterator, or an array of arguments.</li>
+<li><code>@ArgumentsSource</code>: can be used to specify a custom, reusable ArgumentsProvider.</li>
+<li><code>@EnumSource</code>: provides a convenient way to use Enum constants.</li>
+</ul>
+<h2 id="repeated-tests">Repeated Tests<a class="headerlink" href="#repeated-tests" title="Permanent link">&para;</a></h2>
+<p>A new feature in JUnit 5 which allows us to repeat a test in a specified number of times is Repeated Tests. Let’s see an example which declares a test that will be repeated in 100 times:</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@RepeatedTest</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="kt">void</span> <span class="nf">repeatedTest</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="c1">// ...</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="dynamic-tests">Dynamic Tests<a class="headerlink" href="#dynamic-tests" title="Permanent link">&para;</a></h2>
+<p>JUnit 5 introduces the concept of Dynamic Tests which are tests that can be generated at runtime by a factory method. 
+Let’s see an example which we generate 2 tests at runtime:</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@TestFactory</span>
+<span class="n">Collection</span><span class="o">&lt;</span><span class="n">DynamicTest</span><span class="o">&gt;</span> <span class="nf">dynamicTestsFromCollection</span><span class="p">()</span>
+<span class="p">{</span>
+    <span class="k">return</span> <span class="n">Arrays</span><span class="p">.</span><span class="na">asList</span><span class="p">(</span>
+        <span class="n">dynamicTest</span><span class="p">(</span><span class="s">&quot;1st dynamic test&quot;</span><span class="p">,</span> <span class="p">()</span> <span class="o">-&gt;</span> <span class="n">assertTrue</span><span class="p">(</span><span class="kc">true</span><span class="p">)),</span>
+        <span class="n">dynamicTest</span><span class="p">(</span><span class="s">&quot;2nd dynamic test&quot;</span><span class="p">,</span> <span class="p">()</span> <span class="o">-&gt;</span> <span class="n">assertEquals</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="mi">2</span><span class="p">))</span>
+    <span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="temp-directories">Temp directories<a class="headerlink" href="#temp-directories" title="Permanent link">&para;</a></h2>
+<p>The <code>@TempDir</code> annotation is used to create and clean up a temporary directory for an individual test or all tests in a test class. To use it, annotate a non-private field of type <code>java.nio.file.Path</code> or <code>java.io.File</code> with <code>@TempDir</code> or add a parameter of type <code>java.nio.file.Path</code> or <code>java.io.File</code> annotated with <code>@TempDir</code> to a lifecycle method or test method.</p>
+<p>For example, the following test declares a parameter annotated with <code>@TempDir</code> for a single test method, creates and writes to a file in the temporary directory, and checks its content.</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@Test</span>
+<span class="kt">void</span> <span class="nf">writeItemsToFile</span><span class="p">(</span><span class="nd">@TempDir</span> <span class="n">Path</span> <span class="n">tempDir</span><span class="p">)</span> <span class="kd">throws</span> <span class="n">IOException</span>
+<span class="p">{</span>
+    <span class="n">Path</span> <span class="n">file</span> <span class="o">=</span> <span class="n">tempDir</span><span class="p">.</span><span class="na">resolve</span><span class="p">(</span><span class="s">&quot;test.txt&quot;</span><span class="p">);</span>
+
+    <span class="k">new</span> <span class="n">ListWriter</span><span class="p">(</span><span class="n">file</span><span class="p">).</span><span class="na">write</span><span class="p">(</span><span class="s">&quot;a&quot;</span><span class="p">,</span> <span class="s">&quot;b&quot;</span><span class="p">,</span> <span class="s">&quot;c&quot;</span><span class="p">);</span>
+
+    <span class="n">assertEquals</span><span class="p">(</span><span class="n">singletonList</span><span class="p">(</span><span class="s">&quot;a,b,c&quot;</span><span class="p">),</span> <span class="n">Files</span><span class="p">.</span><span class="na">readAllLines</span><span class="p">(</span><span class="n">file</span><span class="p">));</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>The following example stores a shared temporary directory in a <code>static</code> field. This allows the same <code>sharedTempDir</code> to be used in all lifecycle methods and test methods of the test class.</p>
+<div class="highlight"><pre><span></span><code><span class="kd">class</span> <span class="nc">SharedTempDirectoryDemo</span>
+<span class="p">{</span>
+
+    <span class="nd">@TempDir</span>
+    <span class="kd">static</span> <span class="n">Path</span> <span class="n">sharedTempDir</span><span class="p">;</span>
+
+    <span class="nd">@Test</span>
+    <span class="kt">void</span> <span class="nf">writeItemsToFile</span><span class="p">()</span> <span class="kd">throws</span> <span class="n">IOException</span>
+    <span class="p">{</span>
+        <span class="n">Path</span> <span class="n">file</span> <span class="o">=</span> <span class="n">sharedTempDir</span><span class="p">.</span><span class="na">resolve</span><span class="p">(</span><span class="s">&quot;test.txt&quot;</span><span class="p">);</span>
+
+        <span class="k">new</span> <span class="n">ListWriter</span><span class="p">(</span><span class="n">file</span><span class="p">).</span><span class="na">write</span><span class="p">(</span><span class="s">&quot;a&quot;</span><span class="p">,</span> <span class="s">&quot;b&quot;</span><span class="p">,</span> <span class="s">&quot;c&quot;</span><span class="p">);</span>
+
+        <span class="n">assertEquals</span><span class="p">(</span><span class="n">singletonList</span><span class="p">(</span><span class="s">&quot;a,b,c&quot;</span><span class="p">),</span> <span class="n">Files</span><span class="p">.</span><span class="na">readAllLines</span><span class="p">(</span><span class="n">file</span><span class="p">));</span>
+    <span class="p">}</span>
+
+    <span class="nd">@Test</span>
+    <span class="kt">void</span> <span class="nf">anotherTestThatUsesTheSameTempDir</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// use sharedTempDir</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</code></pre></div>
+                
+                  
+                    
+
+<hr>
+<div class="md-source-date">
+  <small>
+    
+      Last update: 2020-12-07
+    
+  </small>
+</div>
+                  
+                
+              
+
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="writing-tests.html" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Getting started
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="assertj-user-guide.html" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                AssertJ
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/vendor.7e0ee788.min.js"></script>
+      <script src="../assets/javascripts/bundle.b3a72adc.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+      <script>
+        app = initialize({
+          base: "..",
+          features: ['navigation.tabs'],
+          search: Object.assign({
+            worker: "../assets/javascripts/worker/search.4ac00218.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+        <script src="../assets/javascripts/medium-zoom.min.js"></script>
+      
+        <script src="../assets/javascripts/main.js"></script>
+      
+    
+  </body>
+</html>

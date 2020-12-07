@@ -1,0 +1,2374 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.1.4">
+    
+    
+      
+        <title>Nuget + Chocolatey Example - Strongbox</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.358818c7.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.f0267088.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto",-apple-system,BlinkMacSystemFont,Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono",SFMono-Regular,Consolas,Menlo,monospace}</style>
+      
+    
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/style.css">
+    
+    
+      
+        
+<script>window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)},ga.l=+new Date,ga("create","UA-134135156-1","auto"),ga("set","anonymizeIp",!0),ga("send","pageview"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){if(this.value){var e=document.location.pathname;ga("send","pageview",e+"?q="+this.value)}})}),document.addEventListener("DOMContentSwitch",function(){ga("send","pageview",document.location.pathname)})</script>
+<script async src="https://www.google-analytics.com/analytics.js"></script>
+      
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="blue-grey" data-md-color-accent="indigo">
+      
+  
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#nuget-and-chocolatey" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+  
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="../../index.html" title="Strongbox" class="md-header-nav__button md-logo" aria-label="Strongbox">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      
+        <div class="md-header-nav__ellipsis">
+          <span class="md-header-nav__topic md-ellipsis">
+            Strongbox
+          </span>
+          <span class="md-header-nav__topic md-ellipsis">
+            
+              Nuget + Chocolatey Example
+            
+          </span>
+        </div>
+      
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active">
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header-nav__source">
+        
+<a href="https://github.com/strongbox/strongbox/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    strongbox/strongbox
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+
+  
+
+<nav class="md-tabs md-tabs--active" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  <li class="md-tabs__item">
+    
+      <a href="../../index.html" class="md-tabs__link">
+        Introduction
+      </a>
+    
+  </li>
+
+      
+        
+      
+        
+      
+        
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../getting-started.html" class="md-tabs__link md-tabs__link--active">
+          User guide
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../developer-guide/index.html" class="md-tabs__link">
+          Developer guide
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../knowledge-base/artifact-coordinates.html" class="md-tabs__link">
+          Knowledge Base
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../hackfests/index.html" class="md-tabs__link">
+          Hackfests
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../../chat-redirect.html" class="md-tabs__link">
+          Join chat
+        </a>
+      
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../index.html" title="Strongbox" class="md-nav__button md-logo" aria-label="Strongbox">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 003-3 3 3 0 00-3-3 3 3 0 00-3 3 3 3 0 003 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
+
+    </a>
+    Strongbox
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/strongbox/strongbox/" title="Go to repository" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05L244 40.45a28.87 28.87 0 00-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 01-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 000 40.81l195.61 195.6a28.86 28.86 0 0040.8 0l194.69-194.69a28.86 28.86 0 000-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    strongbox/strongbox
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../index.html" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../release-notes.html" class="md-nav__link">
+      Release notes
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../contributing.html" class="md-nav__link">
+      Contributing
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../../license.html" class="md-nav__link">
+      License
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5" type="checkbox" id="nav-5" checked>
+    
+    <label class="md-nav__link" for="nav-5">
+      User guide
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="User guide" data-md-level="1">
+      <label class="md-nav__title" for="nav-5">
+        <span class="md-nav__icon md-icon"></span>
+        User guide
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../getting-started.html" class="md-nav__link">
+      Getting started
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-2" type="checkbox" id="nav-5-2">
+    
+    <label class="md-nav__link" for="nav-5-2">
+      Configuration Files
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Configuration Files" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-2">
+        <span class="md-nav__icon md-icon"></span>
+        Configuration Files
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../configuration-files/strongbox-yaml.html" class="md-nav__link">
+      The strongbox.yaml file
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../configuration-files/strongbox-authorization-yaml.html" class="md-nav__link">
+      The strongbox-authorization.yaml file
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../configuration-files/strongbox-cron-tasks-yaml.html" class="md-nav__link">
+      The strongbox-cron-tasks.yaml file
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../configuration-files/strongbox-security-users-yaml.html" class="md-nav__link">
+      The strongbox-security-users.yaml file
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../application-properties.html" class="md-nav__link">
+      Application properties
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../directory-structure.html" class="md-nav__link">
+      Directory structure
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../upgrading.html" class="md-nav__link">
+      Upgrading
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-6" type="checkbox" id="nav-5-6">
+    
+    <label class="md-nav__link" for="nav-5-6">
+      User Interface
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="User Interface" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-6">
+        <span class="md-nav__icon md-icon"></span>
+        User Interface
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../ui/browsing.html" class="md-nav__link">
+      Browsing
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../ui/global-settings.html" class="md-nav__link">
+      Global settings
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../ui/user-management.html" class="md-nav__link">
+      User management
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../ui/storage-management.html" class="md-nav__link">
+      Storage management
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../ui/system-information.html" class="md-nav__link">
+      System Information
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../ui/default-url-users.html" class="md-nav__link">
+      Default URL and Credentials
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../artifact-query-language.html" class="md-nav__link">
+      AQL (search)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../artifact-routing-rules.html" class="md-nav__link">
+      Artifact Routing Rules
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../rest-api.html" class="md-nav__link">
+      REST API
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-5-10" type="checkbox" id="nav-5-10" checked>
+    
+    <label class="md-nav__link" for="nav-5-10">
+      Tool Integration
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Tool Integration" data-md-level="2">
+      <label class="md-nav__title" for="nav-5-10">
+        <span class="md-nav__icon md-icon"></span>
+        Tool Integration
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="ant-ivy-example.html" class="md-nav__link">
+      Ant + Ivy Example
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="gradle-example.html" class="md-nav__link">
+      Gradle Example
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="maven-example.html" class="md-nav__link">
+      Maven Example
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="npm-example.html" class="md-nav__link">
+      NPM Example
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Nuget + Chocolatey Example
+        <span class="md-nav__icon md-icon"></span>
+      </label>
+    
+    <a href="nuget-chocolatey-example.html" class="md-nav__link md-nav__link--active">
+      Nuget + Chocolatey Example
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#pre-requisites" class="md-nav__link">
+    Pre-requisites
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-project" class="md-nav__link">
+    Example project
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installing-choco" class="md-nav__link">
+    Installing choco
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuring-choco" class="md-nav__link">
+    Configuring Choco
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuring Choco">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get-api-key" class="md-nav__link">
+    Get API key
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#save-api-key-in-choco" class="md-nav__link">
+    Save API key in choco
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add-strongbox-repository-to-chocolatey-package-sources" class="md-nav__link">
+    Add Strongbox repository to Chocolatey package sources
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to" class="md-nav__link">
+    How to
+  </a>
+  
+    <nav class="md-nav" aria-label="How to">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-a-package" class="md-nav__link">
+    Create a package
+  </a>
+  
+    <nav class="md-nav" aria-label="Create a package">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#additional-instructions" class="md-nav__link">
+    Additional instructions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#make-chocolatey-nuget-package" class="md-nav__link">
+    Make Chocolatey NuGet package
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#push-nuget-package-into-strongbox-repository" class="md-nav__link">
+    Push NuGet package into Strongbox repository
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#search-for-packages-in-strongbox-repositories" class="md-nav__link">
+    Search for packages in Strongbox repositories
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete-a-chocolatey-package-from-strongbox" class="md-nav__link">
+    Delete a Chocolatey package from strongbox
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-a-package" class="md-nav__link">
+    Install a package
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uninstall-a-package" class="md-nav__link">
+    Uninstall a package
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#see-also" class="md-nav__link">
+    See also
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="nuget-mono-example.html" class="md-nav__link">
+      Nuget + Mono Example
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="nuget-visual-studio-example.html" class="md-nav__link">
+      Nuget + Visual Studio Example
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="pypi-example.html" class="md-nav__link">
+      PyPi Example
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="sbt-example.html" class="md-nav__link">
+      SBT Example
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="yarn-example.html" class="md-nav__link">
+      Yarn Example
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6" type="checkbox" id="nav-6">
+    
+    <label class="md-nav__link" for="nav-6">
+      Developer guide
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Developer guide" data-md-level="1">
+      <label class="md-nav__title" for="nav-6">
+        <span class="md-nav__icon md-icon"></span>
+        Developer guide
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../developer-guide/index.html" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../developer-guide/getting-started.html" class="md-nav__link">
+      Getting started
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6-3" type="checkbox" id="nav-6-3">
+    
+    <label class="md-nav__link" for="nav-6-3">
+      Building
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Building" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-3">
+        <span class="md-nav__icon md-icon"></span>
+        Building
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../developer-guide/building-the-code.html" class="md-nav__link">
+      Building the code
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../developer-guide/building-the-code-with-docker.html" class="md-nav__link">
+      Building the code (Docker)
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../developer-guide/building-strongbox-using-strongbox-instance.html" class="md-nav__link">
+      Building Strongbox using a Strongbox instance
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6-4" type="checkbox" id="nav-6-4">
+    
+    <label class="md-nav__link" for="nav-6-4">
+      IDE setup
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="IDE setup" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-4">
+        <span class="md-nav__icon md-icon"></span>
+        IDE setup
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../developer-guide/ide-setup/eclipse.html" class="md-nav__link">
+      Eclipse
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../developer-guide/project-structure.html" class="md-nav__link">
+      Project structure
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6-6" type="checkbox" id="nav-6-6">
+    
+    <label class="md-nav__link" for="nav-6-6">
+      Writing code
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Writing code" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-6">
+        <span class="md-nav__icon md-icon"></span>
+        Writing code
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../developer-guide/coding-convention.html" class="md-nav__link">
+      Coding convention
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../developer-guide/getting-started-with-persistence.html" class="md-nav__link">
+      Getting started with persistence
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../developer-guide/how-to-implement-spring-controllers.html" class="md-nav__link">
+      Writing controllers
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../developer-guide/using-the-event-api.html" class="md-nav__link">
+      Events API
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6-6-5" type="checkbox" id="nav-6-6-5">
+    
+    <label class="md-nav__link" for="nav-6-6-5">
+      Layout providers
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Layout providers" data-md-level="3">
+      <label class="md-nav__title" for="nav-6-6-5">
+        <span class="md-nav__icon md-icon"></span>
+        Layout providers
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../developer-guide/layout-providers/how-to-implement-your-own-repository-format.html" class="md-nav__link">
+      Writing a layout provider
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6-6-5-2" type="checkbox" id="nav-6-6-5-2">
+    
+    <label class="md-nav__link" for="nav-6-6-5-2">
+      Implemented providers
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Implemented providers" data-md-level="4">
+      <label class="md-nav__title" for="nav-6-6-5-2">
+        <span class="md-nav__icon md-icon"></span>
+        Implemented providers
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../developer-guide/layout-providers/maven-2-layout-provider.html" class="md-nav__link">
+      Maven Layout Provider
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../developer-guide/layout-providers/npm-layout-provider.html" class="md-nav__link">
+      NPM Layout Provider
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../developer-guide/layout-providers/nuget-layout-provider.html" class="md-nav__link">
+      NuGet Layout Provider
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../developer-guide/layout-providers/raw-layout-provider.html" class="md-nav__link">
+      Raw Layout Provider
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6-6-6" type="checkbox" id="nav-6-6-6">
+    
+    <label class="md-nav__link" for="nav-6-6-6">
+      Metadata
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Metadata" data-md-level="3">
+      <label class="md-nav__title" for="nav-6-6-6">
+        <span class="md-nav__icon md-icon"></span>
+        Metadata
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../developer-guide/metadata/maven-metadata.html" class="md-nav__link">
+      Maven Metadata
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../developer-guide/metadata/npm-metadata.html" class="md-nav__link">
+      NPM Metadata
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../developer-guide/add-logging.html" class="md-nav__link">
+      Logging
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../developer-guide/search-providers.html" class="md-nav__link">
+      Search Providers
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../developer-guide/maven-indexer.html" class="md-nav__link">
+      Maven Indexer
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../developer-guide/how-to-implement-a-custom-authenticator.html" class="md-nav__link">
+      Writing custom authenticator
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../developer-guide/how-to-inspect-a-hazelcast-cache.html" class="md-nav__link">
+      Inspecting Hazelcast
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../developer-guide/upgrading-dependencies-and-plugins.html" class="md-nav__link">
+      Upgrading Dependencies And Plugins
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6-8" type="checkbox" id="nav-6-8">
+    
+    <label class="md-nav__link" for="nav-6-8">
+      Using Git
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Using Git" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-8">
+        <span class="md-nav__icon md-icon"></span>
+        Using Git
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../developer-guide/git/rebase-vs-merge.html" class="md-nav__link">
+      Rebasing vs Merging
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-6-9" type="checkbox" id="nav-6-9">
+    
+    <label class="md-nav__link" for="nav-6-9">
+      Writing tests
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Writing tests" data-md-level="2">
+      <label class="md-nav__title" for="nav-6-9">
+        <span class="md-nav__icon md-icon"></span>
+        Writing tests
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../developer-guide/writing-tests.html" class="md-nav__link">
+      Getting started
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../developer-guide/junit-user-guide.html" class="md-nav__link">
+      JUnit
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../developer-guide/assertj-user-guide.html" class="md-nav__link">
+      AssertJ
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../developer-guide/writing-web-form-tests.html" class="md-nav__link">
+      Web Form Tests
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../developer-guide/writing-web-integration-tests.html" class="md-nav__link">
+      Web Integration Tests
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../developer-guide/how-to-gather-requirements.html" class="md-nav__link">
+      How To Gather Requirements
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7" type="checkbox" id="nav-7">
+    
+    <label class="md-nav__link" for="nav-7">
+      Knowledge Base
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Knowledge Base" data-md-level="1">
+      <label class="md-nav__title" for="nav-7">
+        <span class="md-nav__icon md-icon"></span>
+        Knowledge Base
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../knowledge-base/artifact-coordinates.html" class="md-nav__link">
+      Artifact Coordinates
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-7-2" type="checkbox" id="nav-7-2">
+    
+    <label class="md-nav__link" for="nav-7-2">
+      Artifact Coordinate Validators
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Artifact Coordinate Validators" data-md-level="2">
+      <label class="md-nav__title" for="nav-7-2">
+        <span class="md-nav__icon md-icon"></span>
+        Artifact Coordinate Validators
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../knowledge-base/artifact-coordinate-validators/artifact-coordinate-validators.html" class="md-nav__link">
+      Generic
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../knowledge-base/artifact-coordinate-validators/artifact-coordinate-validators-maven.html" class="md-nav__link">
+      Maven
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../knowledge-base/layout-providers.html" class="md-nav__link">
+      Layout Providers
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../knowledge-base/repositories.html" class="md-nav__link">
+      Repositories
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../knowledge-base/storages.html" class="md-nav__link">
+      Storages
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-8" type="checkbox" id="nav-8">
+    
+    <label class="md-nav__link" for="nav-8">
+      Hackfests
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Hackfests" data-md-level="1">
+      <label class="md-nav__title" for="nav-8">
+        <span class="md-nav__icon md-icon"></span>
+        Hackfests
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../hackfests/index.html" class="md-nav__link">
+      Hackfest Guidelines
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-8-2" type="checkbox" id="nav-8-2">
+    
+    <label class="md-nav__link" for="nav-8-2">
+      Grace Hopper Celebration
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Grace Hopper Celebration" data-md-level="2">
+      <label class="md-nav__title" for="nav-8-2">
+        <span class="md-nav__icon md-icon"></span>
+        Grace Hopper Celebration
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../hackfests/grace-hopper-celebration/index.html" class="md-nav__link">
+      About Grace Hopper Celebration
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../hackfests/grace-hopper-celebration/ghc-osd-2020.html" class="md-nav__link">
+      Grace Hopper Opensource Day (2020)
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../hackfests/hacktoberfest/index.html" class="md-nav__link">
+      Hacktoberfest
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-nav__toggle md-toggle" data-md-toggle="nav-9" type="checkbox" id="nav-9">
+    
+    <label class="md-nav__link" for="nav-9">
+      Join chat
+      <span class="md-nav__icon md-icon"></span>
+    </label>
+    <nav class="md-nav" aria-label="Join chat" data-md-level="1">
+      <label class="md-nav__title" for="nav-9">
+        <span class="md-nav__icon md-icon"></span>
+        Join chat
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../../chat-redirect.html" class="md-nav__link">
+      Join chat
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#pre-requisites" class="md-nav__link">
+    Pre-requisites
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#example-project" class="md-nav__link">
+    Example project
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installing-choco" class="md-nav__link">
+    Installing choco
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#configuring-choco" class="md-nav__link">
+    Configuring Choco
+  </a>
+  
+    <nav class="md-nav" aria-label="Configuring Choco">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#get-api-key" class="md-nav__link">
+    Get API key
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#save-api-key-in-choco" class="md-nav__link">
+    Save API key in choco
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add-strongbox-repository-to-chocolatey-package-sources" class="md-nav__link">
+    Add Strongbox repository to Chocolatey package sources
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-to" class="md-nav__link">
+    How to
+  </a>
+  
+    <nav class="md-nav" aria-label="How to">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-a-package" class="md-nav__link">
+    Create a package
+  </a>
+  
+    <nav class="md-nav" aria-label="Create a package">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#additional-instructions" class="md-nav__link">
+    Additional instructions
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#make-chocolatey-nuget-package" class="md-nav__link">
+    Make Chocolatey NuGet package
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#push-nuget-package-into-strongbox-repository" class="md-nav__link">
+    Push NuGet package into Strongbox repository
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#search-for-packages-in-strongbox-repositories" class="md-nav__link">
+    Search for packages in Strongbox repositories
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete-a-chocolatey-package-from-strongbox" class="md-nav__link">
+    Delete a Chocolatey package from strongbox
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-a-package" class="md-nav__link">
+    Install a package
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#uninstall-a-package" class="md-nav__link">
+    Uninstall a package
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#see-also" class="md-nav__link">
+    See also
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+    
+                
+                  <a href="https://github.com/strongbox/strongbox-docs/edit/master/docs/user-guide/tool-integration/nuget-chocolatey-example.md" title="Edit this page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="nuget-and-chocolatey">Nuget and Chocolatey<a class="headerlink" href="#nuget-and-chocolatey" title="Permanent link">&para;</a></h1>
+<p>This is an example of how to use the Strongbox artifact repository manager with Chocolatey using Nuget.</p>
+<h2 id="pre-requisites">Pre-requisites<a class="headerlink" href="#pre-requisites" title="Permanent link">&para;</a></h2>
+<p>Before you proceed please make sure you have installed and configured a <a href="../getting-started.html">Strongbox Distribution</a>.</p>
+<h2 id="example-project">Example project<a class="headerlink" href="#example-project" title="Permanent link">&para;</a></h2>
+<p>The "Hello, Strongbox!" example project can be found <a href="https://github.com/strongbox/strongbox-examples/tree/master/hello-strongbox-nuget-chocolatey">here</a>.</p>
+<h2 id="installing-choco">Installing choco<a class="headerlink" href="#installing-choco" title="Permanent link">&para;</a></h2>
+<div class="admonition success">
+<p class="admonition-title">Windows</p>
+<p>Chocolatey is available natively on Windows and can be installed following the <a href="https://chocolatey.org/install">official documentation</a></p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Mono</p>
+<p>If you are running Linux/MacOS and would like to use <a href="https://www.mono-project.com/">mono</a>, there is no pre-built binary. 
+You will need to head to the <a href="https://github.com/chocolatey/choco">chocolatey repository</a> for instructions on how to build it. </p>
+</div>
+<div class="admonition success">
+<p class="admonition-title">Linux / MacOS / Docker</p>
+<p>We have already built a linux docker image with pre-built and configured <a href="https://chocolatey.org/">choco</a> which we are also using 
+in our integration tests. It is published at <a href="https://hub.docker.com/r/strongboxci/alpine/tags?page=1&amp;name=choco">strongboxci/alpine</a> and you can feel free to use it for development
+purposes.</p>
+</div>
+<p>It is OK to ignore warnings about a system reboot being requested since the nothing here is affected by it.</p>
+<h2 id="configuring-choco">Configuring Choco<a class="headerlink" href="#configuring-choco" title="Permanent link">&para;</a></h2>
+<h3 id="get-api-key">Get API key<a class="headerlink" href="#get-api-key" title="Permanent link">&para;</a></h3>
+<p>The NuGet protocol assumes that users need to be authenticated with <code>API Key</code> to be able to deploy or delete your packages.
+Strongbox provides the REST API to get an API Key for specified user:</p>
+<div class="tabbed-set" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><label for="__tabbed_1_1">Windows</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>FOR /F %i IN (&#39;curl -u admin http://localhost:48080/api/users/admin/generate-security-token&#39;) DO set API_KEY=%i
+echo %API_KEY%
+</code></pre></div>
+</td></tr></table>
+</div>
+<input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><label for="__tabbed_1_2">Linux</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>API_KEY=`curl -u admin http://localhost:48080/api/users/admin/generate-security-token`
+echo $API_KEY
+</code></pre></div>
+</td></tr></table>
+</div>
+</div>
+<p>Enter your Strongbox password. (Default is: <code>admin/password</code>)</p>
+<p>The output when <code>echo</code>ing the <code>%API_KEY%</code> should not be empty and should look something like this:</p>
+<div class="codehilite"><pre><span></span><code>eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJTdHJvbmdib3giLCJqdGkiOiJtU3N0TGVOMGpabzJNcmdleGdWSUVRIiwic3ViIjoiYWRtaW4iLCJzZWN1cml0eS10b2tlbi1rZXkiOiJhZG1pbi1zZWNyAMQifQ.SgpKb4yUidK8ATbGxDOfjGjHfEF22PIFyzlpk-Rpad0
+</code></pre></div>
+
+<h3 id="save-api-key-in-choco">Save API key in choco<a class="headerlink" href="#save-api-key-in-choco" title="Permanent link">&para;</a></h3>
+<p>In this step, we will be setting the <code>apikey</code> which will be used to authenticate against the <code>source</code> in the future steps.</p>
+<div class="tabbed-set" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><label for="__tabbed_2_1">Windows</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code># This needs to be run in an administrative command prompt or powershell!
+set REPO_URL=http://localhost:48080/storages/storage-nuget/nuget-releases
+choco apikey -k %API_KEY% -s &quot;%REPO_URL%&quot;
+</code></pre></div>
+</td></tr></table>
+</div>
+<input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><label for="__tabbed_2_2">Linux</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>REPO_URL=http://localhost:48080/storages/storage-nuget/nuget-releases
+choco apikey -k $API_KEY -s &quot;$REPO_URL&quot;
+</code></pre></div>
+</td></tr></table>
+</div>
+</div>
+<p>The output should be like follows:</p>
+<div class="highlight"><pre><span></span><code>Chocolatey v.10.15
+Added ApiKey for http://localhost:48080/storages/storage-nuget/nuget-releases
+</code></pre></div>
+<h3 id="add-strongbox-repository-to-chocolatey-package-sources">Add Strongbox repository to Chocolatey package sources<a class="headerlink" href="#add-strongbox-repository-to-chocolatey-package-sources" title="Permanent link">&para;</a></h3>
+<p>To manage packages, you'll need to configure Chocolatey to access your storages by running the following command:</p>
+<div class="tabbed-set" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><label for="__tabbed_3_1">Windows</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code># This needs to be run as administrative command prompt or powershell!
+choco source add -n=strongbox -s &quot;%REPO_URL%&quot; --priority=1
+</code></pre></div>
+</td></tr></table>
+</div>
+<input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><label for="__tabbed_3_2">Linux</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>choco source add -n=strongbox -s &quot;$REPO_URL&quot; --priority=1
+</code></pre></div>
+</td></tr></table>
+</div>
+</div>
+<p>The output should be like follows:</p>
+<div class="highlight"><pre><span></span><code>Chocolatey v0.10.15
+Added strongbox - http://localhost:48080/storages/storage-nuget/nuget-releases (Priority 1)
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Important notes</p>
+<ul>
+<li>You cannot deploy to group repositories, as they are only for resolving artifacts. Also, please note that the <code>nuget-public</code> group includes the <code>nuget.org</code> repository itself</li>
+<li>You can only deploy to hosted repositories. </li>
+<li>The deploy URLs would begin with <code>/storages/{storageId}/{repositoryId}</code> (i.e. <code>/storages/storage-nuget/nuget-releases</code>, <code>nuget-snapshot</code>, etc)</li>
+</ul>
+</div>
+<h2 id="how-to">How to<a class="headerlink" href="#how-to" title="Permanent link">&para;</a></h2>
+<h3 id="create-a-package">Create a package<a class="headerlink" href="#create-a-package" title="Permanent link">&para;</a></h3>
+<p>The command below will create a folder named <code>hello-chocolatey</code> with some files including a <code>.nuspec</code> and a folder 
+called <code>tools</code>.</p>
+<div class="tabbed-set" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><label for="__tabbed_4_1">Windows</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>cd C:\some\path
+choco new --name=hello-chocolatey --version=1.0.0
+</code></pre></div>
+</td></tr></table>
+</div>
+<input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><label for="__tabbed_4_2">Linux</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>cd /some/path
+choco new --name=hello-chocolatey --version=1.0.0
+</code></pre></div>
+</td></tr></table>
+</div>
+</div>
+<details class="info"><summary>Example output</summary><div class="highlight"><pre><span></span><code>Chocolatey &lt;version&gt;
+2 validations performed. 1 success(es), 0 warning(s), and 0 error(s).
+
+Creating a new package specification at C:\Users\User\Documents\hello-chocolatey
+Generating template to a file
+ at &#39;C:\Users\User\Documents\hello-chocolatey\hello-chocolatey.nuspec&#39;
+Generating template to a file
+ at &#39;C:\Users\User\Documents\hello-chocolatey\tools\chocolateyinstall.ps1&#39;
+Generating template to a file
+ at &#39;C:\Users\User\Documents\hello-chocolatey\tools\chocolateybeforemodify.ps1&#39;
+Generating template to a file
+ at &#39;C:\Users\User\Documents\hello-chocolatey\tools\chocolateyuninstall.ps1&#39;
+Generating template to a file
+ at &#39;C:\Users\User\Documents\hello-chocolatey\tools\LICENSE.txt&#39;
+Generating template to a file
+ at &#39;C:\Users\User\Documents\hello-chocolatey\tools\VERIFICATION.txt&#39;
+Generating template to a file
+ at &#39;C:\Users\User\Documents\hello-chocolatey\ReadMe.md&#39;
+Generating template to a file
+ at &#39;C:\Users\User\Documents\hello-chocolatey\_TODO.txt&#39;
+Successfully generated hello-chocolatey package specification files
+ at &#39;C:\Users\User\Documents\hello-chocolatey&#39;
+</code></pre></div>
+</details>
+<h4 id="additional-instructions">Additional instructions<a class="headerlink" href="#additional-instructions" title="Permanent link">&para;</a></h4>
+<ul>
+<li>Delete <code>_TODO.txt</code> and <code>ReadMe.md</code> in the <code>hello-chocolatey</code> directory.</li>
+<li>Delete <code>chocolateybeforemodify.ps1</code> and <code>chocolateyuninstall.ps1</code> in the tools sub-directory. 
+  The <code>LICENSE.txt</code> and <code>VERIFICATION.txt</code> can also be deleted, although this is not required.</li>
+<li>Edit <code>chocolateyinstall.ps1</code> in the <code>tools</code> sub-directory with a text editor and replace the entire content with <code>Write-Output 'Package would install here'</code>. </li>
+<li>If you are running on a Linux file system, edit <code>hello-chocolatey.nuspec</code> and replace <code>"tools\**"</code> with <code>"tools/**"</code>(backwards to forwards slash) in the <code>file</code> section. It should be the forth row from the bottom.</li>
+<li>You can also check against the <a href="https://github.com/strongbox/strongbox-examples/tree/master/hello-strongbox-nuget-chocolatey">example files</a> located in the <a href="https://github.com/strongbox/strongbox-examples">strongbox-examples</a> repository.</li>
+</ul>
+<h3 id="make-chocolatey-nuget-package">Make Chocolatey NuGet package<a class="headerlink" href="#make-chocolatey-nuget-package" title="Permanent link">&para;</a></h3>
+<p>Execute the following command in the same directory as <code>hello-chocolatey.nuspec</code>:</p>
+<div class="tabbed-set" data-tabs="5:2"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><label for="__tabbed_5_1">Windows</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>cd C:\some\path\hello-chocolatey
+choco pack
+</code></pre></div>
+</td></tr></table>
+</div>
+<input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><label for="__tabbed_5_2">Linux</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>cd /some/path/to/hello-chocolatey
+choco pack
+</code></pre></div>
+</td></tr></table>
+</div>
+</div>
+<details class="info"><summary>Example output</summary><div class="highlight"><pre><span></span><code>Chocolatey &lt;version&gt;
+2 validations performed. 1 success(es), 0 warning(s), and 0 error(s).
+
+Attempting to build package from &#39;hello-chocolatey.nuspec&#39;.
+Successfully created package &#39;C:\Users\User\Documents\hello-chocolatey\hello-chocolatey.1.0.0.nupkg&#39;
+</code></pre></div>
+</details>
+<h3 id="push-nuget-package-into-strongbox-repository">Push NuGet package into Strongbox repository<a class="headerlink" href="#push-nuget-package-into-strongbox-repository" title="Permanent link">&para;</a></h3>
+<p>Execute the following command in the directory with <code>hello-chocolatey.1.0.0.nupkg</code>:</p>
+<div class="tabbed-set" data-tabs="6:2"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><label for="__tabbed_6_1">Windows</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>cd C:\some\path\hello-chocolatey
+choco push --source &quot;%REPO_URL%&quot; --force
+</code></pre></div>
+</td></tr></table>
+</div>
+<input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><label for="__tabbed_6_2">Linux</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>cd /some/path/to/hello-chocolatey
+choco push --source &quot;$REPO_URL&quot; --force
+</code></pre></div>
+</td></tr></table>
+</div>
+</div>
+<details class="info"><summary>Example output</summary><div class="highlight"><pre><span></span><code>Chocolatey &lt;version&gt;
+2 validations performed. 1 success(es), 0 warning(s), and 0 error(s).
+
+Attempting to push hello-chocolatey.1.0.0.nupkg to http://localhost:48080/storages/storage-nuget/nuget-releases
+hello-chocolatey 1.0.0 was pushed successfully to http://localhost:48080/storages/storage-nuget/nuget-releases
+</code></pre></div>
+</details>
+<h3 id="search-for-packages-in-strongbox-repositories">Search for packages in Strongbox repositories<a class="headerlink" href="#search-for-packages-in-strongbox-repositories" title="Permanent link">&para;</a></h3>
+<p>Execute the following command:</p>
+<div class="tabbed-set" data-tabs="7:2"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><label for="__tabbed_7_1">Windows</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>choco search -s &quot;%REPO_URL%&quot;
+</code></pre></div>
+</td></tr></table>
+</div>
+<input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><label for="__tabbed_7_2">Linux</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>choco search -s &quot;$REPO_URL&quot;
+</code></pre></div>
+</td></tr></table>
+</div>
+</div>
+<details class="info"><summary>Example output</summary><div class="highlight"><pre><span></span><code>Chocolatey &lt;version&gt;
+2 validations performed. 1 success(es), 0 warning(s), and 0 error(s).
+
+hello-chocolatey 1.0.0
+1 packages found.
+</code></pre></div>
+</details>
+<h3 id="delete-a-chocolatey-package-from-strongbox">Delete a Chocolatey package from strongbox<a class="headerlink" href="#delete-a-chocolatey-package-from-strongbox" title="Permanent link">&para;</a></h3>
+<p>Chocolatey does not have a built in way to delete packages from the server. 
+As a workaround, you can use <code>nuget</code> to delete packages, see <a href="https://github.com/strongbox/strongbox-examples/tree/master/hello-strongbox-nuget-visual-studio">hello-strongbox-nuget-visual-studio</a> for more details.</p>
+<h3 id="install-a-package">Install a package<a class="headerlink" href="#install-a-package" title="Permanent link">&para;</a></h3>
+<p>To install a <code>choco</code> package you should use the command below. </p>
+<div class="tabbed-set" data-tabs="8:2"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><label for="__tabbed_8_1">Windows</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code># Execute the following command as a administrator!
+choco install hello-chocolatey -s &quot;%REPO_URL%&quot;
+</code></pre></div>
+</td></tr></table>
+</div>
+<input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><label for="__tabbed_8_2">Linux</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>choco install hello-chocolatey -s &quot;$REPO_URL&quot;
+</code></pre></div>
+</td></tr></table>
+</div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Adding <code>-s "{repo_url}"</code> is optional. However, <code>choco</code> will loop through all sources until it finds the package which
+might be time consuming so you might want to force <code>choco</code> using the right source.</p>
+</div>
+<details class="info"><summary>Example output</summary><div class="highlight"><pre><span></span><code>Chocolatey &lt;version&gt;
+2 validations performed. 1 success(es), 0 warning(s), and 0 error(s).
+
+Installing the following packages:
+hello-chocolatey.1.0.0.nupkg
+By installing you accept licenses for the packages.
+
+hello-chocolatey v1.0.0
+hello-chocolatey package files install completed. Performing other installation steps.
+Package would install here
+ The install of hello-chocolatey was successful.
+  Software install location not explicitly set, could be in package or
+  default install location if installer.
+
+Chocolatey installed 1/1 packages.
+ See the log for details (C:\ProgramData\chocolatey\logs\chocolatey.log).
+</code></pre></div>
+</details>
+<h3 id="uninstall-a-package">Uninstall a package<a class="headerlink" href="#uninstall-a-package" title="Permanent link">&para;</a></h3>
+<div class="tabbed-set" data-tabs="9:2"><input checked="checked" id="__tabbed_9_1" name="__tabbed_9" type="radio" /><label for="__tabbed_9_1">Windows</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1
+2</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code># Execute the following command as a administrator!
+choco uninstall hello-chocolatey
+</code></pre></div>
+</td></tr></table>
+</div>
+<input id="__tabbed_9_2" name="__tabbed_9" type="radio" /><label for="__tabbed_9_2">Linux</label><div class="tabbed-content">
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>choco uninstall hello-chocolatey
+</code></pre></div>
+</td></tr></table>
+</div>
+</div>
+<details class="info"><summary>Example output</summary><div class="highlight"><pre><span></span><code>Chocolatey &lt;version&gt;
+2 validations performed. 1 success(es), 0 warning(s), and 0 error(s).
+
+Uninstalling the following packages:
+hello-chocolatey
+
+hello-chocolatey v1.0.0
+ Skipping auto uninstaller - No registry snapshot.
+ hello-chocolatey has been successfully uninstalled.
+
+Chocolatey uninstalled 1/1 packages.
+ See the log for details (C:\ProgramData\chocolatey\logs\chocolatey.log).
+</code></pre></div>
+</details>
+<h2 id="see-also">See also<a class="headerlink" href="#see-also" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://chocolatey.org/docs/commands-reference">Chocolatey commands reference</a></li>
+<li><a href="https://chocolatey.org/docs">Chocolatey docs</a></li>
+<li><a href="https://github.com/strongbox/strongbox-examples/tree/master/hello-strongbox-nuget-chocolatey">hello-strongbox-nuget-chocolatey</a></li>
+</ul>
+                
+                  
+                    
+
+<hr>
+<div class="md-source-date">
+  <small>
+    
+      Last update: 2020-12-07
+    
+  </small>
+</div>
+                  
+                
+              
+
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="npm-example.html" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                NPM Example
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="nuget-mono-example.html" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Nuget + Mono Example
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../../assets/javascripts/vendor.7e0ee788.min.js"></script>
+      <script src="../../assets/javascripts/bundle.b3a72adc.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+      <script>
+        app = initialize({
+          base: "../..",
+          features: ['navigation.tabs'],
+          search: Object.assign({
+            worker: "../../assets/javascripts/worker/search.4ac00218.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+        <script src="../../assets/javascripts/medium-zoom.min.js"></script>
+      
+        <script src="../../assets/javascripts/main.js"></script>
+      
+    
+  </body>
+</html>
